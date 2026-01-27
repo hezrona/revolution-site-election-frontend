@@ -1,0 +1,43 @@
+﻿.terms-page {
+  background: var(--color-cream);
+}
+
+.terms-hero {
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: 60px 0 50px;
+  text-align: center;
+}
+
+.terms-hero h1 {
+  font-family: var(--font-display);
+  color: var(--color-mustard);
+  margin: 0 0 10px;
+}
+
+.terms-hero p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.terms-content {
+  padding: 40px 0 80px;
+}
+
+.terms-card {
+  background: #f9e7b8;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-soft);
+  line-height: 1.7;
+}
+
+.terms-card h2 {
+  font-family: var(--font-display);
+  color: var(--color-navy);
+  margin-top: 24px;
+}
+
+.terms-card h2:first-of-type {
+  margin-top: 0;
+}

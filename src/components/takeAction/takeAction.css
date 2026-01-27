@@ -1,0 +1,135 @@
+﻿.take-action-page {
+  background: var(--color-cream);
+}
+
+.take-action-hero {
+  position: relative;
+  background-image:
+    linear-gradient(rgba(15, 35, 52, 0.85), rgba(15, 35, 52, 0.75)),
+    url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1400&q=80");
+  background-size: cover;
+  background-position: center;
+  color: var(--color-white);
+  padding: 80px 0 120px;
+}
+
+.take-action-hero-inner {
+  max-width: 720px;
+  text-align: center;
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+}
+
+.take-action-back {
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.take-action-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  margin: 0;
+  color: var(--color-mustard);
+}
+
+.take-action-hero p {
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+.take-action-card {
+  background: rgba(246, 232, 199, 0.95);
+  color: var(--color-navy);
+  border-radius: var(--radius-lg);
+  padding: 24px 26px;
+  text-align: left;
+  box-shadow: var(--shadow-soft);
+}
+
+.take-action-card h2 {
+  margin-top: 0;
+  font-family: var(--font-display);
+  color: var(--color-navy);
+}
+
+.take-action-card ul {
+  padding-left: 18px;
+  line-height: 1.6;
+  margin: 16px 0 0;
+}
+
+.take-action-form {
+  background: var(--color-cream);
+  padding: 0 0 90px;
+}
+
+.take-action-form-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  transform: translateY(-80px);
+  background: #f9e7b8;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-soft);
+}
+
+.take-action-form h2 {
+  margin-top: 0;
+  font-family: var(--font-display);
+  color: var(--color-navy);
+}
+
+.take-action-form h3 {
+  margin-top: 26px;
+  font-family: var(--font-display);
+  color: var(--color-navy);
+}
+
+.action-form {
+  display: grid;
+  gap: 18px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.action-form label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.action-form input,
+.action-form select {
+  border: 1px solid rgba(31, 63, 91, 0.25);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff7e1;
+}
+
+.checkbox-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 500;
+}
+
+.form-footnote {
+  font-size: 0.85rem;
+  color: rgba(31, 63, 91, 0.8);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .take-action-form-inner {
+    transform: translateY(-50px);
+    padding: 24px;
+  }
+}

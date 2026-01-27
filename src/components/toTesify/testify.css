@@ -1,0 +1,175 @@
+﻿.testify-page {
+  background: var(--color-cream);
+}
+
+.testify-hero {
+  background: var(--color-mustard);
+  padding: 60px 0 40px;
+  text-align: center;
+}
+
+.testify-hero h1 {
+  font-family: var(--font-display);
+  color: var(--color-pink);
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.testify-hero p {
+  margin: 0;
+  color: var(--color-navy);
+  font-weight: 600;
+}
+
+.testify-form {
+  padding: 40px 0 90px;
+}
+
+.testify-form-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #f9e7b8;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-soft);
+}
+
+.testify-form-inner h2 {
+  margin-top: 0;
+  font-family: var(--font-display);
+  color: var(--color-navy);
+}
+
+.contribution-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.contribution-card {
+  position: relative;
+  border: 2px solid rgba(31, 63, 91, 0.15);
+  border-radius: 16px;
+  padding: 18px;
+  display: grid;
+  gap: 6px;
+  text-align: center;
+  background: #fbeec8;
+  cursor: pointer;
+}
+
+.contribution-card input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.contribution-card:has(input:checked) {
+  border-color: var(--color-mustard);
+  box-shadow: 0 0 0 2px rgba(244, 193, 68, 0.35);
+}
+
+.card-icon {
+  font-size: 1.8rem;
+}
+
+.card-title {
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  color: rgba(31, 63, 91, 0.7);
+}
+
+.testify-fields {
+  display: grid;
+  gap: 18px;
+}
+
+.testify-fields label {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--color-navy);
+  position: relative;
+}
+
+.testify-fields input,
+.testify-fields select,
+.testify-fields textarea {
+  border: 1px solid rgba(31, 63, 91, 0.25);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #fff7e1;
+  font-family: inherit;
+}
+
+.testify-fields textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.field-with-action {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.mic-button,
+.pin-button {
+  border: none;
+  background: var(--color-pink);
+  color: var(--color-white);
+  border-radius: 12px;
+  width: 46px;
+  height: 46px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.field-help {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(31, 63, 91, 0.7);
+}
+
+.checkboxes {
+  display: grid;
+  gap: 10px;
+}
+
+.checkbox-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-weight: 500;
+}
+
+.checkbox-row input {
+  margin-top: 3px;
+}
+
+.captcha-placeholder {
+  background: #fff;
+  border: 1px solid rgba(31, 63, 91, 0.12);
+  border-radius: 12px;
+  padding: 12px 16px;
+  width: 180px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.submit-button {
+  width: 100%;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 640px) {
+  .testify-form-inner {
+    padding: 24px;
+  }
+}

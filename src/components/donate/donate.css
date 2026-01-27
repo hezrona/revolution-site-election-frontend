@@ -1,0 +1,246 @@
+﻿.donate-page {
+  background: var(--color-cream);
+}
+
+.donate-hero {
+  background-image:
+    linear-gradient(rgba(15, 35, 52, 0.85), rgba(15, 35, 52, 0.75)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80");
+  background-size: cover;
+  background-position: center;
+  color: var(--color-white);
+  padding: 70px 0 90px;
+  text-align: center;
+}
+
+.donate-hero h1 {
+  font-family: var(--font-display);
+  color: var(--color-mustard);
+  margin: 0 0 8px;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+}
+
+.donate-steps {
+  padding: 40px 0 90px;
+}
+
+.donate-card {
+  background: #f9e7b8;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 28px;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.step {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: #d8d0b8;
+  color: var(--color-navy);
+  font-weight: 700;
+}
+
+.step.active {
+  background: var(--color-pink);
+  color: var(--color-white);
+}
+
+.step.done {
+  background: var(--color-mustard);
+  color: var(--color-navy);
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #d1c4a5;
+  max-width: 80px;
+}
+
+.step-content {
+  display: grid;
+  gap: 18px;
+}
+
+.step-tag {
+  background: var(--color-pink);
+  color: var(--color-white);
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.donate-info {
+  background: var(--color-navy);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  line-height: 1.6;
+}
+
+.donate-info ul {
+  padding-left: 18px;
+  margin: 10px 0 0;
+}
+
+.donate-info.highlight {
+  text-align: center;
+}
+
+.donate-info.highlight h3 {
+  font-size: 2rem;
+  color: var(--color-mustard);
+}
+
+.amount-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.amount-card {
+  background: var(--color-pink);
+  color: var(--color-white);
+  border: none;
+  border-radius: 14px;
+  padding: 18px;
+  display: grid;
+  gap: 6px;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+}
+
+.amount-card.selected {
+  box-shadow: 0 0 0 3px rgba(31, 63, 91, 0.35);
+}
+
+.amount-card:nth-child(3) {
+  background: var(--color-mustard);
+  color: var(--color-navy);
+}
+
+.amount-card:nth-child(4) {
+  background: var(--color-navy);
+}
+
+.amount-badge {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  background: var(--color-mustard);
+  color: var(--color-navy);
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.amount-input {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.amount-input-field {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  background: #fff7e1;
+  border-radius: 12px;
+  border: 1px solid rgba(31, 63, 91, 0.25);
+  padding: 10px 12px;
+}
+
+.amount-input-field input {
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.tax-note {
+  font-weight: 700;
+  color: var(--color-pink);
+}
+
+.step-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.terms-row {
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.terms-row a {
+  color: var(--color-pink);
+  text-decoration: underline;
+}
+
+.step-actions .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.step-divider {
+  height: 1px;
+  background: rgba(31, 63, 91, 0.15);
+}
+
+.payment-form {
+  display: grid;
+  gap: 14px;
+}
+
+.payment-form label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.payment-form input {
+  border: 1px solid rgba(31, 63, 91, 0.25);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #fff7e1;
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.payment-note {
+  font-size: 0.85rem;
+  color: rgba(31, 63, 91, 0.8);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .donate-card {
+    padding: 24px;
+  }
+
+  .stepper {
+    flex-wrap: wrap;
+  }
+}

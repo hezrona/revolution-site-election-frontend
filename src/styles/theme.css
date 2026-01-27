@@ -1,0 +1,27 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap");
+
+:root {
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-body: "Manrope", "Arial", sans-serif;
+  --color-cream: #f6e8c7;
+  --color-cream-dark: #f0ddb0;
+  --color-mustard: #f4c144;
+  --color-pink: #e1467a;
+  --color-pink-dark: #c73b69;
+  --color-navy: #1f3f5b;
+  --color-navy-dark: #162e44;
+  --color-white: #ffffff;
+  --color-slate: #334155;
+  --shadow-soft: 0 20px 45px rgba(20, 32, 40, 0.12);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 10px;
+  --section-pad: 88px;
+  --content-width: 1100px;
+  --gradient-hero: linear-gradient(
+    120deg,
+    rgba(36, 36, 36, 0.35),
+    rgba(12, 12, 12, 0.6)
+  );
+  --gradient-pink: linear-gradient(120deg, #e1467a, #c23463);
+}

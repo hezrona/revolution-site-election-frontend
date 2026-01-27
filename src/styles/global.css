@@ -1,0 +1,116 @@
+﻿* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: #1b2330;
+  background: linear-gradient(180deg, #f7ecd2 0%, #f9f1df 45%, #fff4e8 100%);
+  min-height: 100vh;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+main {
+  background: #f8edd2;
+}
+
+.container {
+  width: min(var(--content-width), 90vw);
+  margin: 0 auto;
+}
+
+.btn {
+  border: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-solid {
+  background: var(--color-pink);
+  color: var(--color-white);
+  box-shadow: 0 10px 25px rgba(225, 70, 122, 0.35);
+}
+
+.btn-solid:hover {
+  background: var(--color-pink-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-mustard);
+  color: var(--color-navy);
+}
+
+.btn-outline:hover {
+  background: var(--color-mustard);
+  color: var(--color-navy-dark);
+}
+
+.btn-accent {
+  background: var(--color-mustard);
+  color: var(--color-navy);
+  box-shadow: 0 10px 20px rgba(244, 193, 68, 0.35);
+}
+
+.btn-accent:hover {
+  background: #e0b23b;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
