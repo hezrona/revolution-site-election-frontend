@@ -5,6 +5,7 @@ const actions = [
     title: "Je partage la video",
     description: "1 video a diffuser autour de vous",
     icon: "🎥",
+    link: "#share-video",
   },
   {
     title: "Je partage le visuel",
@@ -20,6 +21,7 @@ const actions = [
     title: "Je signe la petition",
     description: "STOP insecurite, salete, gaspillage !",
     icon: "✍️",
+    link: "#sign-petition",
   },
   {
     title: "J'envoie un message",
@@ -30,11 +32,13 @@ const actions = [
     title: "J'imprime des tracts",
     description: "Telechargez nos visuels et tracts",
     icon: "🖨️",
+    link: "#print-tract",
   },
   {
     title: "Je fais un micro-don",
     description: "Soutenez la campagne avec un petit don",
     icon: "💰",
+    link: "#donate",
   },
   {
     title: "Je rejoins John",
@@ -45,20 +49,25 @@ const actions = [
 
 export default function ListAction() {
   return (
-    <section className="list-action">
+    <section className="list-action" id="actions">
       <div className="container list-action-inner">
         <div className="list-action-panel">
           <h2>J'agis tout de suite</h2>
           <p>8 actions simples pour aider John Knafo</p>
           <div className="list-action-grid">
             {actions.map((action) => (
-              <div className="list-action-card" key={action.title}>
+              <a
+                href={action.link || "#"}
+                className="list-action-card"
+                key={action.title}
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
                 <div className="list-action-icon" aria-hidden="true">
                   {action.icon}
                 </div>
                 <h3>{action.title}</h3>
                 <p>{action.description}</p>
-              </div>
+              </a>
             ))}
           </div>
         </div>

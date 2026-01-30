@@ -1,0 +1,157 @@
+﻿.print-tract {
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: 70px 0 60px;
+}
+
+.print-tract-card {
+  background: #f9e7b8;
+  color: var(--color-navy);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 22px;
+}
+
+.print-tract-header h2 {
+  font-family: var(--font-display);
+  margin: 0 0 6px;
+  color: var(--color-navy);
+}
+
+.print-tract-header p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.print-tract-preview {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.preview-item {
+  display: grid;
+  gap: 8px;
+  text-align: center;
+}
+
+.preview-label {
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.preview-thumb {
+  background: #fff6db;
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: var(--shadow-soft);
+}
+
+.preview-thumb img {
+  width: 100%;
+  border-radius: 14px;
+  display: block;
+}
+
+.print-tract-note {
+  margin: 0;
+  text-align: center;
+}
+
+.print-tract-actions {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  text-align: center;
+}
+
+.print-tract-subnote {
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.print-tract-divider {
+  height: 1px;
+  background: rgba(31, 63, 91, 0.2);
+}
+
+.print-tract-subtitle {
+  font-weight: 700;
+  margin: 0;
+}
+
+.print-tract-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.print-tract-tips h3 {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+}
+
+.tips-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.tip-card {
+  background: #f3d37a;
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tip-card span {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-pink);
+  color: var(--color-white);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.print-tract-cta {
+  background: var(--color-mustard);
+  color: var(--color-navy);
+  margin-top: 18px;
+}
+
+.print-tract-cta-inner {
+  padding: 26px 0 34px;
+  text-align: center;
+  display: grid;
+  gap: 8px;
+}
+
+.print-tract-cta-inner h3 {
+  margin: 0;
+  font-family: var(--font-display);
+}
+
+.print-tract-back {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.print-tract-back a {
+  color: var(--color-cream);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .print-tract-card {
+    padding: 24px;
+  }
+}

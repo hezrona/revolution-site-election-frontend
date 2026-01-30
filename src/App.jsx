@@ -11,7 +11,10 @@ import ProgramPage from "./components/program/ProgramPage.jsx";
 import TakeActionPage from "./components/takeAction/TakeActionPage.jsx";
 import TestifyPage from "./components/toTesify/TestifyPage.jsx";
 import DonatePage from "./components/donate/DonatePage.jsx";
+import SignPetition from "./components/signPetition/SignPetition.jsx";
 import TermsPage from "./components/termsCondition/TermsPage.jsx";
+import PrintTract from "./components/printTract/PrintTract.jsx";
+import ShareVideo from "./components/shareVideo/ShareVideo.jsx";
 
 export default function App() {
   const [activeView, setActiveView] = useState(window.location.hash);
@@ -36,8 +39,14 @@ export default function App() {
         <TestifyPage />
       ) : activeView === "#donate" ? (
         <DonatePage />
+      ) : activeView === "#sign-petition" ? (
+        <SignPetition />
       ) : activeView === "#terms" ? (
         <TermsPage />
+      ) : activeView === "#print-tract" ? (
+        <PrintTract />
+      ) : activeView === "#share-video" ? (
+        <ShareVideo />
       ) : (
         <main>
           <Hero />
