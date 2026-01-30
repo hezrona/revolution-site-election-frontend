@@ -1,4 +1,6 @@
-﻿export default function Footer() {
+﻿import { candidate } from "../data/candidate";
+
+export default function Footer() {
   return (
     <footer className="site-footer" id="shop">
       <section className="footer-engage">
@@ -37,7 +39,7 @@
       </section>
       <div className="container footer-inner">
         <div>
-          <h3>John Doe</h3>
+          <h3>{candidate.fullName}</h3>
           <p>Building a city that listens and acts.</p>
         </div>
         <div className="footer-links">
@@ -58,3 +60,4 @@
     </footer>
   );
 }
+

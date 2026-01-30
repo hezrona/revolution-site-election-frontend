@@ -1,4 +1,6 @@
-﻿import "./listAction.css";
+﻿import { candidate } from "../../data/candidate";
+
+import "./listAction.css";
 
 const actions = [
   {
@@ -41,8 +43,8 @@ const actions = [
     link: "#donate",
   },
   {
-    title: "Je rejoins John",
-    description: "Le canal Telegram John pour Paris",
+    title: `Je rejoins ${candidate.firstName}`,
+    description: `Le canal Telegram ${candidate.firstName} pour Paris`,
     icon: "✈️",
   },
 ];
@@ -53,7 +55,7 @@ export default function ListAction() {
       <div className="container list-action-inner">
         <div className="list-action-panel">
           <h2>J'agis tout de suite</h2>
-          <p>8 actions simples pour aider John Knafo</p>
+          <p>8 actions simples pour aider {candidate.fullName}</p>
           <div className="list-action-grid">
             {actions.map((action) => (
               <a
@@ -75,3 +77,4 @@ export default function ListAction() {
     </section>
   );
 }
+

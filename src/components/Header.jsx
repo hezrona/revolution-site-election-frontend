@@ -3,8 +3,8 @@
     <header className="site-header">
       <div className="container header-inner">
         <div className="logo">
-          <span>John</span>
-          <span className="logo-accent">Doe</span>
+          <span>Christian</span>
+          <span className="logo-accent">Tibayrenc</span>
         </div>
         <nav className="nav">
           <a href="#about">Who am I?</a>

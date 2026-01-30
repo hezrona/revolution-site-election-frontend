@@ -1,3 +1,5 @@
+﻿import { candidate } from "../../data/candidate";
+
 const methodSteps = [
   "Identify the root cause and its deep drivers.",
   "Map the real levers available to the city leadership.",
@@ -60,9 +62,10 @@ export default function ProgramMethod() {
           <p className="method-quote">
             A practical program, built for daily life and long-term results.
           </p>
-          <p className="method-signature">John Doe</p>
+          <p className="method-signature">{candidate.fullName}</p>
         </div>
       </div>
     </section>
   );
 }
+
