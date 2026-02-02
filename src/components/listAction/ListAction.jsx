@@ -4,47 +4,48 @@ import "./listAction.css";
 
 const actions = [
   {
-    title: "Je partage la video",
-    description: "1 video a diffuser autour de vous",
+    title: "Nos Vidéos",
+    description: "",
     icon: "🎥",
     link: "#share-video",
   },
   {
-    title: "Je partage le visuel",
-    description: "1 visuel a partager sur vos reseaux",
+    title: "Nos visuels pour les réseaux",
+    description: "",
     icon: "🖼️",
   },
   {
     title: "Je partage le site",
-    description: "Partagez ce site sur vos reseaux",
+    description: "",
     icon: "🔗",
   },
   {
     title: "Je signe la petition",
-    description: "STOP insecurite, salete, gaspillage !",
+    description: "",
     icon: "✍️",
     link: "#sign-petition",
   },
   {
-    title: "J'envoie un message",
-    description: "1 message a 5 proches parisiens",
+    title: "Je donne",
+    description: "",
     icon: "💬",
+    link: "#donate"
   },
   {
-    title: "J'imprime des tracts",
-    description: "Telechargez nos visuels et tracts",
+    title: "J'envoi un message",
+    description: "",
     icon: "🖨️",
     link: "#print-tract",
   },
   {
-    title: "Je fais un micro-don",
-    description: "Soutenez la campagne avec un petit don",
+    title: "J'imprime un flyer",
+    description: "",
     icon: "💰",
-    link: "#donate",
+    link: "#print-tract",
   },
   {
     title: `Je rejoins ${candidate.firstName}`,
-    description: `Le canal Telegram ${candidate.firstName} pour Paris`,
+    description: ``,
     icon: "✈️",
   },
 ];

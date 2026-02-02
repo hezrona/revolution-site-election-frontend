@@ -9,19 +9,8 @@ export default function About() {
         </div>
         <div className="about-text">
           <p className="quote-mark">" "</p>
-          <h2>Who am I?</h2>
-          <p>
-            Welcome. I am {candidate.fullName}. I grew up in the suburbs, studied public
-            policy, and spent years inside institutions. Today I work for a
-            city that protects freedom, safety, and opportunity for every
-            neighborhood.
-          </p>
-          <p>
-            My energy is for defending your daily life, reducing waste, and
-            giving power back to residents. I do not step back. Together we can
-            win important victories.
-          </p>
-          <button className="btn btn-accent" type="button">Help {candidate.firstName} now</button>
+          <h2>Prêt à tourner la page des conseillers politisés et inutiles ?</h2>
+          <button className="btn btn-accent" type="button">En savoir plus</button>
         </div>
       </div>
     </section>

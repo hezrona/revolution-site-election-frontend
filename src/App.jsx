@@ -15,6 +15,7 @@ import SignPetition from "./components/signPetition/SignPetition.jsx";
 import TermsPage from "./components/termsCondition/TermsPage.jsx";
 import PrintTract from "./components/printTract/PrintTract.jsx";
 import ShareVideo from "./components/shareVideo/ShareVideo.jsx";
+import ProgramPresentation from "./components/program/ProgramPresentation.jsx";
 
 export default function App() {
   const [activeView, setActiveView] = useState(window.location.hash);
@@ -51,6 +52,7 @@ export default function App() {
         <main>
           <Hero />
           <ListAction />
+          <ProgramPresentation />
           <About />
           <Quote />
           <Program />

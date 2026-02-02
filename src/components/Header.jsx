@@ -7,11 +7,11 @@
           <span className="logo-accent">Tibayrenc</span>
         </div>
         <nav className="nav">
-          <a href="#about">Who am I?</a>
-          <a href="#program-page">Program</a>
-          <a href="#testify">Testify</a>
-          <a className="nav_act" href="#take-action">I act</a>
-          <a className="nav_donate" href="#donate">Donate</a>
+          <a href="#about">L'équipe</a>
+          <a href="#program-page">Le Programme</a>
+          <a href="#testify">Nos valeurs</a>
+          <a className="nav_act" href="#take-action">Je soutiens</a>
+          <a className="nav_donate" href="#donate">Le blog</a>
         </nav>
         <button className="nav-toggle" aria-label="Open menu" type="button">
           <span />
