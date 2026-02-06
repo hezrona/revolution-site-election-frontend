@@ -1,17 +1,34 @@
-﻿export default function Header() {
+﻿export default function Header({ content }) {
+  const logoFirst = content?.logo?.firstName || "Christian";
+  const logoLast = content?.logo?.lastName || "Tibayrenc";
+  const links =
+    content?.links && content.links.length
+      ? content.links
+      : [
+          { label: "L'équipe", href: "#about" },
+          { label: "Le Programme", href: "#program-page" },
+          { label: "Nos valeurs", href: "#testify" },
+          { label: "Je soutiens", href: "#take-action", className: "nav_act" },
+          { label: "Le blog", href: "#donate", className: "nav_donate" },
+        ];
+
   return (
     <header className="site-header">
       <div className="container header-inner">
         <div className="logo">
-          <span>Christian</span>
-          <span className="logo-accent">Tibayrenc</span>
+          <span>{logoFirst}</span>
+          <span className="logo-accent">{logoLast}</span>
         </div>
         <nav className="nav">
-          <a href="#about">L'équipe</a>
-          <a href="#program-page">Le Programme</a>
-          <a href="#testify">Nos valeurs</a>
-          <a className="nav_act" href="#take-action">Je soutiens</a>
-          <a className="nav_donate" href="#donate">Le blog</a>
+          {links.map((link) => (
+            <a
+              key={`${link.label}-${link.href}`}
+              href={link.href}
+              className={link.className}
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
         <button className="nav-toggle" aria-label="Open menu" type="button">
           <span />

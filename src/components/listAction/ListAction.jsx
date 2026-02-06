@@ -2,7 +2,7 @@
 
 import "./listAction.css";
 
-const actions = [
+const fallbackActions = [
   {
     title: "Nos Vidéos",
     description: "",
@@ -50,20 +50,24 @@ const actions = [
   },
 ];
 
-export default function ListAction() {
+export default function ListAction({ content }) {
+  const title = content?.title || "J'agis tout de suite";
+  const subtitle = content?.subtitle || `8 actions simples pour aider ${candidate.fullName}`;
+  const actions = content?.items && content.items.length ? content.items : fallbackActions;
+
   return (
     <section className="list-action" id="actions">
       <div className="container list-action-inner">
         <div className="list-action-panel">
-          <h2>J'agis tout de suite</h2>
-          <p>8 actions simples pour aider {candidate.fullName}</p>
+          <h2>{title}</h2>
+          <p>{subtitle}</p>
           <div className="list-action-grid">
             {actions.map((action) => (
               <a
                 href={action.link || "#"}
                 className="list-action-card"
                 key={action.title}
-                style={{ textDecoration: 'none', color: 'inherit' }}
+                style={{ textDecoration: "none", color: "inherit" }}
               >
                 <div className="list-action-icon" aria-hidden="true">
                   {action.icon}
@@ -78,4 +82,3 @@ export default function ListAction() {
     </section>
   );
 }
-

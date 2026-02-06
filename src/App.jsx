@@ -16,9 +16,12 @@ import TermsPage from "./components/termsCondition/TermsPage.jsx";
 import PrintTract from "./components/printTract/PrintTract.jsx";
 import ShareVideo from "./components/shareVideo/ShareVideo.jsx";
 import ProgramPresentation from "./components/program/ProgramPresentation.jsx";
+import { useHomeContent } from "./hooks/useHomeContent.js";
 
 export default function App() {
   const [activeView, setActiveView] = useState(window.location.hash);
+  const { data, loading, error } = useHomeContent();
+  const content = data?.content || {};
 
   useEffect(() => {
     const onHashChange = () => {
@@ -31,7 +34,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header />
+      <Header content={content.header} />
       {activeView === "#program-page" ? (
         <ProgramPage />
       ) : activeView === "#take-action" ? (
@@ -50,16 +53,21 @@ export default function App() {
         <ShareVideo />
       ) : (
         <main>
-          <Hero />
-          <ListAction />
-          <ProgramPresentation />
-          <About />
-          <Quote />
-          <Program />
-          <Newsletter />
+          {/* {error ? (
+            <div className="container" role="alert">
+              {error}
+            </div>
+          ) : null} */}
+          <Hero content={content.hero} loading={loading} />
+          <ListAction content={content.actions} />
+          <ProgramPresentation content={content.programPresentation} />
+          <About content={content.about} />
+          <Quote content={content.quote} />
+          <Program content={content.program} />
+          <Newsletter content={content.newsletter} />
         </main>
       )}
-      <Footer />
+      <Footer content={content.footer} />
     </div>
   );
 }
