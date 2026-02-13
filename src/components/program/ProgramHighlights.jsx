@@ -1,4 +1,4 @@
-﻿const highlights = [
+const fallbackHighlights = [
   {
     title: "A livable city",
     cta: "Discover",
@@ -89,30 +89,37 @@
   },
 ];
 
-export default function ProgramHighlights() {
+export default function ProgramHighlights({ content }) {
+  const title =
+    content?.title ||
+    "What should we expect for our city? What can we demand for ourselves and for our children?";
+  const description =
+    content?.description ||
+    "The time has come to imagine a happy city together. We choose realism, method, and measurable action to get there.";
+  const items = content?.items && content.items.length ? content.items : fallbackHighlights;
+
   return (
     <section className="program-highlights">
       <div className="container highlights-inner">
         <div className="highlights-text">
-          <h2>
-            What should we expect for our city? What can we demand for ourselves
-            and for our children?
-          </h2>
-          <p>
-            The time has come to imagine a happy city together. We choose
-            realism, method, and measurable action to get there.
-          </p>
+          <h2>{title}</h2>
+          <p>{description}</p>
         </div>
         <div className="highlights-grid">
-          {highlights.map((item) => (
-            <div className="highlight-card" key={item.title}>
-              <div className="highlight-icon">{item.icon}</div>
-              <h3>{item.title}</h3>
-              <button className="btn btn-solid" type="button">
-                {item.cta}
-              </button>
-            </div>
-          ))}
+          {items.map((item, index) => {
+            const fallback = fallbackHighlights[index % fallbackHighlights.length];
+            const icon = item.icon || fallback.icon;
+            const cta = item.cta || fallback.cta || "Discover";
+            return (
+              <div className="highlight-card" key={`${item.title}-${index}`}>
+                <div className="highlight-icon">{icon}</div>
+                <h3>{item.title || fallback.title}</h3>
+                <button className="btn btn-solid" type="button">
+                  {cta}
+                </button>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

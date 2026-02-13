@@ -1,6 +1,6 @@
-﻿import { candidate } from "../../data/candidate";
+import { candidate } from "../../data/candidate";
 
-const methodSteps = [
+const fallbackMethodSteps = [
   "Identify the root cause and its deep drivers.",
   "Map the real levers available to the city leadership.",
   "Review what has worked elsewhere and what failed.",
@@ -9,7 +9,7 @@ const methodSteps = [
   "Quantify each measure, including costs and expected impact.",
 ];
 
-const projectSteps = [
+const fallbackProjectSteps = [
   "Local consultation: issues, frictions, and priorities.",
   "Co-design the project with independent experts.",
   "Simulate impact on traffic, noise, and neighborhood life.",
@@ -17,31 +17,37 @@ const projectSteps = [
   "Deliver with quarterly public progress reports.",
 ];
 
-export default function ProgramMethod() {
+export default function ProgramMethod({ content }) {
+  const title = content?.title || "My method";
+  const subtitle = content?.subtitle || "How this program was built";
+  const intro =
+    content?.intro ||
+    "Before sharing the full plan, I want to explain how it was built. I started by reading the numbers, then walking each neighborhood to understand what people live every day.";
+  const intro2 =
+    content?.intro2 ||
+    "The approach is simple: no ideology, no shortcuts. Only what works, measured and improved with the people who live here.";
+  const methodSteps = content?.methodSteps?.length
+    ? content.methodSteps
+    : fallbackMethodSteps;
+  const projectSteps = content?.projectSteps?.length
+    ? content.projectSteps
+    : fallbackProjectSteps;
+  const finalQuote =
+    content?.finalDescription ||
+    "A practical program, built for daily life and long-term results.";
+
   return (
     <section className="program-method">
       <div className="container program-method-inner">
         <div className="program-method-media">
-          <img
-            // src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80"
-            // src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80"
-            alt="Leader portrait"
-            loading="lazy"
-          />
+          <img alt="Leader portrait" loading="lazy" />
         </div>
         <div className="program-method-content">
-          <h2>My method</h2>
-          <p className="method-subtitle">How this program was built</p>
+          <h2>{title}</h2>
+          <p className="method-subtitle">{subtitle}</p>
           <div className="method-card">
-            <p>
-              Before sharing the full plan, I want to explain how it was built.
-              I started by reading the numbers, then walking each neighborhood
-              to understand what people live every day.
-            </p>
-            <p>
-              The approach is simple: no ideology, no shortcuts. Only what
-              works, measured and improved with the people who live here.
-            </p>
+            <p>{intro}</p>
+            <p>{intro2}</p>
           </div>
           <div className="method-list">
             <p className="method-title">The working method</p>
@@ -59,13 +65,10 @@ export default function ProgramMethod() {
               ))}
             </ol>
           </div>
-          <p className="method-quote">
-            A practical program, built for daily life and long-term results.
-          </p>
+          <p className="method-quote">{finalQuote}</p>
           <p className="method-signature">{candidate.fullName}</p>
         </div>
       </div>
     </section>
   );
 }
-

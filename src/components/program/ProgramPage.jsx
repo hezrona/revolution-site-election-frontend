@@ -6,6 +6,7 @@ import ProgramMethod from "./ProgramMethod.jsx";
 import ProgramSection from "./ProgramSection.jsx";
 import ProgramStats from "./ProgramStats.jsx";
 import ProgramCTA from "./ProgramCTA.jsx";
+import { useProgramContent } from "../../hooks/useProgramContent.js";
 
 const programSections = [
   {
@@ -161,21 +162,26 @@ const programSections = [
 ];
 
 export default function ProgramPage() {
+  const { data, loading, error } = useProgramContent();
+  const content = data?.content || {};
+  const sections =
+    content.sections && content.sections.length ? content.sections : programSections;
+
   return (
     <main className="program-page" id="program-page">
-      <ProgramHero />
-      <ProgramHighlights />
-      <ProgramIntro />
-      <ProgramMethod />
+      <ProgramHero content={content.hero} loading={loading} />
+      <ProgramHighlights content={content.highlights} />
+      <ProgramIntro content={content.intro} />
+      <ProgramMethod content={content.method} />
       <section className="program-sections">
         <div className="container">
-          {programSections.map((section) => (
+          {sections.map((section) => (
             <ProgramSection key={section.id} {...section} />
           ))}
         </div>
       </section>
-      <ProgramStats />
-      <ProgramCTA />
+      <ProgramStats content={content.stats} />
+      <ProgramCTA content={content.cta} />
     </main>
   );
 }
