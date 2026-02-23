@@ -17,6 +17,7 @@ import TermsPage from "./components/termsCondition/TermsPage.jsx";
 import PrintTract from "./components/printTract/PrintTract.jsx";
 import ShareVideo from "./components/shareVideo/ShareVideo.jsx";
 import ProgramPresentation from "./components/program/ProgramPresentation.jsx";
+import TeamPage from "./components/team/TeamPage.jsx";
 import { useHomeContent } from "./hooks/useHomeContent.js";
 
 export default function App() {
@@ -52,6 +53,8 @@ export default function App() {
         <PrintTract />
       ) : activeView === "#share-video" ? (
         <ShareVideo />
+      ) : activeView === "#team" ? (
+        <TeamPage />
       ) : (
         <main>
           {/* {error ? (

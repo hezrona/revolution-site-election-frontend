@@ -5,7 +5,7 @@
     content?.links && content.links.length
       ? content.links
       : [
-          { label: "L'équipe", href: "#about" },
+          { label: "L'équipe", href: "#team" },
           { label: "Le Programme", href: "#program-page" },
           { label: "Nos valeurs", href: "#testify" },
           { label: "Je soutiens", href: "#take-action", className: "nav_act" },
@@ -15,10 +15,10 @@
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <div className="logo">
+        <a href="#" className="logo" aria-label="Retour à l'accueil">
           <span>{logoFirst}</span>
           <span className="logo-accent">{logoLast}</span>
-        </div>
+        </a>
         <nav className="nav">
           {links.map((link) => (
             <a
