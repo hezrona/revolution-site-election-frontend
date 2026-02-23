@@ -2,6 +2,7 @@
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import ListAction from "./components/listAction/ListAction.jsx";
+import CarouselSection from "./components/carousel/CarouselSection.jsx";
 import About from "./components/About.jsx";
 import Quote from "./components/Quote.jsx";
 import Program from "./components/Program.jsx";
@@ -60,6 +61,7 @@ export default function App() {
           ) : null} */}
           <Hero content={content.hero} loading={loading} />
           <ListAction content={content.actions} />
+          <CarouselSection content={content.carousel} />
           <ProgramPresentation content={content.programPresentation} />
           <About content={content.about} />
           <Quote content={content.quote} />
