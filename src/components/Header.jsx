@@ -1,6 +1,6 @@
 ﻿export default function Header({ content }) {
-  const logoFirst = content?.logo?.firstName || "Christian";
-  const logoLast = content?.logo?.lastName || "Tibayrenc";
+  const logoFirst = content?.logo?.firstName || "Union des Français";
+  const logoLast = content?.logo?.lastName || "de Madagascar";
   const links =
     content?.links && content.links.length
       ? content.links

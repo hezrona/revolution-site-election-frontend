@@ -4,55 +4,57 @@ import "./listAction.css";
 
 const fallbackActions = [
   {
-    title: "Nos Vidéos",
+    title: "Santé",
     description: "",
     icon: "🎥",
-    link: "#share-video",
+    // link: "#share-video",
+    link: "#",
   },
   {
-    title: "Nos visuels pour les réseaux",
+    title: "Entreprises & Entrepreneurs",
     description: "",
     icon: "🖼️",
   },
   {
-    title: "Je partage le site",
+    title: "Vie Quotidienne",
     description: "",
     icon: "🔗",
   },
   {
-    title: "Je signe la petition",
+    title: "Démarches Consulaires",
     description: "",
     icon: "✍️",
     link: "#sign-petition",
   },
   {
-    title: "Je donne",
+    title: "Sécurité physique",
     description: "",
     icon: "💬",
-    link: "#donate"
+    // link: "#donate"
+    link: "#"
   },
   {
-    title: "J'envoi un message",
+    title: "Sécurité patrimoniale",
     description: "",
     icon: "🖨️",
     link: "#print-tract",
   },
   {
-    title: "J'imprime un flyer",
+    title: "Famille & Education",
     description: "",
     icon: "💰",
     link: "#print-tract",
-  },
+  }/*,
   {
     title: `Je rejoins ${candidate.firstName}`,
     description: ``,
     icon: "✈️",
-  },
+  },*/
 ];
 
 export default function ListAction({ content }) {
-  const title = content?.title || "J'agis tout de suite";
-  const subtitle = content?.subtitle || `8 actions simples pour aider ${candidate.fullName}`;
+  const title = content?.title || "Nos pôles de compétence à votre service";
+  const subtitle = content?.subtitle || ``;
   const actions = content?.items && content.items.length ? content.items : fallbackActions;
 
   return (
