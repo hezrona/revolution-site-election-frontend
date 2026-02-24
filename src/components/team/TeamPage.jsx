@@ -1,15 +1,77 @@
 ﻿import CarouselSection from "../carousel/CarouselSection.jsx";
 import "./team.css";
 
+import christianTibayrencImage from "../../assets/image/christian_tibayrenc.png";
+
 const teamMembers = [
   {
-    name: "Sarah Raho",
-    role: "Coordinatrice nationale",
-    tag: "Centre",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80",
-    description:
-      "Pilote les actions nationales, assure la cohérence des initiatives locales et coordonne les relais sur le terrain. Sarah veille à la bonne circulation de l'information et à la mise en oeuvre des priorités, avec une attention particulière portée à l'innovation sociale et au dialogue citoyen.",
+    name: "CHRISTIAN TIBAYRENC",
+    role: "",
+    tag: "",
+    image: christianTibayrencImage,
+    description: `<section>
+  <p>
+    C’est avec beaucoup d’humilité, sincérité et détermination que je me présente comme tète de liste de 
+    <strong>« l’Union des Français de Madagascar »</strong>.
+  </p>
+
+  <p>
+    Depuis 12 ans que je connais Madagascar, j’y ai construit ma vie avec ma famille, 
+    mon épouse étant Gasy, et notre fille allant a l’école Française.
+  </p>
+</section>
+
+<section>
+  <p>
+    Mon parcours vous le connaissez, une carrière dans la finance, des responsabilités importantes comme benevole en France, 
+    notamment comme vice-président de Mutuelle, trésorier General de Caisse de retraite des artisans commerçants, 
+    juge aux Prudhommes, et au Tribunal de la Sécurité Sociale, ainsi que Président d’un Club de Rugby Pro.
+  </p>
+</section>
+
+<section>
+  <h2>Ce parcours, ce n’est pas un titre : c’est une méthode</h2>
+
+  <p>Une méthode de rigueur, d’écoute, de décision.</p>
+
+  <p>
+    Aujourd’hui, je veux mettre cette expérience au service des Français de Madagascar.
+  </p>
+</section>
+
+<section>
+  <p>
+    A titre personne je crois à une droite rassemblée, responsable, pragmatique.
+  </p>
+</section>
+
+<section>
+  <p>
+    Autour de moi j’ai rassemblé des amis (ies) pour leurs compétences, leurs idées sociales et désintéressés.
+  </p>
+</section>
+
+<section>
+  <p>
+    Je ne promets pas l’impossible, je promets d’être là, d’agir, d’obtenir des résultats.
+  </p>
+</section>
+
+<section>
+  <ul>
+    <li>Je serais un conseiller présent pas un conseiller de passage</li>
+    <li>Un conseiller utile, pas un conseiller silencieux</li>
+    <li>Un conseiller engagé, pas un conseiller décoratif</li>
+  </ul>
+</section>
+
+<section>
+  <p>
+    Depuis mon arrivée je suis présent au bureau de 
+    <strong>« Ovalie Mora Mora »</strong> association qui vient en aide aux jeunes enfants de Madagascar, 
+    dans la réinsertion a travers les valeurs du Rugby
+  </p>
+</section>`,
   },
   {
     name: "Rebecca Shiels",
@@ -174,6 +236,10 @@ const colorBands = [
 ];
 
 export default function TeamPage() {
+  const createMarkup = (description) => ({
+    __html: typeof description === "string" ? description : "",
+  });
+
   return (
     <main className="team-page">
       <section className="team-hero">
@@ -209,7 +275,10 @@ export default function TeamPage() {
                 <span className="team-tag">{member.tag}</span>
                 <h2>{member.name}</h2>
                 <h3>{member.role}</h3>
-                <p>{member.description}</p>
+                <div
+                  className="team-description"
+                  dangerouslySetInnerHTML={createMarkup(member.description)}
+                />
               </div>
               <div className="team-photo">
                 <img src={member.image} alt={member.name} />

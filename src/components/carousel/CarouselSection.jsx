@@ -1,13 +1,15 @@
 ﻿import { useEffect, useMemo, useState } from "react";
+import christianTibayrenc from "../../assets/image/christian_tibayrenc.png";
 import "./carousel.css";
 
 const defaultSlides = [
   {
-    title: "Économie locale et innovation",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    title: "CHRISTIAN TIBAYRENC",
+    image: christianTibayrenc,
     description:
-      "Nous voulons créer un écosystème économique solide, capable de soutenir l'innovation locale et d'attirer des investissements durables. Ce projet mise sur l'accompagnement des entrepreneurs, la simplification des démarches et la mise en réseau des talents. Les pôles d'activité seront renforcés par des formations ciblées, un accès facilité aux financements et une culture du partenariat public-privé. La priorité est de transformer chaque initiative en opportunité concrète, en donnant aux citoyens les moyens d'entreprendre, d'exporter et de s'inscrire dans une dynamique régionale. Ce plan intègre une dimension sociale forte, avec un soutien aux secteurs essentiels, une meilleure redistribution des ressources et une attention particulière aux zones moins desservies. Ensemble, nous pouvons bâtir une économie plus résiliente, plus inclusive et tournée vers l'avenir.",
+      `C’est avec beaucoup d’humilité, sincérité et détermination que je me présente comme tète de liste de « l’Union des Français de Madagascar ». Depuis 12 ans que je connais Madagascar, j’y ai construit ma vie avec ma famille, mon épouse étant Gasy, et notre fille allant a l’école Française.
+Mon parcours vous le connaissez, une carrière dans la finance, des responsabilités importantes comme benevole en France, notamment comme vice-président de Mutuelle, trésorier General de Caisse de retraite des artisans commerçants, juge aux Prudhommes, et au Tribunal de la Sécurité Sociale, ainsi que Président d’un Club de  Rugby Pro.
+`,
   },
   {
     title: "Services publics modernisés",
