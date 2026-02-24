@@ -167,16 +167,18 @@ export default function CarouselSection({ content }) {
 
         <div className="cv-preview">
           <div className="cv-card">
-            <div>
-              <span className="carousel-eyebrow">Aperçu CV</span>
-              <h3>{cv.name}</h3>
-              <p className="cv-title">{cv.title}</p>
+            <div className="cv-grid">
+              <div className="cv-identity">
+                <span className="carousel-eyebrow">Aperçu CV</span>
+                <h3>{cv.name}</h3>
+                <p className="cv-title">{cv.title}</p>
+              </div>
+              <ul className="cv-highlights">
+                {cv.highlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </div>
-            <ul className="cv-highlights">
-              {cv.highlights.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
             {showFullCv ? <p className="cv-full">{cv.full}</p> : null}
             <button
               className="btn btn-solid cv-toggle"

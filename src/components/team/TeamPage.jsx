@@ -1,4 +1,5 @@
-﻿import "./team.css";
+﻿import CarouselSection from "../carousel/CarouselSection.jsx";
+import "./team.css";
 
 const teamMembers = [
   {
@@ -192,6 +193,8 @@ export default function TeamPage() {
           </div>
         </div>
       </section>
+
+      <CarouselSection content={{}} />
 
       <section className="team-list">
         {teamMembers.map((member, index) => (
