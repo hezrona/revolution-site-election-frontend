@@ -2,6 +2,9 @@
 import "./team.css";
 
 import christianTibayrencImage from "../../assets/image/christian_tibayrenc.png";
+import charlotteImage from "../../assets/image/charlotte.png";
+import charlotteEntrprise1 from "../../assets/image/charlotte_ep1.png";
+import charlotteEntrprise2 from "../../assets/image/charlotte_ep2.png";
 
 const teamMembers = [
   {
@@ -74,13 +77,45 @@ const teamMembers = [
 </section>`,
   },
   {
-    name: "Rebecca Shiels",
-    role: "Responsable communication",
-    tag: "Nord",
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
-    description:
-      "Construit la stratégie de communication, valorise les initiatives de terrain et anime les temps forts de la campagne. Rebecca développe des contenus clairs et accessibles pour renforcer le lien avec les habitants et les partenaires.",
+    name: "Charlotte de VALENCE",
+    role: "",
+    tag: "",
+    image: charlotteImage,
+    description: `<main class="charlotte-wrap">
+  <section class="charlotte-intro">
+    <p>
+      Portée par une passion profonde pour l’entrepreneuriat social et l’innovation, je mets à profit 25 ans d’expérience dans le management, la relation client, la conduite du changement et l’amélioration continue pour accompagner des projets à fort impact social. Mon parcours dans des environnements exigeants m’a permis de diriger des équipes multiculturelles vers des objectifs ambitieux, en alignant compétences opérationnelles et priorités stratégiques.
+    </p>
+
+    <p class="charlotte-tagline">
+      Deux vocations, une même vision : à la croisée de l’humain et de l’innovation sociale
+    </p>
+  </section>
+
+  <section class="charlotte-block">
+    <div class="charlotte-logo">
+      <img src="${charlotteEntrprise1}" alt="CCsolution" />
+    </div>
+
+    <div class="charlotte-content">
+      <p>
+        <span class="charlotte-title">Consultante senior et développeuse de talents,</span> j’accompagne entreprises et particuliers dans le renforcement de leurs compétences. Mon approche, axée sur les résultats et la qualité, repose sur une solide expérience du management, notamment 18 ans passés à piloter des équipes en centres d’appels. J’interviens dans le développement des équipes, la gestion de projets et l’optimisation des organisations.
+      </p>
+    </div>
+  </section>
+
+  <section class="charlotte-block">
+    <div class="charlotte-logo">
+      <img src="${charlotteEntrprise2}" alt="HAPI Be" />
+    </div>
+
+    <div class="charlotte-content">
+      <p>
+        <span class="charlotte-title">Présidente de l’association Hapi Be Madagascar,</span> je mets en œuvre ces mêmes méthodes structurées pour faire émerger des initiatives sociales durables. Nous expérimentons des solutions concrètes à petite échelle pour identifier les modèles les plus efficaces, avec l’ambition de les déployer à plus large échelle. Grâce à l’engagement de nos donateurs, au soutien local et à une gestion rigoureuse, nous construisons une association innovante, agile et pérenne, capable d’apporter des réponses concrètes aux défis sociaux actuels.
+      </p>
+    </div>
+  </section>
+</main>`,
   },
   {
     name: "René-Paul Barthel",

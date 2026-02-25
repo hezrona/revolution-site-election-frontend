@@ -1,5 +1,6 @@
 ﻿import { useEffect, useMemo, useState } from "react";
 import christianTibayrenc from "../../assets/image/christian_tibayrenc.png";
+import charlotteDeValence from "../../assets/image/charlotte.png";
 import "./carousel.css";
 
 const defaultSlides = [
@@ -12,11 +13,9 @@ Mon parcours vous le connaissez, une carrière dans la finance, des responsabili
 `,
   },
   {
-    title: "Services publics modernisés",
-    image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80",
-    description:
-      "La modernisation des services publics est une étape indispensable pour restaurer la confiance et améliorer le quotidien. Nous proposons une administration plus agile, appuyée par des outils numériques accessibles à tous. Les démarches clés seront centralisées, les délais réduits et la transparence renforcée. Parallèlement, des guichets de proximité seront maintenus pour préserver l'humain et accompagner celles et ceux qui en ont besoin. Les équipes seront formées à de nouveaux standards de qualité, avec des indicateurs clairs et un suivi régulier. Ce chantier inclut également la sécurisation des données et la simplification des parcours. L'objectif est de fournir un service fiable, rapide et clair, tout en valorisant les agents et leur expertise. Cette transformation doit être vécue comme un progrès partagé, au service de chaque foyer.",
+    title: "Charlotte de VALENCE",
+    image: charlotteDeValence,
+    description: `Portée par une passion profonde pour l’entrepreneuriat social et l’innovation, je mets à profit 25 ans d’expérience dans le management, la relation client, la conduite du changement et l’amélioration continue pour accompagner des projets à fort impact social. Mon parcours dans des environnements exigeants m’a permis de diriger des équipes multiculturelles vers des objectifs ambitieux, en alignant compétences opérationnelles et priorités stratégiques.`,
   },
   {
     title: "Territoires solidaires",

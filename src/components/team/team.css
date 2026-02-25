@@ -175,6 +175,79 @@
   background: var(--color-mustard);
 }
 
+.team-description .charlotte-wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 6px 0 10px;
+  color: #111;
+  line-height: 1.35;
+}
+
+.team-description .charlotte-intro p {
+  margin: 0 0 14px;
+  font-size: 1.05rem;
+}
+
+.team-description .charlotte-tagline {
+  margin: 10px 0 26px;
+  font-size: 1.05rem;
+}
+
+.team-description .charlotte-block {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 26px;
+  align-items: start;
+  margin: 28px 0;
+}
+
+.team-description .charlotte-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.team-description .charlotte-logo img {
+  max-width: 140px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.team-description .charlotte-content {
+  font-size: 1.05rem;
+  color: #111;
+}
+
+.team-description .charlotte-content p {
+  margin: 0;
+}
+
+.team-description .charlotte-title {
+  font-weight: 800;
+}
+
+@media (max-width: 720px) {
+  .team-description .charlotte-intro p,
+  .team-description .charlotte-tagline,
+  .team-description .charlotte-content {
+    font-size: 1rem;
+  }
+
+  .team-description .charlotte-block {
+    grid-template-columns: 1fr;
+  }
+
+  .team-description .charlotte-logo {
+    justify-content: flex-start;
+  }
+
+  .team-description .charlotte-logo img {
+    max-width: 120px;
+  }
+}
+
 @media (max-width: 900px) {
   .team-row-inner {
     grid-template-columns: 1fr;
