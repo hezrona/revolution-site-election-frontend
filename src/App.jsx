@@ -7,6 +7,7 @@ import Quote from "./components/Quote.jsx";
 import Program from "./components/Program.jsx";
 import Newsletter from "./components/Newsletter.jsx";
 import Footer from "./components/Footer.jsx";
+import VerticalCarousel from "./components/entrepreneur/VerticalCarousel.jsx";
 import ProgramPage from "./components/program/ProgramPage.jsx";
 import TakeActionPage from "./components/takeAction/TakeActionPage.jsx";
 import TestifyPage from "./components/toTesify/TestifyPage.jsx";
@@ -17,6 +18,7 @@ import PrintTract from "./components/printTract/PrintTract.jsx";
 import ShareVideo from "./components/shareVideo/ShareVideo.jsx";
 import ProgramPresentation from "./components/program/ProgramPresentation.jsx";
 import TeamPage from "./components/team/TeamPage.jsx";
+import EntrepreneurPage from "./components/entrepreneur/EntrepreneurPage.jsx";
 import { useHomeContent } from "./hooks/useHomeContent.js";
 
 export default function App() {
@@ -38,6 +40,8 @@ export default function App() {
       <Header content={content.header} />
       {activeView === "#program-page" ? (
         <ProgramPage />
+      ) : activeView === "#entrepreneur" ? (
+        <EntrepreneurPage />
       ) : activeView === "#take-action" ? (
         <TakeActionPage />
       ) : activeView === "#testify" ? (

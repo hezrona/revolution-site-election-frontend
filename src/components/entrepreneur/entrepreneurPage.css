@@ -1,0 +1,91 @@
+.entrepreneur-page {
+  background: var(--color-cream);
+}
+
+.entrepreneur-hero {
+  position: relative;
+  padding: 90px 0 120px;
+  background:
+    linear-gradient(140deg, rgba(31, 63, 91, 0.9), rgba(22, 46, 68, 0.85)),
+    url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80");
+  background-size: cover;
+  background-position: center;
+  color: var(--color-white);
+}
+
+.entrepreneur-hero-inner {
+  display: grid;
+  gap: 16px;
+  max-width: 720px;
+}
+
+.entrepreneur-back {
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.entrepreneur-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-mustard);
+}
+
+.entrepreneur-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.5vw, 3.6rem);
+  margin: 0;
+}
+
+.entrepreneur-hero p {
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.entrepreneur-intro {
+  padding: 70px 0 30px;
+}
+
+.entrepreneur-intro-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  align-items: center;
+}
+
+.entrepreneur-intro h2 {
+  font-family: var(--font-display);
+  color: var(--color-navy);
+  margin-top: 0;
+}
+
+.entrepreneur-intro p {
+  color: #3b4455;
+  line-height: 1.7;
+}
+
+.entrepreneur-card {
+  background: #f9e7b8;
+  color: var(--color-navy);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.entrepreneur-card h3 {
+  margin-top: 0;
+  font-family: var(--font-display);
+}
+
+.entrepreneur-card ul {
+  padding-left: 18px;
+  line-height: 1.6;
+  margin: 14px 0 0;
+}
+
+@media (max-width: 640px) {
+  .entrepreneur-hero {
+    padding: 70px 0 96px;
+  }
+}
