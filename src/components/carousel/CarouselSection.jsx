@@ -1,6 +1,8 @@
 ﻿import { useEffect, useMemo, useState } from "react";
 import christianTibayrenc from "../../assets/image/christian_tibayrenc.png";
 import charlotteDeValence from "../../assets/image/charlotte.png";
+import nigarBarday from "../../assets/image/barday.png";
+import dunogue from "../../assets/image/dunogue.png";
 import "./carousel.css";
 
 const defaultSlides = [
@@ -18,12 +20,19 @@ Mon parcours vous le connaissez, une carrière dans la finance, des responsabili
     description: `Portée par une passion profonde pour l’entrepreneuriat social et l’innovation, je mets à profit 25 ans d’expérience dans le management, la relation client, la conduite du changement et l’amélioration continue pour accompagner des projets à fort impact social. Mon parcours dans des environnements exigeants m’a permis de diriger des équipes multiculturelles vers des objectifs ambitieux, en alignant compétences opérationnelles et priorités stratégiques.`,
   },
   {
-    title: "Territoires solidaires",
-    image:
-      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
+    title: "Nigar BARDAY",
+    image: nigarBarday,
     description:
-      "Les territoires ont besoin d'une solidarité active, fondée sur des projets concrets et des engagements mesurables. Nous mettrons l'accent sur la mobilité, l'accès aux soins et la qualité de vie, en accompagnant les collectivités dans leurs initiatives. Les infrastructures essentielles seront modernisées, les circuits courts valorisés et les partenariats locaux renforcés. Chaque projet sera co-construit avec les acteurs de terrain pour répondre aux réalités du quotidien. La jeunesse sera au coeur de cette dynamique, avec des programmes d'insertion, de formation et de mentorat. En créant des ponts entre les régions, nous voulons réduire les inégalités, soutenir les familles et développer un sentiment d'appartenance. C'est ainsi que nous construirons des territoires plus justes, plus attractifs et plus durables.",
+      "Après une vingtaine d’années en France consacrées à mes études et à mes premiers pas dans le monde professionnel, notamment dans le secteur des services, l’appel de mon pays natal m’a conduit à revenir là où je pouvais retrouver la valeur des relations, la passion et la conviction.",
   },
+  {
+    title: "Christian Jean Marcel DUNOGUE",
+    image: dunogue,
+    description: `Secrétaire général de l'UR CFTC
+      Membre du bureau national de la CFTC représentant les DOM TOM
+      Vice Président du CESR Reunion (comité économique et social régional)
+      Adhérent au RN depuis sa création`,
+  }
 ];
 
 const defaultCv = {
@@ -166,7 +175,7 @@ export default function CarouselSection({ content }) {
           ))}
         </div>
 
-        <div className="cv-preview">
+        {/* <div className="cv-preview">
           <div className="cv-card">
             <div className="cv-grid">
               <div className="cv-identity">
@@ -190,7 +199,7 @@ export default function CarouselSection({ content }) {
               {showFullCv ? "Masquer le CV" : "Voir le CV complet"}
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
