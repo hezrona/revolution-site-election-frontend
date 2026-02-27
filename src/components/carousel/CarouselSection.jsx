@@ -7,7 +7,7 @@ import "./carousel.css";
 
 const defaultSlides = [
   {
-    title: "CHRISTIAN TIBAYRENC",
+    title: "Christian TIBAYRENC",
     image: christianTibayrenc,
     description:
       `C’est avec beaucoup d’humilité, sincérité et détermination que je me présente comme tète de liste de « l’Union des Français de Madagascar ». Depuis 12 ans que je connais Madagascar, j’y ai construit ma vie avec ma famille, mon épouse étant Gasy, et notre fille allant a l’école Française.
@@ -68,7 +68,7 @@ export default function CarouselSection({ content }) {
 
     const intervalId = setInterval(() => {
       setActiveIndex((current) => (current + 1) % slides.length);
-    }, 5000);
+    }, 25000);
 
     return () => clearInterval(intervalId);
   }, [slides.length]);

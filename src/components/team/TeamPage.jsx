@@ -5,6 +5,7 @@ import christianTibayrencImage from "../../assets/image/christian_tibayrenc.png"
 import charlotteImage from "../../assets/image/charlotte.png";
 import charlotteEntrprise1 from "../../assets/image/charlotte_ep1.png";
 import charlotteEntrprise2 from "../../assets/image/charlotte_ep2.png";
+import bardayImage from "../../assets/image/barday.png";
 
 const teamMembers = [
   {
@@ -118,11 +119,10 @@ const teamMembers = [
 </main>`,
   },
   {
-    name: "René-Paul Barthel",
-    role: "Coordination terrain",
-    tag: "Ouest",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
+    name: "Nigar BARDAY",
+    role: "",
+    tag: "",
+    image: bardayImage,
     description:
       "Anime les équipes de terrain, organise les déplacements et s'assure du suivi des engagements locaux. René-Paul travaille au plus près des collectifs pour faire remonter les besoins et structurer les actions concrètes.",
   },
