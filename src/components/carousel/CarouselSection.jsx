@@ -2,7 +2,7 @@
 import christianTibayrenc from "../../assets/image/christian_tibayrenc.png";
 import charlotteDeValence from "../../assets/image/charlotte.png";
 import nigarBarday from "../../assets/image/barday.png";
-import dunogue from "../../assets/image/dunogue.png";
+import dunogue from "../../assets/image/Dunogue.png";
 import "./carousel.css";
 
 const defaultSlides = [
