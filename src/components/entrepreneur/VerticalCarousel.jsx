@@ -9,10 +9,14 @@ const defaultSlides = [
     title: "Une ambition concrète",
     bullets: [
       "Les élus doivent être des facilitateurs. Ils peuvent agir en interface active avec l’Ambassade de France à Madagascar, les services consulaires, ainsi qu’avec des organismes comme Business France ou Bpifrance.",
-      "Composer avec la complexité administrative, l'accès limité au financement et des infrastructures parfois fragiles en sécurisant l'initiative."
+      `Leur mission :
+        - Clarifier les dispositifs d’appui existants.
+        - Faire remonter les difficultés concrètes rencontrées sur le terrain.
+        - Fluidifier les échanges lorsque des blocages administratifs apparaissent.
+      `
     ],
     callout:
-      "Créer un environnement plus lisible, plus protecteur et plus favorable à l’initiative.",
+      "Un élu utile n’est pas un observateur. Il est un médiateur structurant, capable d’ouvrir des canaux de dialogue lorsque les entrepreneurs en ont besoin.",
     tone: "navy"
   },
   {

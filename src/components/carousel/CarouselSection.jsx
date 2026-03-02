@@ -28,10 +28,33 @@ Mon parcours vous le connaissez, une carrière dans la finance, des responsabili
   {
     title: "Christian Jean Marcel DUNOGUE",
     image: dunogue,
-    description: `Secrétaire général de l'UR CFTC
-      Membre du bureau national de la CFTC représentant les DOM TOM
-      Vice Président du CESR Reunion (comité économique et social régional)
-      Adhérent au RN depuis sa création`,
+    description: `
+      Christian Jean Marcel DUNOGUE </br>
+      Né le 18 avril 1953 à Marseille </br>
+      retraité </br>
+      Resident à Majunga</br>
+      Tel 0323899394 Idem WhatsApp </br>
+      Mail  christianjeanmarceldunogue@gmail.com </br>
+
+      Formation</br>
+      Bac A1 en 1971</br>
+      Capceg  puis  Capes et Agrégation </br>
+      Diplome universitaire de gestion du commerce international </br>
+
+      Professeur d'histoire et de géographie </br>
+      professeur d'université en géopolitique </br>
+
+      A Madagascar depuis 12 ans marié à une malgache </br>
+      1 enfant </br>
+
+      Engagement</br>
+      Secrétaire général de l'UR CFTC</br>
+      Membre du bureau national de la CFTC représentant les DOM TOM</br>
+      Vice Président du CESR Reunion (comité économique et social régional)</br>
+      Adhérent au RN depuis sa création </br>
+
+      Résidant à Majunga
+    `,
   }
 ];
 
@@ -83,6 +106,18 @@ export default function CarouselSection({ content }) {
     setExpandedSlide((current) => (current === index ? null : index));
   };
 
+  const renderDescription = (description) => {
+    if (typeof description !== "string") {
+      return description;
+    }
+
+    if (description.includes("<")) {
+      return <span dangerouslySetInnerHTML={{ __html: description }} />;
+    }
+
+    return description;
+  };
+
   return (
     <section className="carousel-section" id="engagements">
       <div className="container carousel-inner">
@@ -130,7 +165,7 @@ export default function CarouselSection({ content }) {
                             isExpanded ? "is-expanded" : ""
                           }`}
                         >
-                          {slide.description}
+                          {renderDescription(slide.description)}
                         </p>
                         <button
                           className="btn btn-outline carousel-toggle"

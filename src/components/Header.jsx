@@ -7,7 +7,7 @@
       : [
           { label: "L'équipe", href: "#team" },
           { label: "Le Programme", href: "#program-page" },
-          { label: "Nos valeurs", href: "#testify" },
+          { label: "Nos valeurs", href: "#our-value" },
           { label: "Je soutiens", href: "#take-action", className: "nav_act" },
           { label: "Le blog", href: "#donate", className: "nav_donate" },
         ];

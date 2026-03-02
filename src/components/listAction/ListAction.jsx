@@ -41,7 +41,7 @@ const fallbackActions = [
     title: "Sécurité patrimoniale",
     description: "",
     icon: "🖨️",
-    link: "#print-tract",
+    link: "#heritage-security",
   },
   {
     title: "Famille & Education",
@@ -89,6 +89,9 @@ export default function ListAction({ content }) {
       ? "#terms"
       : normalizedTitle.includes("tract") || normalizedTitle.includes("imprimer")
       ? "#print-tract"
+      : normalizedTitle.includes("patrimoine") ||
+        normalizedTitle.includes("patrimonial")
+      ? "#heritage-security"
       : normalizedTitle.includes("video") || normalizedTitle.includes("partager")
       ? "#share-video"
       : normalizedTitle.includes("equipe") || normalizedTitle.includes("team")

@@ -19,6 +19,8 @@ import ShareVideo from "./components/shareVideo/ShareVideo.jsx";
 import ProgramPresentation from "./components/program/ProgramPresentation.jsx";
 import TeamPage from "./components/team/TeamPage.jsx";
 import EntrepreneurPage from "./components/entrepreneur/EntrepreneurPage.jsx";
+import OurValue from "./components/ourValue/OurValue.jsx";
+import HeritageSecurity from "./components/heritageSecurity/HeritageSecurity.jsx";
 import { useHomeContent } from "./hooks/useHomeContent.js";
 
 export default function App() {
@@ -58,6 +60,10 @@ export default function App() {
         <ShareVideo />
       ) : activeView === "#team" ? (
         <TeamPage />
+      ) : activeView === "#our-value" ? (
+        <OurValue />
+      ) : activeView === "#heritage-security" ? (
+        <HeritageSecurity />
       ) : (
         <main>
           {/* {error ? (
