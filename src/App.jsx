@@ -8,7 +8,7 @@ import Program from "./components/Program.jsx";
 import Newsletter from "./components/Newsletter.jsx";
 import Footer from "./components/Footer.jsx";
 import VerticalCarousel from "./components/entrepreneur/VerticalCarousel.jsx";
-import ProgramPage from "./components/program/ProgramPage.jsx";
+import ProgramAltPage from "./components/program/ProgramAltPage.jsx";
 import TakeActionPage from "./components/takeAction/TakeActionPage.jsx";
 import TestifyPage from "./components/toTesify/TestifyPage.jsx";
 import DonatePage from "./components/donate/DonatePage.jsx";
@@ -40,8 +40,8 @@ export default function App() {
   return (
     <div className="app">
       <Header content={content.header} />
-      {activeView === "#program-page" ? (
-        <ProgramPage />
+      {activeView === "#program-page" || activeView === "#program-alt-page" ? (
+        <ProgramAltPage />
       ) : activeView === "#entrepreneur" ? (
         <EntrepreneurPage />
       ) : activeView === "#take-action" ? (

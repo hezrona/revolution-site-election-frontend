@@ -3,6 +3,7 @@ import christianTibayrenc from "../../assets/image/christian_tibayrenc.png";
 import charlotteDeValence from "../../assets/image/charlotte.png";
 import nigarBarday from "../../assets/image/barday.png";
 import dunogue from "../../assets/image/Dunogue.png";
+import dominiqueImage from "../../assets/image/Dominique.png";
 import "./carousel.css";
 
 const defaultSlides = [
@@ -55,7 +56,13 @@ Mon parcours vous le connaissez, une carrière dans la finance, des responsabili
 
       Résidant à Majunga
     `,
-  }
+  },
+  {
+    title: "Dominique LOUVET",
+    image: dominiqueImage,
+    description:
+      "Française installée à Madagascar depuis 30 ans, je suis orthoptiste diplômée de la faculté de médecine de Paris. J’ai exercé à l’Assistance Publique – Hôpitaux de Paris (AP-HP) et en cabinet libéral avant de rejoindre Tananarive.",
+  },
 ];
 
 const defaultCv = {

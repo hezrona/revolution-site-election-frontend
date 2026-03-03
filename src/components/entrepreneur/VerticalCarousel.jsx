@@ -20,25 +20,30 @@ const defaultSlides = [
     tone: "navy"
   },
   {
-    id: "ecosysteme",
-    panelTitle: "Créer un écosystème structuré, connecté et sécurisé",
-    title: "Des facilitateurs engagés",
-    image: charlottePortrait,
+    id: "reseau",
+    panelTitle: "Structurer un réseau entrepreneurial solide",
+    title: "",
+    // image: charlottePortrait,
     bullets: [
-      "Être médiateurs et catalyseurs de coopération pour les Français de l’étranger.",
-      "Faire émerger des conditions propices aux projets : liens, ressources, sécurité juridique."
+      "L’isolement est l’un des principaux risques de l’entrepreneuriat à l’étranger. Trop souvent, les expériences restent individuelles alors que les problématiques sont communes.",
+      "Les élus peuvent impulser la création d’un réseau actif d’entrepreneurs français à Madagascar : rencontres sectorielles, groupes d’échange, retours d’expérience, mutualisation d’informations fiables sur la réglementation, la logistique ou le recrutement.",
+      "Un tel réseau permet de :"
     ],
-    callout:
-      "Une représentation active transforme des parcours individuels en dynamique collective.",
+    chips: [
+      "- Partager les bonnes pratiques",
+      "- Renforcer la crédibilité collective",
+      "- Créer des opportunités de coopération"
+    ],
+    callout: "Passer d’initiatives isolées à une dynamique collective structurée constitue un levier puissant de développement.",
     tone: "photo"
   },
   {
     id: "responsable",
-    panelTitle: "Porter une vision responsable et durable",
+    panelTitle: "Favoriser l’accès au financement",
     title: "Exemplarité et impact local",
     bullets: [
-      "Les entrepreneurs sont des ambassadeurs : emploi local, formation des talents, intégration dans les chaînes de valeur.",
-      "Les élus soutiennent une vision exigeante et responsable."
+      "L’accès au crédit demeure un défi majeur, notamment pour les TPE et PME. Les élus peuvent plaider pour une meilleure adaptation des outils français aux réalités locales : garanties plus souples, dispositifs adaptés aux entrepreneurs expatriés, meilleure information sur les mécanismes existants.",
+      "Ils peuvent également encourager la mise en relation avec des partenaires privés, investisseurs ou fonds régionaux, afin de diversifier les sources de financement."
     ],
     chips: [
       "Respect des normes sociales",
@@ -47,7 +52,7 @@ const defaultSlides = [
       "Inscription dans la durée"
     ],
     callout:
-      "Renforcer la crédibilité des entreprises françaises et consolider leur ancrage.",
+      "Faciliter l’investissement, c’est favoriser la croissance, l’emploi et la pérennité des entreprises françaises implantées à Madagascar.",
     tone: "navy"
   },
   {

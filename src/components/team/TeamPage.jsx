@@ -6,6 +6,8 @@ import charlotteImage from "../../assets/image/charlotte.png";
 import charlotteEntrprise1 from "../../assets/image/charlotte_ep1.png";
 import charlotteEntrprise2 from "../../assets/image/charlotte_ep2.png";
 import bardayImage from "../../assets/image/barday.png";
+import dunogueImage from "../../assets/image/Dunogue.png";
+import dominiqueImage from "../../assets/image/Dominique.png";
 
 const teamMembers = [
   {
@@ -187,14 +189,66 @@ const teamMembers = [
 </main>`,
   },
   {
-    name: "Hélène Bouyer",
-    role: "Relations institutionnelles",
-    tag: "Sud",
+    name: "Christian Jean Marcel DUNOGUE",
+    role: "",
+    tag: "",
     image:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80",
+      dunogueImage,
     description:
-      "Porte la voix du projet auprès des partenaires institutionnels et développe des coopérations durables. Hélène favorise les synergies et veille à l'alignement des actions avec les priorités stratégiques.",
+      `<p>Né le 18 avril 1953 à Marseille<br>
+      retraité<br>
+      Resident à Majunga<br>  
+      Tel 0323899394 Idem WhatsApp<br>
+      Mail christianjeanmarceldunogue@gmail.com</p>
+
+      <h2>Formation</h2>
+
+      <p>Bac A1 en 1971<br>
+      Capceg puis Capes et Agrégation<br>
+      Diplome universitaire de gestion du commerce international<br>
+      Professeur d'histoire et de géographie<br>
+      professeur d'université en géopolitique<br>
+      A Madagascar depuis 12 ans marié à une malgache<br>
+      1 enfant</p>
+
+      <h2>Engagement</h2>
+
+      <p>Secrétaire général de l'UR CFTC<br>
+      Membre du bureau national de la CFTC représentant les DOM TOM<br>
+      Vice Président du CESR Reunion (comité économique et social régional)<br>
+      Adhérent au RN depuis sa création<br>
+      Résidant à Majunga</p>`,
   },
+  {
+    name: "Dominique LOUVET",
+    role: "",
+    tag: "",
+    image:
+      dominiqueImage,
+    description:
+      `
+      <p><strong>Française installée à Madagascar depuis 30 ans</strong>, je suis orthoptiste diplômée de la faculté de médecine de Paris. J’ai exercé à l’<strong>Assistance Publique – Hôpitaux de Paris (AP-HP)</strong> et en cabinet libéral avant de rejoindre Tananarive.</p>
+
+      <p>Au fil des décennies, j’ai été très impliquée dans le système de santé local : <strong>création du service d’orthoptie au Centre Hospitalier de Soavinandrina (ex-HOMI)</strong>, activité libérale maintenue, et contacts réguliers avec de nombreux professionnels de santé malgaches et français. Cette immersion m’a permis de connaître de près les réalités quotidiennes des Français de Madagascar en matière de santé : difficultés d’accès aux soins spécialisés, prise en charge des enfants (troubles visuels, handicaps), suivi des personnes âgées, urgences médicales, remboursements de la CFE, coordination avec les hôpitaux français en cas d’évacuation, ou encore accompagnement psychologique et rééducation. En tant que soignante « de terrain », j’ai accompagné, écouté et orienté de très nombreux compatriotes confrontés à ces défis.</p>
+
+      <p><strong>C’est précisément ce vécu qui nourrit ma volonté de m’engager aujourd’hui pour les élections consulaires de 2026.</strong> Je souhaite mettre cette expertise au service de la communauté française, en étant une élue de proximité, pragmatique et à l’écoute.</p>
+
+      <p><strong>Mon parcours paramédical s’est doublé d’un fort engagement bénévole et associatif :</strong></p>
+
+      <ul>
+          <li><strong>Cofondatrice il y a 20 ans de l’association FANARENANA</strong>, qui a créé un plateau technique pluridisciplinaire (orthoptie, kinésithérapie, ergothérapie, psychomotricité…) pour enfants malgaches défavorisés en situation de handicap moteur et/ou mental. Nous valorisons les potentiels de chaque enfant et maximisons leur autonomie.</li>
+          <li><strong>Participation active à l’association EFM (Enfants Français de Madagascar)</strong> soutenir la réussite scolaire des enfants français boursiers ou dont les familles sont démunies.</li>
+          <li><strong>Autres engagements :</strong> scoutisme, comité de lecture, formation de bibliothécaire, et création d’un circuit de lecteurs « Bibliothèque pour tous » à Tananarive.</li>
+      </ul>
+
+      <p>Ces expériences m’ont appris l’importance de l’entraide, de la pluridisciplinarité et de l’adaptation aux réalités locales – des valeurs que je veux porter au sein du conseil consulaire.</p>
+
+      <p><strong>C’est pourquoi je rejoins avec enthousiasme l’équipe menée par Christian Tibayrenc, tête de liste pour ces élections.</strong> 
+      Si notre liste est élue, je mettrai toute mon énergie et mes compétences dans le domaine de la santé pour défendre et améliorer concrètement la situation des Français de Madagascar : meilleure information sur les droits et dispositifs (CFE, protection sociale, évacuations sanitaires), plaidoyer pour des partenariats renforcés avec les structures de soins locales, accompagnement personnalisé des familles (enfants à besoins spécifiques, seniors, situations de handicap), et renforcement de l’entraide communautaire en cas de crise médicale.</p>
+
+      <p><strong>Je suis convaincue que, ensemble, nous pouvons faire avancer ces dossiers essentiels pour notre quotidien.</strong></p>
+        `,
+    }
   // {
   //   name: "Arthur Paris",
   //   role: "Développement économique",

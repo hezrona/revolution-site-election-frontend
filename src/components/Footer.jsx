@@ -9,10 +9,10 @@ export default function Footer({ content }) {
       ? content.engageCards
       : [
           {
-            icon: "�",
+            icon: "�",
             iconClass: "engage-icon-yellow",
             title: "Je donne",
-            description: "Soutenez financierement la campagne pour un Paris heureux",
+            description: "Soutenez financierement la campagne pour un Paris heureux à Madagascar",
             buttonLabel: "En savoir plus ?",
             buttonClass: "btn-accent",
           },
@@ -28,7 +28,7 @@ export default function Footer({ content }) {
             icon: "?",
             iconClass: "engage-icon-pink",
             title: "Je convaincs",
-            description: "Recommandez un proche parisien, notre equipe suit",
+            description: "Recommandez un autre Français de Madagascar",
             buttonLabel: "En savoir plus ?",
             buttonClass: "btn-solid",
           },

@@ -6,10 +6,11 @@
       ? content.links
       : [
           { label: "L'équipe", href: "#team" },
-          { label: "Le Programme", href: "#program-page" },
+          { label: "Le Programme", href: "#program-alt-page" },
           { label: "Nos valeurs", href: "#our-value" },
           { label: "Je soutiens", href: "#take-action", className: "nav_act" },
-          { label: "Le blog", href: "#donate", className: "nav_donate" },
+          // { label: "Fiches techniques", href: "#donate", className: "nav_donate" },
+          // { label: "Les partenaires", href: "#donate", className: "nav_donate" },
         ];
 
   return (
