@@ -21,6 +21,7 @@ import TeamPage from "./components/team/TeamPage.jsx";
 import EntrepreneurPage from "./components/entrepreneur/EntrepreneurPage.jsx";
 import OurValue from "./components/ourValue/OurValue.jsx";
 import HeritageSecurity from "./components/heritageSecurity/HeritageSecurity.jsx";
+import PartenaireArticle from "./components/partenaire/PartenaireArticle.jsx";
 import { useHomeContent } from "./hooks/useHomeContent.js";
 
 export default function App() {
@@ -64,6 +65,8 @@ export default function App() {
         <OurValue />
       ) : activeView === "#heritage-security" ? (
         <HeritageSecurity />
+      ) : activeView === "#partner-article" ? (
+        <PartenaireArticle />
       ) : (
         <main>
           {/* {error ? (
