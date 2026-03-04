@@ -1,72 +1,230 @@
-import "../heritageSecurity/heritageSecurity.css";
+import "./programAltPage.css";
 
 export default function ProgramAltPage() {
   return (
-    <main className="heritage-security-page">
-      <section className="heritage-security-content">
-        <div className="container heritage-security-card">
-          <p>
-            <strong>Protéger son patrimoine à l’étranger</strong> est une{" "}
-            <strong>priorité</strong> pour de nombreuses familles françaises.
-            Entre les différences de législation, les{" "}
-            <strong>risques juridiques locaux</strong>, la{" "}
-            <strong>fiscalité internationale</strong> et la{" "}
-            <strong>transmission aux enfants</strong>, il est essentiel d’être{" "}
-            <strong>bien informé et accompagné</strong>.
-          </p>
-
-          <p>
-            Je m’engage à{" "}
-            <strong>renforcer l’information et l’accompagnement</strong> des
-            Français de notre circonscription sur les questions de{" "}
-            <strong>sécurité patrimoniale</strong> :{" "}
-            <strong>protection des biens immobiliers</strong>, reconnaissance
-            des <strong>actes notariés</strong>,{" "}
-            <strong>successions internationales</strong>,{" "}
-            <strong>fiscalité</strong>, <strong>retraites</strong> et{" "}
-            <strong>sécurisation de l’épargne</strong>.
-          </p>
-
-          <p>
-            En lien avec les <strong>services consulaires</strong>, les{" "}
-            <strong>experts juridiques</strong> et des organismes comme{" "}
-            <span className="highlight">
-              <strong>Notaires de France ou de Madagascar</strong>
-            </span>
-            , ainsi la{" "}
-            <span className="highlight">
-              <strong>Caisse des Français de l’Étranger</strong>
-            </span>
-            , nous devons{" "}
-            <strong>
-              faciliter l’accès à des conseils fiables, accessibles et adaptés
-              à notre réalité locale
-            </strong>
-            .
-          </p>
-
-          <p>
-            Parce que{" "}
-            <strong>
-              vivre à l’étranger ne doit jamais fragiliser ce que l’on a
-              construit
-            </strong>
-            , je défendrai une{" "}
-            <strong>
-              protection renforcée du patrimoine des Français de Madagascar et
-              de leurs familles
-            </strong>
-            .
-          </p>
-
-          <div className="heritage-security-signature">
-            <span className="signature-label">Notre engagement</span>
-            <span className="signature-value">
-              protection, transmission et serenité.
-            </span>
+    <main className="program-alt-page">
+      <div className="program-alt-shell">
+        <section className="program-alt-hero">
+          <div className="program-alt-badge">
+            <span className="program-alt-dot" />
+            Programme – Union des Français de Madagascar
           </div>
-        </div>
-      </section>
+          <h1>Du concret. Du suivi. Une présence.</h1>
+          <p className="program-alt-lead">
+            Notre engagement : être accessibles, présents et efficaces, avec
+            pragmatisme et transparence.
+          </p>
+          <div className="program-alt-cta">
+            <a className="program-alt-btn" href="#programme">
+              Découvrir le programme
+            </a>
+            <a className="program-alt-btn ghost" href="#moyens">
+              Nos moyens
+            </a>
+          </div>
+        </section>
+
+        <section id="programme" className="program-alt-grid">
+          <aside className="program-alt-side">
+            <p className="program-alt-side-title">Navigation</p>
+            <nav className="program-alt-nav">
+              <a href="#sante">Sécurité santé</a>
+              <a href="#patrimoine">Sécurité patrimoniale & financière</a>
+              <a href="#securite">Sécurité physique & personnelle</a>
+              <a href="#familles">Familles, éducation & jeunesse</a>
+              <a href="#consulaire">Démarches consulaires</a>
+              <a href="#entrepreneurs">Entrepreneurs, emploi & EFE</a>
+              <a href="#quotidien">Vie quotidienne</a>
+              <a href="#methode">Une méthode différente</a>
+              <a href="#moyens">Moyens mis en œuvre</a>
+            </nav>
+            <p className="program-alt-side-hint">
+              Astuce : clique pour aller directement à une thématique.
+            </p>
+          </aside>
+
+          <div className="program-alt-main">
+            <article id="sante" className="program-alt-card">
+              <h2>Sécurité santé</h2>
+              <div className="program-alt-pills">
+                <span className="program-alt-pill">CFE</span>
+                <span className="program-alt-pill">Urgences</span>
+                <span className="program-alt-pill">EVASAN</span>
+              </div>
+              <details open className="program-alt-details">
+                <summary>Objectifs</summary>
+                <ul>
+                  <li>Sécuriser les parcours de soins</li>
+                  <li>Réduire l’incertitude face aux urgences et aux EVASAN</li>
+                  <li>Améliorer information et prévention sanitaire</li>
+                  <li>Aucun Français ne doit être laissé sans soins vitaux</li>
+                </ul>
+              </details>
+              <details className="program-alt-details">
+                <summary>Actions concrètes</summary>
+                <ul>
+                  <li>Guide santé France–Madagascar</li>
+                  <li>Réunions d’information santé (présentiel/visio)</li>
+                  <li>Relais CFE pour situations complexes</li>
+                  <li>Négociation de tarifs de groupe</li>
+                  <li>Contacts médicaux fiables (Tana + provinces)</li>
+                </ul>
+              </details>
+            </article>
+
+            <article id="patrimoine" className="program-alt-card">
+              <h2>Sécurité patrimoniale & financière</h2>
+              <div className="program-alt-pills">
+                <span className="program-alt-pill">Fiscalité</span>
+                <span className="program-alt-pill">Retraite</span>
+                <span className="program-alt-pill">Anti-arnaques</span>
+              </div>
+              <details open className="program-alt-details">
+                <summary>Objectifs</summary>
+                <ul>
+                  <li>Protéger contre les risques financiers et patrimoniaux</li>
+                  <li>Sécuriser investissements et revenus</li>
+                  <li>Mieux comprendre la fiscalité France–Madagascar</li>
+                </ul>
+              </details>
+              <details className="program-alt-details">
+                <summary>Actions concrètes</summary>
+                <ul>
+                  <li>Partenariats encadrés avec des professionnels reconnus</li>
+                  <li>Ateliers (fiscalité, retraite, investissement)</li>
+                  <li>Fiches pratiques & alertes préventives</li>
+                  <li>Orientation vers des interlocuteurs fiables</li>
+                </ul>
+              </details>
+            </article>
+
+            <article id="securite" className="program-alt-card">
+              <h2>Sécurité physique & personnelle</h2>
+              <div className="program-alt-pills">
+                <span className="program-alt-pill">Prévention</span>
+                <span className="program-alt-pill">Crise</span>
+                <span className="program-alt-pill">WhatsApp</span>
+              </div>
+              <details open className="program-alt-details">
+                <summary>Actions concrètes</summary>
+                <ul>
+                  <li>Relais rapide des consignes officielles</li>
+                  <li>Chaîne d’info communautaire fiable (WhatsApp)</li>
+                  <li>Sensibilisation aux bonnes pratiques</li>
+                  <li>Coopération (autorités/consulat – Voisins Vigilants)</li>
+                  <li>Appui aux victimes (information, orientation)</li>
+                </ul>
+              </details>
+            </article>
+
+            <article id="familles" className="program-alt-card">
+              <h2>Familles, éducation & jeunesse</h2>
+              <div className="program-alt-pills">
+                <span className="program-alt-pill">Bourses</span>
+                <span className="program-alt-pill">Écoles</span>
+                <span className="program-alt-pill">CNED</span>
+              </div>
+              <details open className="program-alt-details">
+                <summary>Objectifs</summary>
+                <ul>
+                  <li>Soutenir l’accès aux écoles françaises et homologuées</li>
+                  <li>Défendre une attribution plus juste des bourses</li>
+                  <li>Accompagner les familles (CNED / distance)</li>
+                </ul>
+              </details>
+            </article>
+
+            <article id="consulaire" className="program-alt-card">
+              <h2>Démarches consulaires</h2>
+              <div className="program-alt-pills">
+                <span className="program-alt-pill">Passeport/CNI</span>
+                <span className="program-alt-pill">RDV</span>
+                <span className="program-alt-pill">Permanences</span>
+              </div>
+              <details open className="program-alt-details">
+                <summary>Actions concrètes</summary>
+                <ul>
+                  <li>Intervention sur dossiers bloqués</li>
+                  <li>Plaidoyer sur la prise de rendez-vous</li>
+                  <li>Permanences consulaires régulières</li>
+                  <li>Coordination avec les consuls honoraires</li>
+                </ul>
+              </details>
+            </article>
+
+            <article id="entrepreneurs" className="program-alt-card">
+              <h2>Entrepreneurs, emploi & EFE</h2>
+              <div className="program-alt-pills">
+                <span className="program-alt-pill">Réseau</span>
+                <span className="program-alt-pill">Rencontres</span>
+                <span className="program-alt-pill">EFE</span>
+              </div>
+              <details open className="program-alt-details">
+                <summary>Actions concrètes</summary>
+                <ul>
+                  <li>Adhésion au réseau EFE</li>
+                  <li>Réseau d’entraide professionnelle</li>
+                  <li>Mise en relation institutionnelle/économique</li>
+                  <li>Rencontres économiques et professionnelles</li>
+                </ul>
+              </details>
+            </article>
+
+            <article id="quotidien" className="program-alt-card">
+              <h2>Vie quotidienne</h2>
+              <div className="program-alt-pills">
+                <span className="program-alt-pill">Bons plans</span>
+                <span className="program-alt-pill">Prestataires</span>
+                <span className="program-alt-pill">Province</span>
+              </div>
+              <details open className="program-alt-details">
+                <summary>Actions concrètes</summary>
+                <ul>
+                  <li>Recensement de prestataires fiables par ville</li>
+                  <li>Recommandations issues de la communauté</li>
+                  <li>Réseaux locaux d’entraide</li>
+                  <li>Fiches pratiques</li>
+                </ul>
+              </details>
+            </article>
+
+            <article id="methode" className="program-alt-card">
+              <h2>Une méthode différente</h2>
+              <details open className="program-alt-details">
+                <summary>Ce qu’on fait différemment</summary>
+                <ul>
+                  <li>Permanences physiques et numériques</li>
+                  <li>Communication régulière (WhatsApp, réseaux)</li>
+                  <li>Comptes rendus de mandat accessibles</li>
+                  <li>Travail en équipe, esprit constructif et apolitique</li>
+                </ul>
+              </details>
+            </article>
+
+            <div id="moyens" className="program-alt-footer">
+              <h2>Moyens mis en œuvre</h2>
+              <p className="program-alt-sub">Une présence de proximité, partout.</p>
+              <ul>
+                <li>Une équipe de bénévoles + un représentant par ville</li>
+                <li>Groupes WhatsApp par ville</li>
+                <li>Un site dédié (blog, forum, fiches pratiques)</li>
+              </ul>
+              <div className="program-alt-cta">
+                <a className="program-alt-btn" href="/contact">
+                  Nous contacter
+                </a>
+                <a className="program-alt-btn ghost" href="/equipe">
+                  Voir l’équipe
+                </a>
+              </div>
+            </div>
+
+            <p className="program-alt-small">
+              Contenu synthétisé depuis le programme fourni (version longue).
+            </p>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }
