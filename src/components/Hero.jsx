@@ -21,6 +21,17 @@ export default function Hero({ content, loading }) {
   const videoPath =
     content?.video?.data?.attributes?.url || content?.video?.url || "";
   const videoSrc = videoPath ? getStrapiMediaUrl(videoPath) : heroVideo;
+  const handleScrollDown = () => {
+    const heroSection = document.querySelector(".hero");
+    const nextSection = heroSection?.nextElementSibling;
+
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+  };
 
   return (
     <section className="hero" id="top">
@@ -55,8 +66,15 @@ export default function Hero({ content, loading }) {
             </button>
           ))}
         </div>
-        <div className="scroll-indicator" aria-hidden="true">
-          <FaArrowDown />
+        <div align="center">
+          <button
+            className="scroll-indicator"
+            type="button"
+            onClick={handleScrollDown}
+            aria-label="Descendre"
+          >
+            <FaArrowDown />
+          </button>
         </div>
       </div>
     </section>
