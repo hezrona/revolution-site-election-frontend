@@ -5,13 +5,13 @@
     content?.links && content.links.length
       ? content.links
       : [
-          { label: "L'équipe", href: "#team" },
-          { label: "Le Programme", href: "#program-alt-page" },
-          { label: "Nos valeurs", href: "#our-value" },
-          { label: "Je soutiens", href: "#take-action", className: "nav_act" },
-          { label: "Fiches techniques", href: "#donate", className: "nav_donate" },
+          { label: "Programme", href: "#program-alt-page" },
+          { label: "Valeurs", href: "#our-value" },
+          // TODO: move menu "je soutiens" vers une autre page
+          // { label: "Je soutiens", href: "#take-action", className: "nav_act" },
+          { label: "Administration", href: "#donate", className: "nav_donate" },
           {
-            label: "Les partenaires",
+            label: "Partenaires",
             href: "#partner-article",
             className: "nav_donate",
           },
@@ -25,6 +25,12 @@
           <span className="logo-accent">{logoLast}</span>
         </a>
         <nav className="nav">
+          <a
+              key="equipe-team"
+              href="#team"
+            >
+              &Eacute;quipe
+          </a>
           {links.map((link) => (
             <a
               key={`${link.label}-${link.href}`}

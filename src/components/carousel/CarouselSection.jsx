@@ -78,6 +78,14 @@ const defaultCv = {
     "Diplômé en sciences politiques et en management public, Christian Tibayrenc a piloté des programmes de transformation territoriale et de coopération internationale. Il a développé des initiatives d'accompagnement pour les entrepreneurs, coordonné des dispositifs d'inclusion sociale et animé des réseaux d'acteurs locaux. Son parcours met l'accent sur la transparence, la proximité et l'efficacité dans l'action publique. Son ambition est de créer des solutions concrètes pour améliorer le quotidien et renforcer la cohésion des communautés.",
 };
 
+const toAnchorId = (value) =>
+  `team-${String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "")}`;
+
 export default function CarouselSection({ content }) {
   const slides = useMemo(() => {
     if (content?.slides?.length) {
@@ -111,6 +119,23 @@ export default function CarouselSection({ content }) {
 
   const toggleSlide = (index) => {
     setExpandedSlide((current) => (current === index ? null : index));
+  };
+
+  const handleReadMore = (event, title, index) => {
+    event.preventDefault();
+    toggleSlide(index);
+
+    if (window.location.hash !== "#team") {
+      window.location.hash = "#team";
+    }
+
+    const targetId = toAnchorId(title);
+    requestAnimationFrame(() => {
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
   };
 
   const renderDescription = (description) => {
@@ -174,15 +199,17 @@ export default function CarouselSection({ content }) {
                         >
                           {renderDescription(slide.description)}
                         </p>
-                        <button
+                        <a
                           className="btn btn-outline carousel-toggle"
-                          type="button"
+                          href="#team"
                           aria-expanded={isExpanded}
                           aria-controls={`carousel-text-${index}`}
-                          onClick={() => toggleSlide(index)}
+                          onClick={(event) =>
+                            handleReadMore(event, slide.title, index)
+                          }
                         >
                           {isExpanded ? "Réduire" : "Lire la suite"}
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </article>

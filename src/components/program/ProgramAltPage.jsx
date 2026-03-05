@@ -15,9 +15,6 @@ export default function ProgramAltPage() {
             pragmatisme et transparence.
           </p>
           <div className="program-alt-cta">
-            <a className="program-alt-btn" href="#programme">
-              Découvrir le programme
-            </a>
             <a className="program-alt-btn ghost" href="#moyens">
               Nos moyens
             </a>
@@ -106,6 +103,15 @@ export default function ProgramAltPage() {
                 <span className="program-alt-pill">WhatsApp</span>
               </div>
               <details open className="program-alt-details">
+                <summary>Objectifs</summary>
+                <ul>
+                  <li>Protéger contre les risques physiques et personnels</li>
+                  <li>Renforcer la prévention sans alarmisme</li>
+                  <li>Sécuriser le quotidien</li>
+                  <li>Améliorer la gestion de l’information en cas de crise</li>
+                </ul>
+              </details>
+              <details open className="program-alt-details">
                 <summary>Actions concrètes</summary>
                 <ul>
                   <li>Relais rapide des consignes officielles</li>
@@ -132,6 +138,15 @@ export default function ProgramAltPage() {
                   <li>Accompagner les familles (CNED / distance)</li>
                 </ul>
               </details>
+              <details open className="program-alt-details">
+                <summary>Actions concrètes</summary>
+                <ul>
+                  <li>Défense de l’accès et des capacités des établissements</li>
+                  <li>Veille sur l’équité et la transparence des bourses scolaires</li>
+                  <li>Accompagnement des familles dans les solutions éducatives alternatives</li>
+                  <li>Information claire sur les dispositifs existants</li>
+                </ul>
+              </details>
             </article>
 
             <article id="consulaire" className="program-alt-card">
@@ -141,6 +156,15 @@ export default function ProgramAltPage() {
                 <span className="program-alt-pill">RDV</span>
                 <span className="program-alt-pill">Permanences</span>
               </div>
+              <details open className="program-alt-details">
+                <summary>Objectifs</summary>
+                <ul>
+                  <li>Intervenir sur les dossiers bloqués (passeports, CNI, état civil)</li>
+                  <li>Défendre une amélioration de l’accès aux rendez-vous consulaires</li>
+                  <li>Mettre en place des permanences d’information régulières</li>
+                  <li>Renforcer la coopération avec les consuls honoraires afin d’améliorer l’efficacité administrative</li>
+                </ul>
+              </details>
               <details open className="program-alt-details">
                 <summary>Actions concrètes</summary>
                 <ul>
@@ -160,6 +184,14 @@ export default function ProgramAltPage() {
                 <span className="program-alt-pill">EFE</span>
               </div>
               <details open className="program-alt-details">
+                <summary>Objectifs</summary>
+                <ul>
+                  <li>Soutenir les entrepreneurs français et les EFE</li>
+                  <li>Favoriser le dialogue avec les autorités locales et l’ambassade</li>
+                  <li>Créer et renforcer un réseau d’entraide professionnelle entre Français</li>
+                </ul>
+              </details>
+              <details open className="program-alt-details">
                 <summary>Actions concrètes</summary>
                 <ul>
                   <li>Adhésion au réseau EFE</li>
@@ -178,6 +210,14 @@ export default function ProgramAltPage() {
                 <span className="program-alt-pill">Province</span>
               </div>
               <details open className="program-alt-details">
+                <summary>Objectifs</summary>
+                <ul>
+                  <li>Faciliter la vie quotidienne des Français établis à Madagascar</li>
+                  <li>Rompre l’isolement, notamment en dehors de la capitale</li>
+                  <li>Favoriser l’entraide, la convivialité et l’accès à des services fiables</li>
+                </ul>
+              </details>
+              <details open className="program-alt-details">
                 <summary>Actions concrètes</summary>
                 <ul>
                   <li>Recensement de prestataires fiables par ville</li>
@@ -190,6 +230,14 @@ export default function ProgramAltPage() {
 
             <article id="methode" className="program-alt-card">
               <h2>Une méthode différente</h2>
+              <details open className="program-alt-details">
+                <summary>Objectifs</summary>
+                <ul>
+                  <li>Restaurer la confiance entre élus et communauté</li>
+                  <li>Assurer une présence réelle, continue et accessible</li>
+                  <li>Travailler sans logique partisane</li>
+                </ul>
+              </details>
               <details open className="program-alt-details">
                 <summary>Ce qu’on fait différemment</summary>
                 <ul>
@@ -213,7 +261,7 @@ export default function ProgramAltPage() {
                 <a className="program-alt-btn" href="/contact">
                   Nous contacter
                 </a>
-                <a className="program-alt-btn ghost" href="/equipe">
+                <a className="program-alt-btn ghost" href="#team">
                   Voir l’équipe
                 </a>
               </div>
