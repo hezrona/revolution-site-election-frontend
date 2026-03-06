@@ -19,6 +19,11 @@
             href: "#partner-article",
             // className: "nav_donate",
           },
+          {
+            label: "Forum",
+            href: "#partner-article",
+            // className: "nav_donate",
+          }
         ];
 
   return (
