@@ -11,7 +11,7 @@ export default function Hero({ content, loading }) {
     content?.subtitle || "Candidat aux éléctions Consulaires Madagascar 2026";
   const eyebrow = content?.eyebrow || "";
   
-  const leftQuote  = content?.leftQuote  || "Pus jamais seul avec L'UFA";
+  const leftQuote  = content?.leftQuote  || "Pus jamais seul avec L'UFM";
   const rightQuote = content?.rightQuote || "Nous ne serons pas les habituels conseillers inutiles";
 
   const buttons =
