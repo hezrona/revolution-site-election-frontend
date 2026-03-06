@@ -46,37 +46,42 @@ export default function Hero({ content, loading }) {
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
-      <div className="container hero-content">
-        {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-        <h1>
-          {firstName} <span>{lastName}</span>
-        </h1>
-        <div align="center">{teamLine}</div>
-        <p className="subtitle">
-          <b>{subtitle}</b>
-        </p>
-        <div className="hero-actions">
-          {buttons.map((button) => (
+      <div style={{ display: "grid", gridTemplateColumns: "30% 40% 30%" }}>
+        <div></div>
+        <div className="container hero-content">
+          {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
+          <h1>
+            {firstName} <span>{lastName}</span>
+          </h1>
+          <div align="center">{teamLine}</div>
+          <p className="subtitle">
+            <b>{subtitle}</b>
+          </p>
+          <div className="hero-actions">
+            {buttons.map((button) => (
+              <button
+                key={button.label}
+                className={`btn btn-${button.variant || "solid"}`}
+                type="button"
+              >
+                {button.label}
+              </button>
+            ))}
+          </div>
+          <div align="center">
             <button
-              key={button.label}
-              className={`btn btn-${button.variant || "solid"}`}
+              className="scroll-indicator"
               type="button"
+              onClick={handleScrollDown}
+              aria-label="Descendre"
             >
-              {button.label}
+              <FaArrowDown />
             </button>
-          ))}
+          </div>
         </div>
-        <div align="center">
-          <button
-            className="scroll-indicator"
-            type="button"
-            onClick={handleScrollDown}
-            aria-label="Descendre"
-          >
-            <FaArrowDown />
-          </button>
-        </div>
+        <div></div>
       </div>
+      <div></div>
     </section>
   );
 }

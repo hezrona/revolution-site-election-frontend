@@ -1,8 +1,8 @@
 import { candidate } from "../data/candidate";
 
 export default function Quote({ content }) {
-  const text = content?.text || "I am not here to guide sheep but to wake lions.";
-  const author = content?.author || candidate.fullName;
+  const text = content?.text || "Je ne suis pas ici pour guider les moutons mais pour réveiller les lions";
+  const author = content?.author || `${candidate.fullName} (J.M)`;
 
   return (
     <section className="quote">

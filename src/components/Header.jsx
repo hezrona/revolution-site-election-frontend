@@ -12,12 +12,12 @@
           {
             label: "Administration",
             href: "#administration",
-            className: "nav_donate",
+            // className: "nav_donate",
           },
           {
             label: "Partenaires",
             href: "#partner-article",
-            className: "nav_donate",
+            // className: "nav_donate",
           },
         ];
 
