@@ -10,6 +10,10 @@ export default function Hero({ content, loading }) {
   const subtitle =
     content?.subtitle || "Candidat aux éléctions Consulaires Madagascar 2026";
   const eyebrow = content?.eyebrow || "";
+  
+  const leftQuote  = content?.leftQuote  || "Pus jamais seul avec L'UFA";
+  const rightQuote = content?.rightQuote || "Nous ne serons pas les habituels conseillers inutiles";
+
   const buttons =
     content?.buttons && content.buttons.length
       ? content.buttons
@@ -46,6 +50,10 @@ export default function Hero({ content, loading }) {
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
+
+      <div className="hero-layout">
+        <p className="hero-side hero-side--left">{leftQuote}</p>
+
         <div className="container hero-content">
           {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
           <h1>
@@ -77,6 +85,9 @@ export default function Hero({ content, loading }) {
             </button>
           </div>
         </div>
+
+        <p className="hero-side hero-side--right">{rightQuote}</p>
+      </div>
     </section>
   );
 }

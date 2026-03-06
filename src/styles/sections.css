@@ -469,7 +469,49 @@
 }
 
 
+.hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
 
+.hero-side {
+  flex: 0 0 160px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.8;
+  text-align: center;
+  white-space: pre-line;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
 
+.hero-side--left {
+  border-right: 2px solid #e8b84b;
+  padding-right: 1.5rem;
+}
 
+.hero-side--right {
+  border-left: 2px solid #e1467a;
+  padding-left: 1.5rem;
+}
 
+.hero-layout .hero-content {
+  flex: 1;
+  max-width: 560px;
+}
+
+@media (max-width: 900px) {
+  .hero-side {
+    display: none;
+  }
+}
