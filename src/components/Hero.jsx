@@ -46,8 +46,6 @@ export default function Hero({ content, loading }) {
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
-      <div style={{ display: "grid", gridTemplateColumns: "30% 40% 30%" }}>
-        <div></div>
         <div className="container hero-content">
           {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
           <h1>
@@ -79,9 +77,6 @@ export default function Hero({ content, loading }) {
             </button>
           </div>
         </div>
-        <div></div>
-      </div>
-      <div></div>
     </section>
   );
 }
