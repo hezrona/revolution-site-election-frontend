@@ -3,6 +3,7 @@ import { candidate } from "../data/candidate";
 import heroVideo from "../assets/video/main_site.mp4";
 import { getStrapiMediaUrl } from "../api/strapi";
 
+// TODO: center
 export default function Hero({ content, loading }) {
   const firstName = content?.firstName || candidate.firstName;
   const lastName = content?.lastName || candidate.lastName;
