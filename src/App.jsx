@@ -22,6 +22,7 @@ import EntrepreneurPage from "./components/entrepreneur/EntrepreneurPage.jsx";
 import OurValue from "./components/ourValue/OurValue.jsx";
 import HeritageSecurity from "./components/heritageSecurity/HeritageSecurity.jsx";
 import PartenaireArticle from "./components/partenaire/PartenaireArticle.jsx";
+import AdministrationPage from "./components/administration/AdministrationPage.jsx";
 import { useHomeContent } from "./hooks/useHomeContent.js";
 
 export default function App() {
@@ -67,6 +68,8 @@ export default function App() {
         <HeritageSecurity />
       ) : activeView === "#partner-article" ? (
         <PartenaireArticle />
+      ) : activeView === "#administration" ? (
+        <AdministrationPage />
       ) : (
         <main>
           {/* {error ? (

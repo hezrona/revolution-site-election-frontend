@@ -9,7 +9,11 @@
           { label: "Valeurs", href: "#our-value" },
           // TODO: move menu "je soutiens" vers une autre page
           // { label: "Je soutiens", href: "#take-action", className: "nav_act" },
-          { label: "Administration", href: "#donate", className: "nav_donate" },
+          {
+            label: "Administration",
+            href: "#administration",
+            className: "nav_donate",
+          },
           {
             label: "Partenaires",
             href: "#partner-article",
