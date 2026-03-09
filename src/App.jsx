@@ -23,6 +23,7 @@ import OurValue from "./components/ourValue/OurValue.jsx";
 import HeritageSecurity from "./components/heritageSecurity/HeritageSecurity.jsx";
 import PartenaireArticle from "./components/partenaire/PartenaireArticle.jsx";
 import AdministrationPage from "./components/administration/AdministrationPage.jsx";
+import ForumPage from "./components/forum/ForumPage.jsx";
 import { useHomeContent } from "./hooks/useHomeContent.js";
 
 export default function App() {
@@ -70,6 +71,8 @@ export default function App() {
         <PartenaireArticle />
       ) : activeView === "#administration" ? (
         <AdministrationPage />
+      ) : activeView === "#forum" ? (
+        <ForumPage />
       ) : (
         <main>
           {/* {error ? (

@@ -21,7 +21,7 @@
           },
           {
             label: "Forum",
-            href: "#partners-article",
+            href: "#forum",
             // className: "nav_donate",
           }
         ];
