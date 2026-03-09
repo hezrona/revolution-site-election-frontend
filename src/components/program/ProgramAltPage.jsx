@@ -1,23 +1,32 @@
 import "./programAltPage.css";
+import programVideo from "../../assets/video/program_hero.mp4";
 
 export default function ProgramAltPage() {
   return (
     <main className="program-alt-page">
       <div className="program-alt-shell">
         <section className="program-alt-hero">
-          <div className="program-alt-badge">
-            <span className="program-alt-dot" />
-            Programme – Union des Français de Madagascar
-          </div>
-          <h1>Du concret. Du suivi. Une présence.</h1>
-          <p className="program-alt-lead">
-            Notre engagement : être accessibles, présents et efficaces, avec
-            pragmatisme et transparence.
-          </p>
-          <div className="program-alt-cta">
-            <a className="program-alt-btn ghost" href="#moyens">
-              Nos moyens
-            </a>
+          <video className="program-alt-hero-video" autoPlay muted loop playsInline aria-hidden="true">
+            <source src={programVideo} type="video/mp4" />
+          </video>
+
+          <div className="program-alt-hero-overlay" />
+
+          <div className="program-alt-hero-content">
+            <div className="program-alt-badge">
+              <span className="program-alt-dot" />
+              Programme – Union des Français de Madagascar
+            </div>
+            <h1>Du concret. Du suivi. Une présence.</h1>
+            <p className="program-alt-lead">
+              Notre engagement : être accessibles, présents et efficaces, avec
+              pragmatisme et transparence.
+            </p>
+            <div className="program-alt-cta">
+              <a className="program-alt-btn ghost" href="#moyens">
+                Nos moyens
+              </a>
+            </div>
           </div>
         </section>
 

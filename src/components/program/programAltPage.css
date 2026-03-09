@@ -10,7 +10,16 @@
 }
 
 .program-alt-hero {
-  padding: 52px 0 26px;
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 52px 24px;
+  margin: 0 -24px;
+  margin: 0 calc(-50vw + 50%);
+  width: 100vw;
 }
 
 .program-alt-badge {
@@ -232,6 +241,50 @@
     position: static;
   }
 }
+/* ✅ EN DEHORS de tout @media */
+.program-alt-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.program-alt-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.50);
+  z-index: 1;
+}
+
+.program-alt-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 760px;
+}
+
+.program-alt-hero-content h1,
+.program-alt-hero-content .program-alt-lead {
+  color: #ffffff;
+}
+
+.program-alt-hero-content .program-alt-badge {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 900px) {
+  .program-alt-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .program-alt-side {
+    position: static;
+  }
+}
 
 @media (max-width: 640px) {
   .program-alt-shell {
@@ -240,6 +293,7 @@
 
   .program-alt-hero {
     padding-top: 40px;
+    margin: 0 -20px;
   }
 
   .program-alt-btn {
