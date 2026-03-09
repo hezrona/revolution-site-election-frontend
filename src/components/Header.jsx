@@ -16,13 +16,11 @@
           },
           {
             label: "Partenaires",
-            href: "#partner-article",
-            // className: "nav_donate",
+            href: "#partner-article"
           },
           {
             label: "Forum",
-            href: "#forum",
-            // className: "nav_donate",
+            href: "#forum"
           }
         ];
 
