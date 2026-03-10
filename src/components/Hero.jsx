@@ -12,8 +12,7 @@ export default function Hero({ content, loading }) {
     content?.subtitle || "Candidat aux éléctions Consulaires Madagascar 2026";
   const eyebrow = content?.eyebrow || "";
   
-  const leftQuote  = content?.leftQuote  || "Pus jamais seul avec L'UFM";
-  const rightQuote = content?.rightQuote || "Nous ne serons pas les habituels conseillers inutiles";
+
 
   const buttons =
     content?.buttons && content.buttons.length
@@ -52,42 +51,36 @@ export default function Hero({ content, loading }) {
         <source src={videoSrc} type="video/mp4" />
       </video>
 
-      <div className="hero-layout">
-        <p className="hero-side hero-side--left">{leftQuote}</p>
-
-        <div className="container hero-content">
-          {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-          <h1>
-            {firstName} <span>{lastName}</span>
-          </h1>
-          <div align="center">{teamLine}</div>
-          <p className="subtitle">
-            <b>{subtitle}</b>
-          </p>
-          <div className="hero-actions">
-            {buttons.map((button) => (
-              <button
-                key={button.label}
-                className={`btn btn-${button.variant || "solid"}`}
-                type="button"
-              >
-                {button.label}
-              </button>
-            ))}
-          </div>
-          <div align="center">
+      <div className="container hero-content">
+        {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
+        <h1>
+          {firstName} <span>{lastName}</span>
+        </h1>
+        <div>{teamLine}</div>
+        <p className="subtitle">
+          <b>{subtitle}</b>
+        </p>
+        <div className="hero-actions">
+          {buttons.map((button) => (
             <button
-              className="scroll-indicator"
+              key={button.label}
+              className={`btn btn-${button.variant || "solid"}`}
               type="button"
-              onClick={handleScrollDown}
-              aria-label="Descendre"
             >
-              <FaArrowDown />
+              {button.label}
             </button>
-          </div>
+          ))}
         </div>
-
-        <p className="hero-side hero-side--right">{rightQuote}</p>
+        <div>
+          <button
+            className="scroll-indicator"
+            type="button"
+            onClick={handleScrollDown}
+            aria-label="Descendre"
+          >
+            <FaArrowDown />
+          </button>
+        </div>
       </div>
     </section>
   );

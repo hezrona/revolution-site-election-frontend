@@ -4,49 +4,49 @@ import { getStrapiMediaUrl } from "../../api/strapi";
 import "./listAction.css";
 import consulImage from "../../assets/image/consul.png";
 import familleEtEducationImage from "../../assets/image/famille_et_education.png";
+import { FaHeartbeat, FaBriefcase, FaHome, FaPassport, FaShieldAlt, FaLock, FaGraduationCap } from "react-icons/fa";
+
 
 const fallbackActions = [
   {
     title: "Santé",
     description: "",
-    icon: "🎥",
-    // link: "#share-video",
+    icon: <FaHeartbeat />,
     link: "#",
   },
   {
     title: "Soutenir les entrepreneurs français à Madagascar : une ambition concrète",
     description: "",
-    icon: "🖼️",
+    icon: <FaBriefcase />,
     link: "#entrepreneur",
   },
   {
     title: "Vie Quotidienne",
     description: "",
-    icon: "🔗",
+    icon: <FaHome />,
   },
   {
     title: "Démarches Consulaires",
     description: "",
-    icon: consulImage,
+    icon: <FaPassport />,
     link: "#sign-petition",
   },
   {
     title: "Sécurité physique",
     description: "",
-    icon: "💬",
-    // link: "#donate"
+    icon: <FaShieldAlt />,
     link: "#"
   },
   {
     title: "Sécurité patrimoniale",
     description: "",
-    icon: "🖨️",
+    icon: <FaLock />,
     link: "#heritage-security",
   },
   {
     title: "Famille & Education",
     description: "",
-    icon: familleEtEducationImage,
+    icon: <FaGraduationCap />,
     link: "#print-tract",
   }/*,
   {
@@ -115,20 +115,7 @@ export default function ListAction({ content }) {
     return getStrapiMediaUrl(iconUrl);
   };
 
-  const renderIcon = (action) => {
-    const iconSrc = resolveIconSrc(action?.icon);
-    if (iconSrc) {
-      return (
-        <img
-          src={iconSrc}
-          alt={action?.title || "Action"}
-          className="list-action-icon-image"
-          loading="lazy"
-        />
-      );
-    }
-    return action?.icon;
-  };
+  const renderIcon = (icon) => icon;
 
   return (
     <section className="list-action" id="actions">

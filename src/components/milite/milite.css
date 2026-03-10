@@ -1,0 +1,170 @@
+.milite-page {
+  background: var(--color-cream);
+}
+
+.milite-hero {
+  position: relative;
+  background-image:
+    linear-gradient(rgba(15, 35, 52, 0.85), rgba(15, 35, 52, 0.75)),
+    url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1400&q=80");
+  background-size: cover;
+  background-position: center;
+  color: var(--color-white);
+  padding: 80px 0 120px;
+}
+
+.milite-hero-inner {
+  max-width: 720px;
+  text-align: center;
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.milite-back {
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.milite-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  margin: 0;
+  color: var(--color-mustard);
+}
+
+.milite-hero-sub {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-white);
+  margin: 0;
+  font-style: italic;
+}
+
+/* Form */
+
+.milite-form {
+  background: var(--color-cream);
+  padding: 0 0 90px;
+}
+
+.milite-form-inner {
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  transform: translateY(-60px);
+  background: #f9e7b8;
+  border-radius: 24px;
+  padding: 36px 40px;
+  box-shadow: 0 20px 60px rgba(31, 63, 91, 0.15);
+  border: 1px solid rgba(31, 63, 91, 0.1);
+}
+
+.milite-form-box {
+  background: var(--color-navy);
+  color: var(--color-white);
+  border-radius: 16px;
+  padding: 20px 24px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+
+.milite-action-form {
+  display: grid;
+  gap: 18px;
+}
+
+.milite-form-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.milite-action-form label {
+  display: grid;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--color-navy);
+  font-size: 0.9rem;
+}
+
+.milite-action-form input,
+.milite-action-form select {
+  border: 2px solid var(--color-navy);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: #fdf5e0;
+  font-size: 0.95rem;
+  width: 100%;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.milite-action-form input:focus,
+.milite-action-form select:focus {
+  outline: none;
+  border-color: var(--color-pink);
+  box-shadow: 0 0 0 3px rgba(225, 70, 122, 0.12);
+}
+
+.milite-checkbox-row {
+  display: flex;
+  flex-direction: row !important;
+  gap: 10px;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-navy);
+}
+
+.milite-checkbox-row input {
+  width: 18px !important;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.milite-btn {
+  background: var(--color-mustard);
+  color: var(--color-navy);
+  border: none;
+  border-radius: 999px;
+  padding: 16px 24px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 8px 20px rgba(244, 193, 68, 0.4);
+}
+
+.milite-btn:hover {
+  background: #e0b23b;
+  transform: translateY(-2px);
+}
+
+.milite-btn:active {
+  transform: translateY(0);
+}
+
+.milite-footnote {
+  font-size: 0.82rem;
+  color: rgba(31, 63, 91, 0.7);
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .milite-form-inner {
+    transform: translateY(-50px);
+    padding: 24px 20px;
+  }
+
+  .milite-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

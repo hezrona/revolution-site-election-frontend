@@ -25,6 +25,7 @@ import PartenaireArticle from "./components/partenaire/PartenaireArticle.jsx";
 import AdministrationPage from "./components/administration/AdministrationPage.jsx";
 import ForumPage from "./components/forum/ForumPage.jsx";
 import { useHomeContent } from "./hooks/useHomeContent.js";
+import MilitePage from "./components/milite/MilitePage.jsx";
 
 export default function App() {
   const [activeView, setActiveView] = useState(window.location.hash);
@@ -73,6 +74,10 @@ export default function App() {
         <AdministrationPage />
       ) : activeView === "#forum" ? (
         <ForumPage />
+      ) : activeView === "#milite" ? (
+        <MilitePage />
+      ) : activeView === "#team" ? (
+        <TeamPage />
       ) : (
         <main>
           {/* {error ? (

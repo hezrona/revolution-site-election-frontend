@@ -2,23 +2,17 @@
   return (
     <section className="take-action-hero">
       <div className="container take-action-hero-inner">
-        <a className="take-action-back" href="#top">← Back</a>
-        <h1>Je convaincs</h1>
-        <p>
-          Do you know a Parisian who should hear about the project? Share their
-          contact and we will follow up with care.
-        </p>
+        <a className="take-action-back" href="#top">← Retour</a>
+        <div className="take-action-hero-box">
+          <h1>Chaque conversation compte !</h1>
+          <p>Recommandez-nous un proche, un ami ou un collègue : nous prendrons le relais.</p>
+        </div>
         <div className="take-action-card">
-          <h2>Every conversation matters</h2>
-          <p>
-            Recommend a friend, neighbor, or colleague. Our team will contact
-            them with respect and clarity.
-          </p>
           <ul>
-            <li>Direct impact: a personal recommendation carries weight.</li>
-            <li>Tailored approach: we adapt to their concerns.</li>
-            <li>Multiplier effect: one convinced resident reaches others.</li>
-            <li>Respectful contact: no pressure, just dialogue.</li>
+            <li><strong>Impact direct</strong> — Une recommandation personnelle a plus de poids qu'un tract anonyme.</li>
+            <li><strong>Approche adaptée</strong> — Nous adaptons notre discours aux préoccupations de votre contact.</li>
+            <li><strong>Effet multiplicateur</strong> — Un convaincu en convainc d'autres.</li>
+            <li><strong>Contact bienveillant</strong> — Notre équipe appelle avec respect et sans insistance.</li>
           </ul>
         </div>
       </div>

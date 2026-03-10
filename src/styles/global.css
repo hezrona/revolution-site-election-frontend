@@ -40,6 +40,9 @@ main {
   margin: 0 auto;
 }
 
+.hero .container {
+  margin: 0;
+}
 .btn {
   border: none;
   padding: 12px 22px;

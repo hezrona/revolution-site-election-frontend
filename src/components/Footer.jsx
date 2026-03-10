@@ -1,4 +1,5 @@
 import { candidate } from "../data/candidate";
+import { FaHandHoldingHeart, FaUsers, FaComments } from "react-icons/fa";
 
 export default function Footer({ content }) {
   const engageTitle = content?.engageTitle || "Je veux faire plus";
@@ -9,42 +10,43 @@ export default function Footer({ content }) {
       ? content.engageCards
       : [
           {
-            icon: "�",
+            icon: <FaHandHoldingHeart />,
             iconClass: "engage-icon-yellow",
             title: "Je donne",
-            description: "Soutenez financierement la campagne pour un Paris heureux à Madagascar",
+            description: "Soutenir financièrement la campagne",
             buttonLabel: "En savoir plus ?",
             buttonClass: "btn-accent",
+            href: "#donate",
           },
           {
-            icon: "?",
+            icon: <FaUsers />,
             iconClass: "engage-icon-pink",
             title: "Je milite",
             description: "Rejoignez nos equipes sur le terrain pour faire campagne",
             buttonLabel: "En savoir plus ?",
             buttonClass: "btn-solid",
+            href: "#milite",
           },
           {
-            icon: "?",
+            icon: <FaComments />,
             iconClass: "engage-icon-pink",
             title: "Je convaincs",
             description: "Recommandez un autre Français de Madagascar",
             buttonLabel: "En savoir plus ?",
             buttonClass: "btn-solid",
+            href: "#take-action",
           },
         ];
 
   const footerName = content?.name || candidate.fullName;
   const footerTagline =
-    content?.tagline || "Building a city that listens and acts.";
+    content?.tagline || "Plus jamais seul avec EFM.";
   const footerLinks =
     content?.links && content.links.length
       ? content.links
       : [
-          { label: "Who am I?", href: "#about" },
-          { label: "Program", href: "#program" },
-          { label: "Open city", href: "#cities" },
-          { label: "Shop", href: "#shop" },
+          { label: "Qui suis-je ?", href: "#about" },
+          { label: "Programme", href: "#program" },
         ];
   const footerActions =
     content?.actions && content.actions.length
@@ -71,9 +73,12 @@ export default function Footer({ content }) {
                 </div>
                 <h3>{card.title}</h3>
                 <p>{card.description}</p>
-                <button className={`btn ${card.buttonClass || "btn-solid"}`} type="button">
+                <a
+                  href={card.href || "#"}
+                  className={`btn ${card.buttonClass || "btn-solid"}`}
+                >
                   {card.buttonLabel}
-                </button>
+                </a>
               </div>
             ))}
           </div>
@@ -104,7 +109,6 @@ export default function Footer({ content }) {
         </div>
       </div>
       <div className="footer-bottom">
-        {/**<span>Paid for by citizens for change.</span>}**/}
         <span>{footerBottom}</span>
       </div>
     </footer>

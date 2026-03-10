@@ -7,13 +7,7 @@ export default function Program({ content }) {
 
   return (
     <section className="program" id="program">
-      <div className="container program-inner">
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <button className="btn btn-solid" type="button">
-          {buttonLabel}
-        </button>
-      </div>
+      <div className="container program-inner" />
     </section>
   );
 }

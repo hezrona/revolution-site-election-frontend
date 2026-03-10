@@ -1,9 +1,11 @@
 ﻿const concerns = [
-  "Housing",
-  "Safety",
-  "Cleanliness",
-  "Mobility",
-  "Economy",
+  "Santé",
+  "Sécurité physique",
+  "Sécurité patrimoniale",
+  "Famille & Education",
+  "Démarches consulaires",
+  "Entrepreneurs",
+  "Vie quotidienne",
 ];
 
 const ACTION_URL = "https://script.google.com/macros/s/AKfycbxWNaYl4eEt7tPGVbWGOXoEUYMlUZ1zyzZlIk3YZod5nQBJN6NbRz15j9oAII0wbLde/exec";
@@ -30,30 +32,30 @@ export default function TakeActionForm() {
   return (
     <section className="take-action-form">
       <div className="container take-action-form-inner">
-        <h2>Person to contact</h2>
+        <h2>Personne à recommander</h2>
         <form className="action-form" onSubmit={handleSubmit}>
           <div className="form-grid">
             <label>
-              First name
+              Prénom
               <input type="text" name="contactFirstName" />
             </label>
             <label>
-              Last name
+              Nom
               <input type="text" name="contactLastName" />
             </label>
             <label>
-              Phone
-              <input type="tel" name="contactPhone" />
+              Téléphone
+              <input type="tel" name="contactPhone" placeholder="06 XX XX XX XX" />
             </label>
             <label>
-              City
-              <input type="text" name="contactCity" />
+              Ville de résidence
+              <input type="text" name="contactCity" placeholder="Antananarivo, Tamatave..." />
             </label>
           </div>
           <label>
-            Main concern
+            Sujet de préoccupation principal
             <select name="contactConcern">
-              <option value="">Select a topic</option>
+              <option value="">Sélectionnez un sujet</option>
               {concerns.map((item) => (
                 <option value={item} key={item}>
                   {item}
@@ -61,35 +63,34 @@ export default function TakeActionForm() {
               ))}
             </select>
           </label>
-          <h3>Your details</h3>
+          <h3>Vos coordonnées</h3>
           <div className="form-grid">
             <label>
-              Your first name
+              Votre prénom
               <input type="text" name="senderFirstName" />
             </label>
             <label>
-              Your last name
+              Votre nom
               <input type="text" name="senderLastName" />
             </label>
             <label>
-              Your phone
+              Votre téléphone
               <input type="tel" name="senderPhone" />
             </label>
             <label>
-              Your email
+              Votre email
               <input type="email" name="senderEmail" />
             </label>
           </div>
           <label className="checkbox-row">
             <input type="checkbox" name="consent" />
-            I agreed that I can be contacted by the campaign team.
+            J'accepte d'être contacté(e) par l'équipe de campagne.
           </label>
           <button className="btn btn-solid" type="submit">
-            Recommend this contact
+            Je recommande ce contact
           </button>
           <p className="form-footnote">
-            Data is handled respectfully. We will only contact the person you
-            recommend.
+            Vos données sont traitées conformément au RGPD et ne seront jamais cédées à des tiers.
           </p>
         </form>
       </div>
