@@ -14,7 +14,7 @@ export default function Header({ content }) {
           {
             label: "Administration",
             href: "#administration",
-            // className: "nav_donates",
+            // className: "nav_donatess",
           },
           {
             label: "Partenaires",
