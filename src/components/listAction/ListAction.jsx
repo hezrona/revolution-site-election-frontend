@@ -15,7 +15,7 @@ const fallbackActions = [
     link: "#",
   },
   {
-    title: "Soutenir les entrepreneurs français à Madagascar : une ambition concrète",
+    title: "Entreprise et entrepreneurs",
     description: "",
     icon: <FaBriefcase />,
     link: "#entrepreneur",

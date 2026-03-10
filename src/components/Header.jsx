@@ -1,4 +1,6 @@
-﻿export default function Header({ content }) {
+﻿import ufmLogo from "../assets/logos/ufm-logo.png";
+
+export default function Header({ content }) {
   const logoFirst = content?.logo?.firstName || "Union des Français";
   const logoLast = content?.logo?.lastName || "de Madagascar";
   const links =
@@ -28,8 +30,11 @@
     <header className="site-header">
       <div className="container header-inner">
         <a href="#" className="logo" aria-label="Retour à l'accueil">
-          <span>{logoFirst}</span>
-          <span className="logo-accent">{logoLast}</span>
+          <img src={ufmLogo} alt="UFM logo" className="logo-img" />
+          <div className="logo-text">
+            <span>{logoFirst}</span>
+            <span className="logo-accent">{logoLast}</span>
+          </div>
         </a>
         <nav className="nav">
           <a
