@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { fetchStrapi } from "../api/strapi";
 
 const CACHE_KEY = "program_content_v1";
-const TTL_MS = 5 * 60 * 1000;
 
 function buildButtons(source) {
   if (source?.buttons && source.buttons.length) {
@@ -85,19 +84,6 @@ export function useProgramContent() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const cachedRaw = localStorage.getItem(CACHE_KEY);
-    if (cachedRaw) {
-      const cached = JSON.parse(cachedRaw);
-      if (Date.now() - cached.time < TTL_MS) {
-        if (cached.data?.content) {
-          setData(cached.data);
-        } else {
-          setData({ content: normalizeProgramContent(cached.data) });
-        }
-        setLoading(false);
-      }
-    }
-
     fetchStrapi("/programme?populate=*")
       .then((json) => {
         const normalized = normalizeProgramContent(json);
