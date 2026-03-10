@@ -71,7 +71,7 @@ export default function Hero({ content, loading }) {
             </button>
           ))}
         </div>
-        <div>
+        {/* <div>
           <button
             className="scroll-indicator"
             type="button"
@@ -80,7 +80,7 @@ export default function Hero({ content, loading }) {
           >
             <FaArrowDown />
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
