@@ -2,6 +2,7 @@
 import { candidate } from "../data/candidate";
 import heroVideo from "../assets/video/main_site.mp4";
 import { getStrapiMediaUrl } from "../api/strapi";
+import ufmLogo from "../assets/logos/ufm-logo.png";
 
 // TODO: center
 export default function Hero({ content, loading }) {
@@ -53,6 +54,7 @@ export default function Hero({ content, loading }) {
 
       <div className="container hero-content">
         {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
+        <img src={ufmLogo} alt="UFM" className="hero-logo" />
         <h1>
           {firstName} <span>{lastName}</span>
         </h1>
