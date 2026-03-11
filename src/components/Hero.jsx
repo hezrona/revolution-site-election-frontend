@@ -1,16 +1,15 @@
-﻿import { FaArrowDown } from "react-icons/fa";
-import { candidate } from "../data/candidate";
+﻿import { candidate } from "../data/candidate";
 import heroVideo from "../assets/video/main_site.mp4";
 import { getStrapiMediaUrl } from "../api/strapi";
 import ufmLogo from "../assets/logos/ufm-logo.png";
+import christianVideo from "../assets/video/Christian_site_accueil.mp4";
 
 // TODO: center
 export default function Hero({ content, loading }) {
   const firstName = content?.firstName || candidate.firstName;
   const lastName = content?.lastName || candidate.lastName;
   const teamLine = content?.teamLine || "et son équipe";
-  const subtitle =
-    content?.subtitle || "Candidat aux éléctions Consulaires Madagascar 2026";
+  const subtitle = content?.subtitle || "Candidat aux éléctions Consulaires Madagascar 2026";
   const eyebrow = content?.eyebrow || "";
   
 
@@ -39,29 +38,28 @@ export default function Hero({ content, loading }) {
   };
 
   return (
-    <section className="hero" id="top">
-      <video
-        className="hero-video"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload={loading ? "none" : "auto"}
-        aria-hidden="true"
-      >
-        <source src={videoSrc} type="video/mp4" />
-      </video>
+  <section className="hero" id="top">
+    <video
+      className="hero-video"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload={loading ? "none" : "auto"}
+      aria-hidden="true"
+    >
+      <source src={videoSrc} type="video/mp4" />
+    </video>
 
+    <div className="hero-split">
       <div className="container hero-content">
-        {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
         <img src={ufmLogo} alt="UFM" className="hero-logo" />
+        {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
         <h1>
           {firstName} <span>{lastName}</span>
         </h1>
         <div>{teamLine}</div>
-        <p className="subtitle">
-          <b>{subtitle}</b>
-        </p>
+        <p className="subtitle"><b>{subtitle}</b></p>
         <div className="hero-actions">
           {buttons.map((button) => (
             <button
@@ -73,17 +71,28 @@ export default function Hero({ content, loading }) {
             </button>
           ))}
         </div>
-        {/* <div>
-          <button
-            className="scroll-indicator"
-            type="button"
-            onClick={handleScrollDown}
-            aria-label="Descendre"
-          >
-            <FaArrowDown />
-          </button>
-        </div> */}
       </div>
-    </section>
-  );
+
+      <div className="hero-presentation">
+        <div className="hero-presentation-card">
+          <p className="hero-presentation-phrase">Plus jamais seul avec l'UFM</p>
+          <div className="hero-presentation-video-wrapper">
+            <video
+              className="hero-presentation-video"
+              playsInline
+              preload="metadata"
+              onClick={(e) => {
+                const v = e.currentTarget;
+                v.paused ? v.play() : v.pause();
+              }}
+            >
+              <source src={christianVideo} type="video/mp4" />
+            </video>
+            <div className="hero-presentation-play-hint">▶ Cliquez pour lancer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
 }
