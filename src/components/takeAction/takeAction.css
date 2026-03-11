@@ -1,23 +1,23 @@
 ﻿.take-action-page {
-  background: var(--color-cream);
-}
-
-.take-action-hero {
-  position: relative;
   background-image:
     linear-gradient(rgba(15, 35, 52, 0.85), rgba(15, 35, 52, 0.75)),
     url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1400&q=80");
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
+}
+
+.take-action-hero {
+  position: relative;
   color: var(--color-white);
   padding: 80px 0 120px;
 }
 
 .take-action-hero-inner {
-  max-width: 720px;
+  max-width: 520px;
   text-align: center;
   display: grid;
-  gap: 18px;
+  gap: 20px;
   justify-items: center;
 }
 
@@ -39,14 +39,14 @@
 }
 
 .take-action-card {
-  background: rgba(246, 232, 199, 0.95);
-  color: var(--color-navy);
-  border-radius: var(--radius-lg);
-  padding: 24px 26px;
+  background: rgba(246, 232, 199, 0.15);
+  color: var(--color-white);
+  border-radius: 20px;
+  padding: 24px 28px;
   text-align: left;
-  box-shadow: var(--shadow-soft);
   width: 100%;
-  max-width: 560px;
+  max-width: 480px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .take-action-card h2 {
@@ -75,40 +75,41 @@
   background: var(--color-pink);
   color: white;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
 }
 
 .take-action-hero-box {
   background: var(--color-navy);
   color: var(--color-white);
-  border-radius: var(--radius-lg);
+  border-radius: 20px;
   padding: 28px 32px;
   text-align: center;
-  max-width: 560px;
+  max-width: 480px;
   width: 100%;
 }
 
 .take-action-hero-box h1 {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   color: var(--color-mustard);
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 
 .take-action-hero-box p {
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.6;
+  font-size: 0.95rem;
+  opacity: 0.9;
 }
 
 .take-action-form {
-  background: var(--color-cream);
   padding: 0 0 90px;
 }
 

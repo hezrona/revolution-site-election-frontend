@@ -1,8 +1,6 @@
 ﻿import { candidate } from "../data/candidate";
 import heroVideo from "../assets/video/main_site.mp4";
 import { getStrapiMediaUrl } from "../api/strapi";
-import ufmLogo from "../assets/logos/ufm-logo.png";
-import christianVideo from "../assets/video/Christian_site_accueil.mp4";
 
 // TODO: center
 export default function Hero({ content, loading }) {
@@ -14,13 +12,6 @@ export default function Hero({ content, loading }) {
   
 
 
-  const buttons =
-    content?.buttons && content.buttons.length
-      ? content.buttons
-      : [
-          { label: "Rejoignez les soutiens actifs", variant: "solid" },
-          { label: "Proposer une idée", variant: "outline" },
-        ];
 
   const videoPath =
     content?.video?.data?.attributes?.url || content?.video?.url || "";
@@ -53,44 +44,12 @@ export default function Hero({ content, loading }) {
 
     <div className="hero-split">
       <div className="container hero-content">
-        <img src={ufmLogo} alt="UFM" className="hero-logo" />
         {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
         <h1>
           {firstName} <span>{lastName}</span>
         </h1>
         <div>{teamLine}</div>
         <p className="subtitle"><b>{subtitle}</b></p>
-        <div className="hero-actions">
-          {buttons.map((button) => (
-            <button
-              key={button.label}
-              className={`btn btn-${button.variant || "solid"}`}
-              type="button"
-            >
-              {button.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="hero-presentation">
-        <div className="hero-presentation-card">
-          <p className="hero-presentation-phrase">Plus jamais seul avec l'UFM</p>
-          <div className="hero-presentation-video-wrapper">
-            <video
-              className="hero-presentation-video"
-              playsInline
-              preload="metadata"
-              onClick={(e) => {
-                const v = e.currentTarget;
-                v.paused ? v.play() : v.pause();
-              }}
-            >
-              <source src={christianVideo} type="video/mp4" />
-            </video>
-            <div className="hero-presentation-play-hint">▶ Cliquez pour lancer</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
