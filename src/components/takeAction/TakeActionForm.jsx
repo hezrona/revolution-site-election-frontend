@@ -31,7 +31,7 @@ export default function TakeActionForm() {
 
   return (
     <section className="take-action-form">
-      <div className="container take-action-form-inner">
+      <div className="take-action-form-inner">
         <h2>Personne à recommander</h2>
         <form className="action-form" onSubmit={handleSubmit}>
           <div className="form-grid">
