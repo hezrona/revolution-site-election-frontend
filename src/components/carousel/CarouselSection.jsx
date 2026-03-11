@@ -4,6 +4,7 @@ import charlotteDeValence from "../../assets/image/charlotte.png";
 import nigarBarday from "../../assets/image/barday.png";
 import dunogue from "../../assets/image/Dunogue.png";
 import dominiqueImage from "../../assets/image/Dominique.png";
+import michelLouvet from "../../assets/image/Michel_LOUVET_viollet.png";
 import "./carousel.css";
 
 const defaultSlides = [
@@ -62,6 +63,15 @@ Mon parcours vous le connaissez, une carrière dans la finance, des responsabili
     image: dominiqueImage,
     description:
       "Française installée à Madagascar depuis 30 ans, je suis orthoptiste diplômée de la faculté de médecine de Paris. J’ai exercé à l’Assistance Publique – Hôpitaux de Paris (AP-HP) et en cabinet libéral avant de rejoindre Tananarive.",
+  },
+  {
+  title: "Michel LOUVET",
+  image: michelLouvet,
+  description: `Né en France en 1948, ancien dirigeant de banque, Michel Louvet allie maîtrise des rouages financiers et aventure entrepreneuriale à Madagascar depuis 1998. Père de cinq enfants, il connaît intimement les défis de l'expatriation et de la mobilité internationale.
+
+  Installé à Manakara, il dirige une exploitation agricole spécialisée dans la production d'épices et d'huiles essentielles destinées à l'exportation. Cette double culture bancaire et agricole lui confère une lecture unique des besoins de notre communauté.
+
+  Fidèle depuis 1976 à une vision gaullienne de la France, il rejoint la liste UFM avec des priorités claires : porter vos attentes auprès du Consulat, soutenir le tissu associatif, et accompagner les résidents face aux complexités administratives et financières de la vie à Madagascar.`,
   },
 ];
 

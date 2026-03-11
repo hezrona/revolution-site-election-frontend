@@ -8,6 +8,7 @@ import charlotteEntrprise2 from "../../assets/image/charlotte_ep2.png";
 import bardayImage from "../../assets/image/barday.png";
 import dunogueImage from "../../assets/image/Dunogue.png";
 import dominiqueImage from "../../assets/image/Dominique.png";
+import michelLouvetImage from "../../assets/image/Michel_LOUVET_viollet.png";
 
 const teamMembers = [
   {
@@ -248,7 +249,39 @@ const teamMembers = [
 
       <p><strong>Je suis convaincue que, ensemble, nous pouvons faire avancer ces dossiers essentiels pour notre quotidien.</strong></p>
         `,
-    }
+    },
+
+    {
+    name: "Michel LOUVET",
+    role: "",
+    tag: "",
+    image: michelLouvetImage,
+    description: `
+  <h3>L'engagement d'un homme de conviction, entre racines françaises et passion malgache.</h3>
+
+  <h3>Un parcours d'excellence et de résilience</h3>
+  <p>Né en France en 1948, Michel Louvet incarne cette génération de bâtisseurs qui ont su concilier une carrière de haut niveau dans l'Hexagone avec une aventure entrepreneuriale audacieuse sur la Grande Île. Ancien dirigeant de banque, il a piloté des structures complexes, acquérant une maîtrise rigoureuse des rouages financiers et administratifs — une expertise précieuse pour comprendre et défendre les dossiers économiques et sociaux de nos compatriotes.</p>
+
+  <p>En 1998, Michel fait le choix de Madagascar. Accompagné de son épouse, père de cinq enfants répartis entre l'Europe et l'Afrique, il connaît intimement les défis de l'expatriation, la distance familiale et les questions liées à la mobilité internationale.</p>
+
+  <h3>Un acteur économique ancré dans le territoire</h3>
+  <p>À Manakara, il a développé une exploitation agricole exemplaire spécialisée dans la <strong>production d'épices et d'huiles essentielles</strong> destinées à l'exportation. Cette double culture bancaire et agricole lui confère une lecture unique des besoins de notre communauté : logistique, administration, sécurité et enjeux climatiques.</p>
+
+  <h3>Une fidélité aux valeurs de la France</h3>
+  <p>Fidèle depuis 1976 à une vision gaullienne de la France — souveraineté, responsabilité et service — Michel croit en une droite de conviction, capable de proposer des solutions pragmatiques tout en restant fière de son identité.</p>
+
+  <h3>Ses priorités pour vous</h3>
+  <ul>
+    <li><strong>Une voix forte auprès du Consulat</strong> — Porter vos attentes avec autorité et pragmatisme auprès de l'administration.</li>
+    <li><strong>Soutien au tissu associatif</strong> — Appuyer les initiatives qui créent du lien et de la solidarité, particulièrement pour les Français isolés en province.</li>
+    <li><strong>Expertise et proximité</strong> — Conseiller et accompagner les résidents face aux complexités administratives et financières de la vie à Madagascar.</li>
+  </ul>
+
+  <blockquote>« Je souhaite mettre ma connaissance intime de ce pays et la rigueur de mon parcours de dirigeant au service de chacun d'entre vous. Nous avons besoin d'élus d'expérience qui agissent comme de véritables relais entre vos réalités de terrain et les instances nationales. »</blockquote>
+
+  <p><strong>En 2026, faites le choix de l'expérience, de la fidélité et de la proximité.</strong></p>
+`,
+  },
 ];
 
 const teamHero = {
