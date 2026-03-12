@@ -12,7 +12,7 @@ const fallbackActions = [
     title: "Santé",
     description: "",
     icon: <FaHeartbeat />,
-    link: "#",
+    link: "#health",
   },
   {
     title: "Entreprise et entrepreneurs",
@@ -29,13 +29,13 @@ const fallbackActions = [
     title: "Démarches Consulaires",
     description: "",
     icon: <FaPassport />,
-    link: "#sign-petition",
+    link: "#consular-procedures",
   },
   {
     title: "Sécurité physique",
     description: "",
     icon: <FaShieldAlt />,
-    link: "#"
+    link: "#physical-security"
   },
   {
     title: "Sécurité patrimoniale",
@@ -47,7 +47,7 @@ const fallbackActions = [
     title: "Famille & Education",
     description: "",
     icon: <FaGraduationCap />,
-    link: "#print-tract",
+    link: "#family-education",
   }/*,
   {
     title: `Je rejoins ${candidate.firstName}`,

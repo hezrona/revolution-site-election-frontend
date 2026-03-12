@@ -19,6 +19,7 @@ import ShareVideo from "./components/shareVideo/ShareVideo.jsx";
 import ProgramPresentation from "./components/program/ProgramPresentation.jsx";
 import TeamPage from "./components/team/TeamPage.jsx";
 import EntrepreneurPage from "./components/entrepreneur/EntrepreneurPage.jsx";
+import HealthPage from "./components/health/HealthPage.jsx";
 import OurValue from "./components/ourValue/OurValue.jsx";
 import HeritageSecurity from "./components/heritageSecurity/HeritageSecurity.jsx";
 import PartenaireArticle from "./components/partenaire/PartenaireArticle.jsx";
@@ -26,6 +27,11 @@ import AdministrationPage from "./components/administration/AdministrationPage.j
 import ForumPage from "./components/forum/ForumPage.jsx";
 import { useHomeContent } from "./hooks/useHomeContent.js";
 import MilitePage from "./components/milite/MilitePage.jsx";
+import PhysicalSecurity from "./components/physicalSecurity/PhysicalSecurity.jsx";
+import FamilyEducation from "./components/familyEducation/FamilyEducation.jsx";
+import ConsularProcedures from "./components/consularProcedures/ConsularProcedures.jsx";
+
+
 
 export default function App() {
   const [activeView, setActiveView] = useState(window.location.hash);
@@ -48,8 +54,14 @@ export default function App() {
         <ProgramAltPage />
       ) : activeView === "#entrepreneur" ? (
         <EntrepreneurPage />
+      ) : activeView === "#health" ? (
+        <HealthPage />
       ) : activeView === "#take-action" ? (
         <TakeActionPage />
+      ) : activeView === "#physical-security" ? (
+        <PhysicalSecurity />
+      ) : activeView === "#consular-procedures" ? (
+        <ConsularProcedures />
       ) : activeView === "#testify" ? (
         <TestifyPage />
       ) : activeView === "#donate" ? (
@@ -68,6 +80,8 @@ export default function App() {
         <OurValue />
       ) : activeView === "#heritage-security" ? (
         <HeritageSecurity />
+      ) : activeView === "#family-education" ? (
+        <FamilyEducation />
       ) : activeView === "#partner-article" ? (
         <PartenaireArticle />
       ) : activeView === "#administration" ? (
