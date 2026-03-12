@@ -24,6 +24,7 @@ const fallbackActions = [
     title: "Vie Quotidienne",
     description: "",
     icon: <FaHome />,
+    link: "#daily-life",
   },
   {
     title: "Démarches Consulaires",

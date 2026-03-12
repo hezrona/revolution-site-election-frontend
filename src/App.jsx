@@ -30,6 +30,8 @@ import MilitePage from "./components/milite/MilitePage.jsx";
 import PhysicalSecurity from "./components/physicalSecurity/PhysicalSecurity.jsx";
 import FamilyEducation from "./components/familyEducation/FamilyEducation.jsx";
 import ConsularProcedures from "./components/consularProcedures/ConsularProcedures.jsx";
+import DailyLife from "./components/dailyLife/DailyLife.jsx";
+
 
 
 
@@ -62,6 +64,8 @@ export default function App() {
         <PhysicalSecurity />
       ) : activeView === "#consular-procedures" ? (
         <ConsularProcedures />
+      ) : activeView === "#daily-life" ? (
+        <DailyLife />
       ) : activeView === "#testify" ? (
         <TestifyPage />
       ) : activeView === "#donate" ? (

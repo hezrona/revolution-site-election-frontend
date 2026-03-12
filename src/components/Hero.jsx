@@ -2,56 +2,46 @@
 import heroVideo from "../assets/video/main_site.mp4";
 import { getStrapiMediaUrl } from "../api/strapi";
 
-// TODO: center
 export default function Hero({ content, loading }) {
   const firstName = content?.firstName || candidate.firstName;
   const lastName = content?.lastName || candidate.lastName;
   const teamLine = content?.teamLine || "et son équipe";
-  const subtitle = content?.subtitle || "Candidat aux éléctions Consulaires Madagascar 2026";
+  const subtitle =
+    content?.subtitle || "Candidat aux éléctions Consulaires Madagascar 2026";
   const eyebrow = content?.eyebrow || "";
-  
-
 
 
   const videoPath =
     content?.video?.data?.attributes?.url || content?.video?.url || "";
   const videoSrc = videoPath ? getStrapiMediaUrl(videoPath) : heroVideo;
-  const handleScrollDown = () => {
-    const heroSection = document.querySelector(".hero");
-    const nextSection = heroSection?.nextElementSibling;
-
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
-    }
-
-    window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
-  };
 
   return (
-  <section className="hero" id="top">
-    <video
-      className="hero-video"
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload={loading ? "none" : "auto"}
-      aria-hidden="true"
-    >
-      <source src={videoSrc} type="video/mp4" />
-    </video>
+    <section className="hero" id="top">
+      <video
+        className="hero-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload={loading ? "none" : "auto"}
+        aria-hidden="true"
+      >
+        <source src={videoSrc} type="video/mp4" />
+      </video>
 
-    <div className="hero-split">
-      <div className="container hero-content">
-        {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-        <h1>
-          {firstName} <span>{lastName}</span>
-        </h1>
-        <div>{teamLine}</div>
-        <p className="subtitle"><b>{subtitle}</b></p>
+      <div className="hero-split">
+        <div className="container hero-content">
+          {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
+          <h1>
+            {firstName} <span>{lastName}</span>
+          </h1>
+          <div>{teamLine}</div>
+          <p className="subtitle">
+            <b>{subtitle}</b>
+          </p>
+
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
 }

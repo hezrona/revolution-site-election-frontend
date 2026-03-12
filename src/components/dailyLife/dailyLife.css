@@ -1,0 +1,226 @@
+.daily-life-page {
+  background: var(--color-cream);
+}
+
+.daily-life-hero {
+  position: relative;
+  padding: 70px 0 60px;
+  background: linear-gradient(135deg, #1f3f5b 0%, #2b567a 55%, #1f3f5b 100%);
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.daily-life-hero::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(244, 193, 68, 0.2);
+  top: -120px;
+  right: -80px;
+}
+
+.daily-life-hero::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(225, 70, 122, 0.2);
+  bottom: -120px;
+  left: -60px;
+}
+
+.daily-life-hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 720px;
+  animation: fadeUp 0.9s ease both;
+}
+
+.daily-life-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 3.6vw, 3.4rem);
+  margin: 12px 0 12px;
+}
+
+.daily-life-hero p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.daily-life-content {
+  padding: 50px 0 90px;
+}
+
+.daily-life-card {
+  background: #f9e7b8;
+  border-radius: var(--radius-lg);
+  padding: 34px clamp(22px, 4vw, 46px);
+  box-shadow: var(--shadow-soft);
+  line-height: 1.8;
+  color: var(--color-slate);
+  display: grid;
+  gap: 24px;
+}
+
+.daily-life-card > p {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.daily-life-section {
+  display: grid;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 2px solid rgba(31, 63, 91, 0.1);
+}
+
+.daily-life-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.daily-life-section p {
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.daily-life-highlight {
+  background: rgba(31, 63, 91, 0.07);
+  border-left: 4px solid var(--color-pink);
+  border-radius: 0 12px 12px 0;
+  padding: 14px 18px;
+  font-size: 1rem;
+  color: var(--color-navy);
+  line-height: 1.7;
+}
+
+.daily-life-pole {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding-top: 8px;
+  border-top: 2px solid rgba(31, 63, 91, 0.1);
+}
+
+.daily-life-pole-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--color-navy);
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.daily-life-pole h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-navy);
+  margin: 0 0 8px;
+}
+
+.daily-life-pole p {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.daily-life-list {
+  padding-left: 20px;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.daily-life-contact {
+  background: var(--color-navy);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  display: grid;
+  gap: 12px;
+}
+
+.daily-life-contact-label {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-mustard);
+  font-weight: 700;
+}
+
+.daily-life-contact-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.daily-life-contact-links a {
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.daily-life-contact-links a:hover {
+  color: var(--color-mustard);
+}
+
+.daily-life-signature {
+  display: grid;
+  gap: 6px;
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  background: rgba(31, 63, 91, 0.08);
+  border: 1px solid rgba(31, 63, 91, 0.15);
+}
+
+.signature-label {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-navy);
+  font-weight: 700;
+}
+
+.signature-value {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-navy);
+}
+
+@media (max-width: 640px) {
+  .daily-life-hero {
+    padding: 58px 0 50px;
+  }
+
+  .daily-life-card {
+    padding: 26px 22px;
+  }
+
+  .daily-life-pole {
+    grid-template-columns: 44px 1fr;
+    gap: 12px;
+  }
+
+  .daily-life-pole-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+  }
+
+  .daily-life-contact-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

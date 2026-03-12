@@ -16,7 +16,7 @@
   --radius-lg: 28px;
   --radius-md: 18px;
   --radius-sm: 10px;
-  --section-pad: 88px;
+  --section-pad: 64px;
   --content-width: 1100px;
   --gradient-hero: linear-gradient(
     120deg,
@@ -24,4 +24,16 @@
     rgba(12, 12, 12, 0.6)
   );
   --gradient-pink: linear-gradient(120deg, #e1467a, #c23463);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --section-pad: 76px;
+  }
+}
+
+@media (min-width: 900px) {
+  :root {
+    --section-pad: 88px;
+  }
 }
