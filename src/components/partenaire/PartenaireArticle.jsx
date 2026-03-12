@@ -819,7 +819,7 @@ export default function PartenaireArticle() {
   };
 
   return (
-    <main className="partner-hub">
+    <main className="partner-hub under-construction">
       <section className="partner-hero">
         <div className="partner-hero-inner">
           <span className="partner-hero-badge">UFDM · Partenaires</span>

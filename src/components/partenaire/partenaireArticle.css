@@ -510,3 +510,24 @@
     align-items: flex-start;
   }
 }
+
+/* ── Bannière "En construction" ── */
+.under-construction::after {
+  content: "PAGE EN CONSTRUCTION";
+  position: fixed;
+  top: 38%;
+  left: -30%;
+  width: 160%;
+  padding: 18px 0;
+  background: rgba(31, 63, 91, 0.88);
+  color: var(--color-mustard);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-align: center;
+  transform: rotate(-12deg);
+  z-index: 9999;
+  pointer-events: none;
+  text-transform: uppercase;
+}
