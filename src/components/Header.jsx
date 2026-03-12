@@ -12,7 +12,7 @@
           {
             label: "Administration",
             href: "#administration",
-            // className: "nav_donate",
+            // className: "nav_donates",
           },
           {
             label: "Partenaires",
