@@ -9,6 +9,7 @@ import bardayImage from "../../assets/image/barday.png";
 import dunogueImage from "../../assets/image/Dunogue.png";
 import dominiqueImage from "../../assets/image/Dominique.png";
 import michelLouvetImage from "../../assets/image/Michel_LOUVET_viollet.png";
+import lancioCassimImage from "../../assets/image/Lancia_CASSIM.png";
 
 const teamMembers = [
   {
@@ -252,6 +253,36 @@ const teamMembers = [
     },
 
     {
+    name: "Lancio CASSIM",
+    role: "",
+    tag: "",
+    image: lancioCassimImage,
+    description: `
+  <h3>L'engagement de terrain et la force de l'expérience</h3>
+
+  <p>Né à Madagascar en 1987, Lancio Cassim porte en lui la double culture qui fait la richesse de notre expatriation. Après un parcours académique à La Réunion (Baccalauréat ES et études supérieures en Management Économique et Social ainsi qu'en Langues), il a choisi de revenir s'établir sur sa terre natale — un choix d'engagement autant que de vie.</p>
+
+  <p>Établi à Antalaha, dans la région de la SAVA, il vit au quotidien les défis que rencontrent les Français de province : l'éloignement des services administratifs, les enjeux de sécurité et la nécessité de maintenir un lien fort avec la France malgré la distance géographique.</p>
+
+  <h3>Une expertise économique reconnue</h3>
+
+  <p>Gérant de la société <strong>Excelia Madagascar</strong> depuis 2013, il a su naviguer dans les complexités du marché malgache pour bâtir une entreprise solide. De 2020 à 2024, il a présidé le <strong>SEVAM (Syndicat des Exportateurs de Vanille de Madagascar)</strong>, défendant les intérêts des exportateurs face aux régulations mouvantes et aux crises de la filière. Cette expérience lui a conféré une maîtrise rare des relations institutionnelles et une capacité à porter une voix forte auprès des autorités malgaches et françaises.</p>
+
+  <h3>Ses priorités pour la communauté française</h3>
+  <ul>
+    <li><strong>L'accès aux services publics</strong> — Réduire la fracture entre Tananarive et les provinces pour que les démarches consulaires ne soient plus un fardeau logistique.</li>
+    <li><strong>La sécurité et le patrimoine</strong> — Protéger nos biens et nos personnes dans un environnement parfois instable.</li>
+    <li><strong>L'éducation</strong> — Soutenir l'accès à un enseignement français de qualité, pilier de l'avenir de nos enfants.</li>
+    <li><strong>Le soutien à l'entrepreneuriat</strong> — Accompagner les porteurs de projets et les chefs d'entreprise français dans leurs démarches.</li>
+  </ul>
+
+  <blockquote>« J'ai pu mesurer, par mon parcours et mes échanges constants, les attentes et les difficultés de nos compatriotes. Notre représentation mérite une voix capable de défendre leurs intérêts avec constance. »</blockquote>
+
+  <p><strong>Le 17 mai 2026, avec Lancio Cassim et l'équipe de Christian Tibayrenc, choisissez une représentation qui connaît votre terrain et défend votre avenir.</strong></p>
+`,
+  },
+
+  {
     name: "Michel LOUVET",
     role: "",
     tag: "",

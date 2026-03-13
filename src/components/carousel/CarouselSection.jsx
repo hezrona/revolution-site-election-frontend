@@ -5,6 +5,7 @@ import nigarBarday from "../../assets/image/barday.png";
 import dunogue from "../../assets/image/Dunogue.png";
 import dominiqueImage from "../../assets/image/Dominique.png";
 import michelLouvet from "../../assets/image/Michel_LOUVET_viollet.png";
+import lancioCassim from "../../assets/image/Lancia_CASSIM.png";
 import "./carousel.css";
 
 const defaultSlides = [
@@ -63,6 +64,15 @@ Mon parcours vous le connaissez, une carrière dans la finance, des responsabili
     image: dominiqueImage,
     description:
       "Française installée à Madagascar depuis 30 ans, je suis orthoptiste diplômée de la faculté de médecine de Paris. J’ai exercé à l’Assistance Publique – Hôpitaux de Paris (AP-HP) et en cabinet libéral avant de rejoindre Tananarive.",
+  },
+  {
+    title: "Lancio CASSIM",
+    image: lancioCassim,
+    description: `Né à Madagascar en 1987, Lancio Cassim porte en lui la double culture qui fait la richesse de notre expatriation. Après un parcours académique à La Réunion, il a choisi de revenir s'établir sur sa terre natale — un choix d'engagement autant que de vie.
+
+Établi à Antalaha, dans la région de la SAVA, il vit au quotidien les défis des Français de province : l'éloignement des services administratifs, les enjeux de sécurité et la nécessité de maintenir un lien fort avec la France malgré la distance.
+
+Gérant de la société Excelia Madagascar depuis 2013, il a présidé le SEVAM (Syndicat des Exportateurs de Vanille de Madagascar) de 2020 à 2024, défendant les intérêts des exportateurs face aux régulations mouvantes et aux crises de la filière. Ses priorités : améliorer l'accès aux services consulaires en province, soutenir l'entrepreneuriat français, protéger les biens et les personnes, et garantir un enseignement français de qualité pour nos enfants.`,
   },
   {
   title: "Michel LOUVET",
