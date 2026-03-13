@@ -198,9 +198,6 @@ export default function AdministrationPage() {
                       <div className="admin-fiche-viewer">
                         <div className="admin-fiche-viewer-bar">
                           <span>📄 {item.title}</span>
-                          <a href={activeDoc.driveUrl} target="_blank" rel="noreferrer" className="admin-fiche-viewer-open">
-                            ↗ Ouvrir dans Google Docs
-                          </a>
                         </div>
                         <iframe
                           src={activeDoc.url}
