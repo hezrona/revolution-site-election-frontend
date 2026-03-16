@@ -4,7 +4,7 @@ import { FaHandHoldingHeart, FaUsers, FaComments } from "react-icons/fa";
 export default function Footer({ content }) {
   const engageTitle = content?.engageTitle || "Je veux faire plus";
   const engageSubtitle =
-    content?.engageSubtitle || "5 facons de s'engager pour changer Paris";
+    content?.engageSubtitle || "3 facons de s'engager pour changer Paris";
   const engageCards =
     content?.engageCards && content.engageCards.length
       ? content.engageCards
@@ -40,12 +40,12 @@ export default function Footer({ content }) {
 
   const footerName = content?.name || candidate.fullName;
   const footerTagline =
-    content?.tagline || "Plus jamais seul avec EFM.";
+    content?.tagline || "Plus jamais seul avec UFM.";
   const footerLinks =
     content?.links && content.links.length
       ? content.links
       : [
-          { label: "Qui suis-je ?", href: "#about" },
+          { label: "Qui suis-je ?", href: "#team" },
           { label: "Programme", href: "#program" },
         ];
   const footerActions =

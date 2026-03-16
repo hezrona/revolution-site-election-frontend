@@ -2,15 +2,21 @@
 import { getStrapiMediaUrl } from "../../api/strapi";
 
 export default function ProgramPresentation({ content }) {
-  const title = content?.title || "Santé · Sécurité · Quotidien";
+  const title = content?.title || "Santé · Sécurité · Famille · Quotidien · Consulat · Entreprise";
   const eyebrow = content?.eyebrow || "Vous ne serez plus jamais seul";
   const buttonLabel = content?.buttonLabel || "Notre programme";
   const imagePath =
     content?.image?.data?.attributes?.url || content?.image?.url || "";
-  const imageAlt = content?.image?.data?.attributes?.alternativeText ||
+  const imageAlt =
+    content?.image?.data?.attributes?.alternativeText ||
     content?.image?.alt ||
     "Panneau une ville heureuse";
   const imageUrl = imagePath ? getStrapiMediaUrl(imagePath) : "";
+
+  const handleClick = () => {
+    const el = document.getElementById("program-alt-page");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section className="program-presentation">
@@ -21,9 +27,13 @@ export default function ProgramPresentation({ content }) {
           ) : null}
         </div>
         <div className="program-presentation-content">
-          <h2>{title}</h2>
           <p className="program-presentation-eyebrow">{eyebrow}</p>
-          <button className="btn program-presentation-btn" type="button">
+          <h2>{title}</h2>
+          <button
+            className="btn program-presentation-btn"
+            type="button"
+            onClick={handleClick}
+          >
             {buttonLabel}
           </button>
         </div>

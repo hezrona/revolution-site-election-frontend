@@ -1,26 +1,29 @@
 ﻿import { getStrapiMediaUrl } from "../api/strapi";
+import representationImg from "../assets/image/representation.png";
 
 export default function About({ content }) {
   const title =
-    content?.title || "Prêt à tourner la page des conseillers politisés et inutiles ?";
-  const buttonLabel = content?.buttonLabel || "En savoir plus";
+    content?.title || "Tourner la page des conseillers inutiles, dont le seul but est de se faire élire sénateur";
+  const buttonLabel = content?.buttonLabel || "Lire la suite";
   const imagePath =
     content?.image?.data?.attributes?.url || content?.image?.url || "";
-  const imageAlt = content?.image?.data?.attributes?.alternativeText ||
+  const imageAlt =
+    content?.image?.data?.attributes?.alternativeText ||
     content?.image?.alt ||
     "Portrait";
-  const imageUrl = imagePath ? getStrapiMediaUrl(imagePath) : "";
+
+  // Strapi en priorité, sinon l'image locale
+  const imageUrl = imagePath ? getStrapiMediaUrl(imagePath) : representationImg;
 
   return (
     <section className="about" id="about">
       <div className="container about-grid">
         <div className="about-card">
           <div className="image-frame">
-            {imageUrl ? <img src={imageUrl} alt={imageAlt} loading="lazy" /> : null}
+            <img src={imageUrl} alt={imageAlt} loading="lazy" />
           </div>
         </div>
         <div className="about-text">
-          <p className="quote-mark">" "</p>
           <h2>{title}</h2>
           <button className="btn btn-accent" type="button">
             {buttonLabel}

@@ -347,7 +347,7 @@
 
 .image-frame {
   border-radius: var(--radius-md);
-  background: linear-gradient(160deg, #71b0b9, #2b6f7b);
+  background: transparent;
   min-height: 200px;
   position: relative;
   overflow: hidden;
@@ -366,12 +366,7 @@
 }
 
 .image-frame::after {
-  content: "";
-  position: absolute;
-  inset: 14px;
-  border-radius: var(--radius-md);
-  background: url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=60") center/cover;
-  opacity: 0.8;
+  display: none;
 }
 
 .about-text h2 {

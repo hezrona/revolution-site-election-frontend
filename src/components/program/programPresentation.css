@@ -4,17 +4,28 @@
 }
 
 .program-presentation-inner {
-  display: grid;
-  gap: 36px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  text-align: center;
+  gap: 28px;
+  justify-content: center;
+  width: 100%;
 }
 
+/* Cache le bloc media si vide, affiche si image présente */
 .program-presentation-media {
+  display: none;
+}
+
+.program-presentation-media:has(img) {
+  display: block;
   background: #ffe7a5;
   border-radius: 28px;
   padding: 16px;
   box-shadow: var(--shadow-soft);
+  max-width: 480px;
+  width: 100%;
 }
 
 .program-presentation-media img {
@@ -25,6 +36,9 @@
 
 .program-presentation-content {
   color: var(--color-navy);
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .program-presentation-eyebrow {
@@ -33,17 +47,16 @@
   font-weight: 700;
   color: var(--color-pink);
   margin: 0 0 10px;
+  font-size: 0.85rem;
 }
 
 .program-presentation-content h2 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  margin: 0 0 12px;
-}
-
-.program-presentation-content p {
-  margin: 0 0 20px;
-  line-height: 1.7;
+  font-size: clamp(1rem, 2.2vw, 1.8rem);
+  margin: 0 0 16px;
+  line-height: 1.2;
+  white-space: nowrap; 
+  text-overflow: ellipsis; 
 }
 
 .program-presentation-btn {
@@ -61,6 +74,6 @@
 
 @media (max-width: 640px) {
   .program-presentation {
-    padding: 60px 0;
+    padding: 52px 0;
   }
 }
