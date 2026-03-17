@@ -4,7 +4,7 @@ import { FaHandHoldingHeart, FaUsers, FaComments } from "react-icons/fa";
 export default function Footer({ content }) {
   const engageTitle = content?.engageTitle || "Je veux faire plus";
   const engageSubtitle =
-    content?.engageSubtitle || "3 façons de s'engager pour changer Paris";
+    content?.engageSubtitle || "3 façons de s'engager pour renouveller le conseil consulaire";
   const engageCards =
     content?.engageCards?.length
       ? content.engageCards

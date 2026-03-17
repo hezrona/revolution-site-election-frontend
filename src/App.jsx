@@ -32,6 +32,7 @@ import FamilyEducation from "./components/familyEducation/FamilyEducation.jsx";
 import ConsularProcedures from "./components/consularProcedures/ConsularProcedures.jsx";
 import DailyLife from "./components/dailyLife/DailyLife.jsx";
 import AboutArticle from "./components/about/AboutArticle.jsx";
+import AdminPage from "./components/admin/AdminPage.jsx";
 
 
 
@@ -68,7 +69,9 @@ export default function App() {
         <ConsularProcedures />
       ) : activeView === "#daily-life" ? (
         <DailyLife />
-      ) : activeView === "#testify" ? (
+      ): activeView === "#admin" ? (
+        <AdminPage />
+      ): activeView === "#testify" ? (
         <TestifyPage />
       ) : activeView === "#donate" ? (
         <DonatePage />

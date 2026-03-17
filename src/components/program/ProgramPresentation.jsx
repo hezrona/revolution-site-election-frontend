@@ -14,8 +14,7 @@ export default function ProgramPresentation({ content }) {
   const imageUrl = imagePath ? getStrapiMediaUrl(imagePath) : "";
 
   const handleClick = () => {
-    const el = document.getElementById("program-alt-page");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    window.location.hash = "#program-alt-page";
   };
 
   return (
