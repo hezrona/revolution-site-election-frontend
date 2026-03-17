@@ -12,7 +12,6 @@ export default function About({ content }) {
     content?.image?.alt ||
     "Portrait";
 
-  // Strapi en priorité, sinon l'image locale
   const imageUrl = imagePath ? getStrapiMediaUrl(imagePath) : representationImg;
 
   return (
@@ -25,9 +24,9 @@ export default function About({ content }) {
         </div>
         <div className="about-text">
           <h2>{title}</h2>
-          <button className="btn btn-accent" type="button">
+          <a href="#about-article" className="btn btn-accent">
             {buttonLabel}
-          </button>
+          </a>
         </div>
       </div>
     </section>

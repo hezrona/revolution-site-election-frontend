@@ -31,6 +31,8 @@ import PhysicalSecurity from "./components/physicalSecurity/PhysicalSecurity.jsx
 import FamilyEducation from "./components/familyEducation/FamilyEducation.jsx";
 import ConsularProcedures from "./components/consularProcedures/ConsularProcedures.jsx";
 import DailyLife from "./components/dailyLife/DailyLife.jsx";
+import AboutArticle from "./components/about/AboutArticle.jsx";
+
 
 
 
@@ -94,6 +96,9 @@ export default function App() {
         <ForumPage />
       ) : activeView === "#milite" ? (
         <MilitePage />
+      )
+      : activeView === "#about-article" ? (
+        <AboutArticle />
       ) : activeView === "#team" ? (
         <TeamPage />
       ) : (

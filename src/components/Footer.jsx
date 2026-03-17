@@ -4,9 +4,9 @@ import { FaHandHoldingHeart, FaUsers, FaComments } from "react-icons/fa";
 export default function Footer({ content }) {
   const engageTitle = content?.engageTitle || "Je veux faire plus";
   const engageSubtitle =
-    content?.engageSubtitle || "3 facons de s'engager pour changer Paris";
+    content?.engageSubtitle || "3 façons de s'engager pour changer Paris";
   const engageCards =
-    content?.engageCards && content.engageCards.length
+    content?.engageCards?.length
       ? content.engageCards
       : [
           {
@@ -22,7 +22,8 @@ export default function Footer({ content }) {
             icon: <FaUsers />,
             iconClass: "engage-icon-pink",
             title: "Je milite",
-            description: "Rejoignez nos equipes sur le terrain pour faire campagne",
+            description:
+              "Rejoignez nos équipes sur le terrain pour faire campagne",
             buttonLabel: "En savoir plus ?",
             buttonClass: "btn-solid",
             href: "#milite",
@@ -39,21 +40,13 @@ export default function Footer({ content }) {
         ];
 
   const footerName = content?.name || candidate.fullName;
-  const footerTagline =
-    content?.tagline || "Plus jamais seul avec UFM.";
+  const footerTagline = content?.tagline || "Plus jamais seul avec UFM.";
   const footerLinks =
-    content?.links && content.links.length
+    content?.links?.length
       ? content.links
       : [
           { label: "Qui suis-je ?", href: "#team" },
           { label: "Programme", href: "#program" },
-        ];
-  const footerActions =
-    content?.actions && content.actions.length
-      ? content.actions
-      : [
-          { label: "Volunteer", variant: "outline" },
-          { label: "Donate", variant: "solid" },
         ];
   const footerBottom = content?.bottom || "Copyright 2026";
 
@@ -66,9 +59,11 @@ export default function Footer({ content }) {
             <p>{engageSubtitle}</p>
           </div>
           <div className="footer-engage-grid">
-            {engageCards.map((card) => (
-              <div className="engage-card" key={card.title}>
-                <div className={`engage-icon ${card.iconClass || ""}`.trim()}>
+            {engageCards.map((card, index) => (
+              <div className="engage-card" key={card.title || index}>
+                <div
+                  className={`engage-icon ${card.iconClass || ""}`.trim()}
+                >
                   {card.icon}
                 </div>
                 <h3>{card.title}</h3>
@@ -84,6 +79,7 @@ export default function Footer({ content }) {
           </div>
         </div>
       </section>
+
       <div className="container footer-inner">
         <div>
           <h3>{footerName}</h3>
@@ -91,23 +87,16 @@ export default function Footer({ content }) {
         </div>
         <div className="footer-links">
           {footerLinks.map((link) => (
-            <a key={`${link.label}-${link.href}`} href={link.href}>
+            <a
+              key={`${link.label}-${link.href}`}
+              href={link.href}
+            >
               {link.label}
             </a>
           ))}
         </div>
-        <div className="footer-actions">
-          {footerActions.map((action) => (
-            <button
-              key={action.label}
-              className={`btn btn-${action.variant || "solid"}`}
-              type="button"
-            >
-              {action.label}
-            </button>
-          ))}
-        </div>
       </div>
+
       <div className="footer-bottom">
         <span>{footerBottom}</span>
       </div>

@@ -1,0 +1,199 @@
+.about-article-page {
+  background: var(--color-cream);
+}
+
+.about-article-hero {
+  position: relative;
+  padding: 80px 0 72px;
+  background: linear-gradient(150deg, #0d1f2d 0%, #1f3f5b 45%, #162e44 100%);
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.about-article-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(244, 193, 68, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 193, 68, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  z-index: 0;
+}
+
+.about-article-hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-mustard), var(--color-pink), var(--color-mustard));
+}
+
+.about-article-hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 760px;
+  animation: fadeUp 0.9s ease both;
+}
+
+.about-article-hero-inner .eyebrow {
+  display: block; /* ← au lieu de inline */
+  color: var(--color-mustard);
+  margin-bottom: 4px;
+}
+
+.about-article-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  margin: 14px 0 16px;
+  line-height: 1.15;
+  background: linear-gradient(135deg, #ffffff 30%, var(--color-mustard));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about-article-hero p {
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 580px;
+}
+
+.about-article-content {
+  padding: 56px 0 96px;
+}
+
+.about-article-card {
+  background: #fff8ea;
+  border-radius: var(--radius-lg);
+  padding: 40px clamp(24px, 4vw, 52px);
+  box-shadow:
+    0 2px 0 rgba(244, 193, 68, 0.6),
+    0 24px 60px rgba(20, 32, 40, 0.1);
+  line-height: 1.8;
+  color: var(--color-slate);
+  display: grid;
+  gap: 28px;
+  border-top: 3px solid var(--color-mustard);
+}
+
+.about-article-card > p {
+  margin: 0;
+  font-size: 1.05rem;
+  padding: 18px 22px;
+  background: rgba(31, 63, 91, 0.05);
+  border-left: 4px solid var(--color-navy);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.about-article-section {
+  display: grid;
+  gap: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(31, 63, 91, 0.12);
+}
+
+.about-article-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  color: var(--color-navy);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-article-section h2::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 3px;
+  background: var(--color-mustard);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.about-article-section p {
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.about-article-list {
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.about-article-list li {
+  display: flex;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(31, 63, 91, 0.08);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.about-article-list li::before {
+  content: "→";
+  color: var(--color-mustard);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.about-article-conclusion {
+  border-left: 4px solid var(--color-pink);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 20px 24px;
+  background: rgba(225, 70, 122, 0.07);
+  display: grid;
+  gap: 10px;
+}
+
+.about-article-conclusion p {
+  margin: 0;
+  font-size: 1.02rem;
+  color: var(--color-navy);
+  line-height: 1.7;
+}
+
+.about-article-slogan {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-pink) !important;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .about-article-hero {
+    padding: 62px 0 54px;
+  }
+
+  .about-article-card {
+    padding: 28px 20px;
+    gap: 22px;
+  }
+}
+
+.about-article-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  transition: color 0.2s ease;
+}
+
+.about-article-back:hover {
+  color: var(--color-mustard);
+}
