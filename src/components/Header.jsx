@@ -16,7 +16,7 @@ export default function Header({ content }) {
           { label: "Forum", href: "#forum" },
         ];
 
-  // Close menu on resize to desktopss
+  // Close menu on resize to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 900) setMenuOpen(false);
