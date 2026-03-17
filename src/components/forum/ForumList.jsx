@@ -1,6 +1,16 @@
 import { RULES } from "./forumData.js";
 
 function TopicRow({ thread, onClick }) {
+  const replyCount = thread.reply_count
+    ? Math.max(0, thread.reply_count - 1)
+    : 0;
+
+  const date = thread.created_at
+    ? new Date(thread.created_at).toLocaleDateString("fr-FR", {
+        day: "numeric", month: "short", year: "numeric",
+      })
+    : thread.date;
+
   return (
     <article
       className="forum-topic-row"
@@ -16,9 +26,9 @@ function TopicRow({ thread, onClick }) {
         <div className="forum-topic-meta">
           <span>{thread.author}</span>
           <span>·</span>
-          <span>{thread.date}</span>
+          <span>{date}</span>
           <span>·</span>
-          <span>{thread.posts.length - 1} réponse{thread.posts.length - 1 > 1 ? "s" : ""}</span>
+          <span>{replyCount} réponse{replyCount > 1 ? "s" : ""}</span>
         </div>
       </div>
       <div className="forum-topic-arrow">→</div>
@@ -29,24 +39,25 @@ function TopicRow({ thread, onClick }) {
 export default function ForumList({ threads, onOpenThread, onNewTopic }) {
   return (
     <div className="forum-layout">
-
-      {/* Colonne principale */}
       <div className="forum-main-col">
         <div className="forum-topics-list">
-          {threads.map((thread) => (
-            <TopicRow
-              key={thread.id}
-              thread={thread}
-              onClick={() => onOpenThread(thread.id)}
-            />
-          ))}
+          {threads.length === 0 ? (
+            <div style={{ padding: "40px", textAlign: "center", color: "var(--color-slate)" }}>
+              Aucun sujet pour l'instant. Soyez le premier à poster !
+            </div>
+          ) : (
+            threads.map((thread) => (
+              <TopicRow
+                key={thread.id}
+                thread={thread}
+                onClick={() => onOpenThread(thread.id)}
+              />
+            ))
+          )}
         </div>
       </div>
 
-      {/* Sidebar */}
       <aside className="forum-sidebar">
-
-        {/* CTA */}
         <div className="forum-sidebar-cta">
           <p>Vous avez une question ou une info à partager avec la communauté ?</p>
           <button className="forum-btn-primary forum-btn-primary--full" onClick={onNewTopic}>
@@ -58,7 +69,6 @@ export default function ForumList({ threads, onOpenThread, onNewTopic }) {
           </button>
         </div>
 
-        {/* Règles */}
         <div className="forum-sidebar-card">
           <div className="forum-sidebar-head">📋 Règles du forum</div>
           <div className="forum-sidebar-body">
@@ -72,7 +82,6 @@ export default function ForumList({ threads, onOpenThread, onNewTopic }) {
             </ol>
           </div>
         </div>
-
       </aside>
     </div>
   );
