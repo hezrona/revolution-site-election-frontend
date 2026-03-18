@@ -187,12 +187,6 @@
   box-shadow: 0 0 0 3px rgba(225, 70, 122, 0.12);
 }
 
-.form-footnote {
-  font-size: 0.85rem;
-  color: rgba(31, 63, 91, 0.8);
-  margin: 0;
-}
-
 @media (max-width: 640px) {
   .take-action-form-inner {
     transform: translateY(-50px);

@@ -135,11 +135,42 @@
 
 .admin-btn-logout:hover { background: rgba(255,255,255,0.25); }
 
+/* ── Onglets ────────────────────────────── */
+.admin-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid rgba(31,63,91,0.12);
+  background: white;
+  padding: 0 24px;
+}
+
+.admin-tab {
+  padding: 14px 22px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-slate);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -2px;
+}
+
+.admin-tab:hover { color: var(--color-navy); }
+
+.admin-tab.active {
+  color: var(--color-navy);
+  border-bottom-color: var(--color-navy);
+}
+
+/* ── Layout forum ───────────────────────── */
 .admin-layout {
   display: grid;
   grid-template-columns: 380px 1fr;
   gap: 0;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 112px); /* header + tabs */
 }
 
 /* ── Colonne sujets ─────────────────────── */
@@ -287,4 +318,197 @@
   color: var(--color-slate);
   font-size: 0.85rem;
   padding: 20px 0;
+}
+
+/* ── Newsletter tab ─────────────────────── */
+.nl-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 0;
+  min-height: calc(100vh - 112px);
+}
+
+.nl-subscribers-col {
+  border-right: 1px solid rgba(31,63,91,0.12);
+  padding: 24px 20px;
+  overflow-y: auto;
+}
+
+.nl-compose-col {
+  padding: 24px 32px;
+  overflow-y: auto;
+}
+
+.nl-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.nl-count {
+  font-weight: 400;
+  color: var(--color-slate);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Liste abonnés */
+.nl-sub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nl-sub-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid rgba(31,63,91,0.1);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  transition: border-color 0.15s;
+}
+
+.nl-sub-row:hover { border-color: rgba(31,63,91,0.3); }
+
+.nl-sub-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nl-sub-email {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.nl-sub-email:hover { color: #162e41; }
+
+.nl-sub-date {
+  font-size: 0.68rem;
+  color: var(--color-slate);
+}
+
+/* Formulaire d'envoi */
+.nl-field {
+  margin-bottom: 18px;
+}
+
+.nl-field label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 6px;
+}
+
+.nl-field input[type="text"],
+.nl-field input[type="email"],
+.nl-field textarea,
+.nl-field select {
+  width: 100%;
+  padding: 10px 13px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  border: 1.5px solid rgba(31,63,91,0.16);
+  border-radius: 8px;
+  outline: none;
+  background: var(--color-cream);
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+  color: var(--color-navy);
+}
+
+.nl-field input:focus,
+.nl-field textarea:focus,
+.nl-field select:focus {
+  border-color: var(--color-navy);
+  background: white;
+}
+
+.nl-field textarea {
+  resize: vertical;
+  min-height: 160px;
+  line-height: 1.5;
+}
+
+.nl-recipient-row {
+  display: flex;
+  gap: 10px;
+}
+
+.nl-recipient-row select { flex: 0 0 auto; width: auto; }
+.nl-input-email { flex: 1; }
+
+.nl-hint {
+  font-size: 0.72rem;
+  color: var(--color-slate);
+  margin-top: 6px;
+}
+
+.nl-result {
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  margin-bottom: 14px;
+}
+
+.nl-result.ok {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #15803d;
+}
+
+.nl-result.err {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+}
+
+.nl-btn-send {
+  padding: 12px 28px;
+  background: var(--color-navy);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.nl-btn-send:hover { background: #162e41; }
+.nl-btn-send:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Newsletter public feedback */
+.newsletter-success {
+  color: #15803d;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.newsletter-error {
+  color: #dc2626;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  text-align: center;
 }

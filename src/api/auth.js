@@ -32,3 +32,12 @@ export async function deletePost(id, token) {
   });
   return res.json();
 }
+
+export async function refreshAccessToken() {
+  const res = await fetch(`${API}/api/auth/refresh`, {
+    method: "POST",
+    credentials: "include",
+  });
+  const data = await res.json();
+  return data.accessToken || null;
+}

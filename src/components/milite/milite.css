@@ -150,13 +150,6 @@
   transform: translateY(0);
 }
 
-.milite-footnote {
-  font-size: 0.82rem;
-  color: rgba(31, 63, 91, 0.7);
-  text-align: center;
-  margin: 0;
-}
-
 @media (max-width: 640px) {
   .milite-form-inner {
     transform: translateY(-50px);

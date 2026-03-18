@@ -82,16 +82,9 @@ export default function TakeActionForm() {
               <input type="email" name="senderEmail" />
             </label>
           </div>
-          <label className="checkbox-row">
-            <input type="checkbox" name="consent" />
-            J'accepte d'être contacté(e) par l'équipe de campagne.
-          </label>
           <button className="btn btn-solid" type="submit">
             Je recommande ce contact
           </button>
-          <p className="form-footnote">
-            Vos données sont traitées conformément au RGPD et ne seront jamais cédées à des tiers.
-          </p>
         </form>
       </div>
     </section>

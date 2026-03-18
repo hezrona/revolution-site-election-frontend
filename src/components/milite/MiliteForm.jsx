@@ -63,16 +63,9 @@ export default function MiliteForm() {
               ))}
             </select>
           </label>
-          <label className="milite-checkbox-row">
-            <input type="checkbox" name="securite" />
-            Je participe à la sécurité
-          </label>
           <button className="milite-btn" type="submit">
             Je rejoins l'équipe
           </button>
-          <p className="milite-footnote">
-            Vos données sont traitées conformément au RGPD et ne seront jamais cédées à des tiers.
-          </p>
         </form>
       </div>
     </section>
