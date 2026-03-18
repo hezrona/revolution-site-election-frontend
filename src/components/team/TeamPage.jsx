@@ -122,7 +122,7 @@ const teamMembers = [
   </section>
 </main>`,
   },
-  {
+    {
     name: "Nigar BARDAY",
     role: "",
     tag: "",
@@ -139,7 +139,7 @@ const teamMembers = [
 
     <div class="nigar-block">
       <div class="nigar-logo">
-        <img src="sib.png" alt="SIB" />
+        
       </div>
       <div class="nigar-content">
         <p><span class="nigar-title">SIB :</span> Société Industrielle BARDAY depuis 1947</p>
@@ -148,7 +148,7 @@ const teamMembers = [
 
     <div class="nigar-block">
       <div class="nigar-logo">
-        <img src="adnb.png" alt="ADNB" />
+        
       </div>
       <div class="nigar-content">
         <p><span class="nigar-title">ADNB :</span> Activités sur le terrain avec la SIB dédiée à la préservation de l’environnement</p>
@@ -157,7 +157,7 @@ const teamMembers = [
 
     <div class="nigar-block">
       <div class="nigar-logo">
-        <img src="clair-de-lune.png" alt="Clair de Lune" />
+        
       </div>
       <div class="nigar-content">
         <p><span class="nigar-title">Clair de Lune :</span> Artisanat au sein de l’atelier de céramique à Antananarivo</p>
@@ -166,7 +166,7 @@ const teamMembers = [
 
     <div class="nigar-block">
       <div class="nigar-logo">
-        <img src="pawane.png" alt="Pawane" />
+        
       </div>
       <div class="nigar-content">
         <p><span class="nigar-title">Pawane :</span> Tourisme avec location de bungalow pieds dans l’eau</p>

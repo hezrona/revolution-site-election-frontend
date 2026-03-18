@@ -240,7 +240,7 @@ export default function AdminDashboard({ token, onLogout }) {
       <div className="admin-header">
         <div className="admin-header-left">
           <span className="admin-header-logo">⚙️</span>
-          <h1>Tableau de bord — UFDM</h1>
+          <h1>Tableau de bord — UFM</h1>
         </div>
         <button className="admin-btn-logout" onClick={handleLogout}>
           Déconnexion

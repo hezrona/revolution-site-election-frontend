@@ -4,14 +4,14 @@ export const RULES = [
   "Ne publiez pas d'informations personnelles d'autrui.",
   "Pas de publicité ou de démarchage commercial.",
   "Vérifiez vos sources avant de partager une information.",
-  "Signalez tout contenu inapproprié à l'équipe UFDM.",
+  "Signalez tout contenu inapproprié à l'équipe UFM.",
 ];
 
 export const INITIAL_THREADS = [
   {
     id: 1,
-    title: "Bienvenue sur le Forum UFDM – Règles de bonne conduite",
-    author: "Admin UFDM",
+    title: "Bienvenue sur le Forum UFM – Règles de bonne conduite",
+    author: "Admin UFM",
     date: "15 jan. 2025",
     cat: "Général",
     excerpt:
@@ -19,7 +19,7 @@ export const INITIAL_THREADS = [
     posts: [
       {
         id: 1,
-        author: "Admin UFDM",
+        author: "Admin UFM",
         date: "15 jan. 2025 à 09:00",
         body: "Bonjour à tous et bienvenue sur le Forum de l'Union des Français à Madagascar !\n\nCe forum est un espace d'entraide et d'échange pour tous les Français résidant ou s'installant à Madagascar.\n\nMerci de respecter les règles de bonne conduite pour que nos échanges restent agréables pour tous.",
       },

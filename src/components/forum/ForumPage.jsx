@@ -53,7 +53,7 @@ export default function ForumPage() {
 
       <section className="forum-hero">
         <div className="forum-hero-inner">
-          <div className="forum-hero-badge">💬 Espace communautaire UFDM</div>
+          <div className="forum-hero-badge">💬 Espace communautaire UFM</div>
           <h1>Le <em>Forum</em> des Français de Madagascar</h1>
           <p>Posez vos questions, partagez vos expériences, aidez les autres membres.</p>
           <button className="forum-btn-primary" onClick={() => setModalOpen(true)}>

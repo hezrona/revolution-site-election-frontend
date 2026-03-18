@@ -29,7 +29,7 @@ export default function AdminLogin({ onLoginSuccess }) {
     <div className="admin-login-page">
       <div className="admin-login-box">
         <div className="admin-login-logo">🔐</div>
-        <h1>Administration UFDM</h1>
+        <h1>Administration UFM</h1>
         <p>Connectez-vous pour gérer le forum</p>
 
         {error && (

@@ -1,4 +1,6 @@
-﻿const concerns = [
+﻿import { useState } from "react";
+
+const concerns = [
   "Santé",
   "Sécurité physique",
   "Sécurité patrimoniale",
@@ -11,24 +13,95 @@
 const ACTION_URL = "https://script.google.com/macros/s/AKfycbxWNaYl4eEt7tPGVbWGOXoEUYMlUZ1zyzZlIk3YZod5nQBJN6NbRz15j9oAII0wbLde/exec";
 
 export default function TakeActionForm() {
-  const handleSubmit = (event) => {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [senderFirstName, setSenderFirstName] = useState("");
+  const [contactFirstName, setContactFirstName] = useState("");
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
+    setError(null);
+
     const form = event.currentTarget;
     const data = new FormData(form);
     const url = new URL(ACTION_URL);
+
+    // Capture les prénoms avant envoi pour la page de confirmation
+    setSenderFirstName(data.get("senderFirstName") || "");
+    setContactFirstName(data.get("contactFirstName") || "");
 
     for (const [key, value] of data.entries()) {
       url.searchParams.append(key, value);
     }
 
-    fetch(url.toString(), {
-      method: "GET",
-      mode: "no-cors",
-    }).then(() => {
-      form.reset();
-    });
+    try {
+      await fetch(url.toString(), {
+        method: "GET",
+        mode: "no-cors",
+      });
+      setSubmitted(true);
+    } catch (err) {
+      // TODO: adapter le message selon la réponse réelle du backend
+      setError("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setLoading(false);
+    }
   };
 
+  // ── Écran de confirmation ──────────────────────────────────────────────────
+  if (submitted) {
+    return (
+      <section className="take-action-form">
+        <div className="take-action-form-inner" style={{ textAlign: "center", display: "grid", gap: "20px" }}>
+          <div style={{ fontSize: "3rem" }}>🤝</div>
+          <h2 style={{ color: "var(--color-navy)", margin: 0, fontFamily: "var(--font-display)", fontSize: "1.8rem" }}>
+            Merci{senderFirstName ? `, ${senderFirstName}` : ""} !
+          </h2>
+          <div
+            style={{
+              background: "var(--color-navy)",
+              color: "var(--color-white)",
+              borderRadius: "16px",
+              padding: "20px 24px",
+              fontWeight: 700,
+              lineHeight: 1.6,
+            }}
+          >
+            Votre recommandation{contactFirstName ? ` pour ${contactFirstName}` : ""} a bien été transmise à notre équipe. Nous prendrons contact avec cette personne dans les meilleurs délais.
+          </div>
+          <ul style={{ textAlign: "left", color: "var(--color-navy)", display: "grid", gap: "10px", padding: "0 0 0 18px", margin: 0 }}>
+            <li>Notre équipe contacte votre proche sous 48h</li>
+            <li>Approche discrète et bienveillante, sans insistance</li>
+            <li>Vous pouvez recommander d'autres contacts à tout moment</li>
+          </ul>
+          
+          <a
+            href="#top"
+            style={{
+              background: "var(--color-mustard)",
+              color: "var(--color-navy)",
+              border: "none",
+              borderRadius: "999px",
+              padding: "16px 24px",
+              fontSize: "1.05rem",
+              fontWeight: 700,
+              fontFamily: "var(--font-display)",
+              cursor: "pointer",
+              textDecoration: "none",
+              textAlign: "center",
+              boxShadow: "0 8px 20px rgba(244, 193, 68, 0.4)",
+            }}
+          >
+            ← Retour à l'accueil
+          </a>
+        </div>
+      </section>
+    );
+  }
+
+  // ── Formulaire ─────────────────────────────────────────────────────────────
   return (
     <section className="take-action-form">
       <div className="take-action-form-inner">
@@ -82,9 +155,17 @@ export default function TakeActionForm() {
               <input type="email" name="senderEmail" />
             </label>
           </div>
-          <button className="btn btn-solid" type="submit">
-            Je recommande ce contact
+
+          {error && (
+            <p style={{ color: "red", fontWeight: 600, margin: 0 }}>{error}</p>
+          )}
+
+          <button className="btn btn-solid" type="submit" disabled={loading}>
+            {loading ? "Envoi en cours..." : "Je recommande ce contact"}
           </button>
+          <p style={{ fontSize: "0.82rem", color: "rgba(31,63,91,0.7)", textAlign: "center", margin: 0 }}>
+            Vos données sont traitées conformément au RGPD et ne seront jamais cédées à des tiers.
+          </p>
         </form>
       </div>
     </section>

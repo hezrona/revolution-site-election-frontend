@@ -175,7 +175,7 @@ function ChequeForm({ donor, onDonorChange }) {
       <div className="donate-info">
         <p>Veuillez libeller votre chèque à l'ordre de <strong>UFM</strong> et l'envoyer à :</p>
         <address style={{ marginTop: "10px", fontStyle: "normal", lineHeight: 1.8 }}>
-          UFDM – Service Dons<br />
+          UFM – Service Dons<br />
           123 Avenue de l'Indépendance<br />
           Antananarivo 101, Madagascar
         </address>

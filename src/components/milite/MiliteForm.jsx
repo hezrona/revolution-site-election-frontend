@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const villes = [
   "Antananarivo",
   "Tamatave",
@@ -11,24 +13,72 @@ const villes = [
 const ACTION_URL = "https://script.google.com/macros/s/AKfycbxWNaYl4eEt7tPGVbWGOXoEUYMlUZ1zyzZlIk3YZod5nQBJN6NbRz15j9oAII0wbLde/exec";
 
 export default function MiliteForm() {
-  const handleSubmit = (event) => {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [firstName, setFirstName] = useState("");
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
+    setError(null);
+
     const form = event.currentTarget;
     const data = new FormData(form);
     const url = new URL(ACTION_URL);
+
+    // Capture le prénom pour la page de confirmation
+    const capturedFirstName = data.get("firstName");
 
     for (const [key, value] of data.entries()) {
       url.searchParams.append(key, value);
     }
 
-    fetch(url.toString(), {
-      method: "GET",
-      mode: "no-cors",
-    }).then(() => {
-      form.reset();
-    });
+    try {
+      await fetch(url.toString(), {
+        method: "GET",
+        mode: "no-cors",
+      });
+      setFirstName(capturedFirstName);
+      setSubmitted(true);
+    } catch (err) {
+      // TODO: remplacer par un vrai message d'erreur selon la réponse backend
+      setError("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setLoading(false);
+    }
   };
 
+  // ── Écran de confirmation ──────────────────────────────────────────────────
+  if (submitted) {
+    return (
+      <section className="milite-form">
+        <div className="container milite-form-inner" style={{ textAlign: "center", gap: "20px", display: "grid" }}>
+          <div style={{ fontSize: "3rem" }}>🎉</div>
+          <h2 style={{ color: "var(--color-navy)", margin: 0, fontFamily: "var(--font-display)", fontSize: "1.8rem" }}>
+            Bienvenue dans l'équipe{firstName ? `, ${firstName}` : ""} !
+          </h2>
+          <div className="milite-form-box" style={{ marginBottom: 0 }}>
+            Merci de rejoindre notre campagne. Un membre de l'équipe vous contactera très prochainement pour vous donner les prochaines étapes.
+          </div>
+          <ul style={{ textAlign: "left", color: "var(--color-navy)", display: "grid", gap: "10px", padding: "0 0 0 18px", margin: 0 }}>
+            <li> Restez disponible — nous vous appelons sous 48h</li>
+            <li> Rejoignez notre groupe WhatsApp de votre ville</li>
+            <li> Consultez le calendrier des actions à venir</li>
+          </ul>
+          <a
+                    className="milite-btn"
+          href="#top"
+          style={{ display: "block", textDecoration: "none", textAlign: "center" }}
+        >
+          ← Retour à l'accueil
+        </a>
+        </div>
+      </section>
+    );
+  }
+
+  // ── Formulaire ─────────────────────────────────────────────────────────────
   return (
     <section className="milite-form">
       <div className="container milite-form-inner">
@@ -63,8 +113,13 @@ export default function MiliteForm() {
               ))}
             </select>
           </label>
-          <button className="milite-btn" type="submit">
-            Je rejoins l'équipe
+
+          {error && (
+            <p style={{ color: "red", fontWeight: 600, margin: 0 }}>{error}</p>
+          )}
+
+          <button className="milite-btn" type="submit" disabled={loading}>
+            {loading ? "Envoi en cours..." : "Je rejoins l'équipe"}
           </button>
         </form>
       </div>
