@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getThreads, getThread } from "../../api/forum.js";
 import { deleteThread, deletePost, logout } from "../../api/auth.js";
+import { getMilitants, deleteMilitant, getRecommendations, deleteRecommendation } from "../../api/campaign.js";
 import "./admin.css";
 
 /* ── API helpers newsletter ───────────────────────────────── */
@@ -36,12 +37,11 @@ function NewsletterTab({ token }) {
   const [subscribers, setSubscribers] = useState([]);
   const [loadingSubs, setLoadingSubs] = useState(true);
 
-  // Formulaire d'envoi
   const [subject,    setSubject]    = useState("");
   const [body,       setBody]       = useState("");
-  const [recipient,  setRecipient]  = useState("all"); // "all" | email string
+  const [recipient,  setRecipient]  = useState("all");
   const [sending,    setSending]    = useState(false);
-  const [sendResult, setSendResult] = useState(null); // { ok, message }
+  const [sendResult, setSendResult] = useState(null);
 
   useEffect(() => {
     api.getSubscribers()
@@ -65,7 +65,6 @@ function NewsletterTab({ token }) {
     setSendResult(null);
 
     const recipients = recipient === "all" ? [] : [recipient];
-    // Convertit le body en HTML simple (sauts de ligne → <br>)
     const html = body.replace(/\n/g, "<br>");
 
     const data = await api.sendEmail(subject, html, recipients);
@@ -81,13 +80,10 @@ function NewsletterTab({ token }) {
 
   return (
     <div className="nl-layout">
-
-      {/* ── Colonne gauche : abonnés ── */}
       <div className="nl-subscribers-col">
         <h2 className="nl-section-title">
           Abonnés <span className="nl-count">({subscribers.length})</span>
         </h2>
-
         {loadingSubs ? (
           <p className="admin-loading">Chargement…</p>
         ) : subscribers.length === 0 ? (
@@ -121,11 +117,8 @@ function NewsletterTab({ token }) {
         )}
       </div>
 
-      {/* ── Colonne droite : composer un email ── */}
       <div className="nl-compose-col">
         <h2 className="nl-section-title">Envoyer un email</h2>
-
-        {/* Destinataire */}
         <div className="nl-field">
           <label>Destinataire</label>
           <div className="nl-recipient-row">
@@ -155,8 +148,6 @@ function NewsletterTab({ token }) {
             </p>
           )}
         </div>
-
-        {/* Sujet */}
         <div className="nl-field">
           <label>Sujet</label>
           <input
@@ -166,8 +157,6 @@ function NewsletterTab({ token }) {
             onChange={(e) => setSubject(e.target.value)}
           />
         </div>
-
-        {/* Corps */}
         <div className="nl-field">
           <label>Message</label>
           <textarea
@@ -177,18 +166,12 @@ function NewsletterTab({ token }) {
             onChange={(e) => setBody(e.target.value)}
           />
         </div>
-
         {sendResult && (
           <div className={`nl-result ${sendResult.ok ? "ok" : "err"}`}>
             {sendResult.message}
           </div>
         )}
-
-        <button
-          className="nl-btn-send"
-          onClick={handleSend}
-          disabled={sending}
-        >
+        <button className="nl-btn-send" onClick={handleSend} disabled={sending}>
           {sending ? "Envoi en cours…" : "✉️ Envoyer"}
         </button>
       </div>
@@ -196,9 +179,135 @@ function NewsletterTab({ token }) {
   );
 }
 
+/* ── Sous-composant : onglet Militants ────────────────────── */
+function MilitantsTab({ token }) {
+  const [militants, setMilitants] = useState([]);
+  const [loading, setLoading]     = useState(true);
+
+  useEffect(() => {
+    getMilitants(token)
+      .then((data) => setMilitants(Array.isArray(data) ? data : []))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const handleDelete = async (id, name) => {
+    if (!confirm(`Supprimer ${name} ?`)) return;
+    await deleteMilitant(id, token);
+    setMilitants((prev) => prev.filter((m) => m.id !== id));
+  };
+
+  if (loading) return <p className="admin-loading">Chargement…</p>;
+  if (militants.length === 0) return <p className="admin-empty">Aucun militant inscrit.</p>;
+
+  return (
+    <div className="admin-table-wrapper">
+      <h2 className="admin-table-title">Militants ({militants.length})</h2>
+      <table className="admin-table">
+        <thead>
+          <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Ville</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {militants.map((m) => (
+            <tr key={m.id}>
+              <td>{m.first_name}</td>
+              <td>{m.last_name}</td>
+              <td>{m.email}</td>
+              <td>{m.phone || "—"}</td>
+              <td>{m.ville}</td>
+              <td>{new Date(m.created_at).toLocaleDateString("fr-FR")}</td>
+              <td>
+                <button
+                  className="admin-btn-delete"
+                  onClick={() => handleDelete(m.id, `${m.first_name} ${m.last_name}`)}
+                  title="Supprimer"
+                >
+                  🗑️
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+/* ── Sous-composant : onglet Recommandations ──────────────── */
+function RecommendationsTab({ token }) {
+  const [recs, setRecs]       = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getRecommendations(token)
+      .then((data) => setRecs(Array.isArray(data) ? data : []))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const handleDelete = async (id) => {
+    if (!confirm("Supprimer cette recommandation ?")) return;
+    await deleteRecommendation(id, token);
+    setRecs((prev) => prev.filter((r) => r.id !== id));
+  };
+
+  if (loading) return <p className="admin-loading">Chargement…</p>;
+  if (recs.length === 0) return <p className="admin-empty">Aucune recommandation.</p>;
+
+  return (
+    <div className="admin-table-wrapper">
+      <h2 className="admin-table-title">Recommandations ({recs.length})</h2>
+      <table className="admin-table">
+        <thead>
+          <tr>
+            <th>Contact</th>
+            <th>Téléphone</th>
+            <th>Ville</th>
+            <th>Sujet</th>
+            <th>Recommandé par</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {recs.map((r) => (
+            <tr key={r.id}>
+              <td>{r.contact_first_name} {r.contact_last_name}</td>
+              <td>{r.contact_phone}</td>
+              <td>{r.contact_city}</td>
+              <td>{r.contact_concern}</td>
+              <td>
+                {r.sender_first_name} {r.sender_last_name}
+                <br />
+                <small>{r.sender_email}</small>
+              </td>
+              <td>{new Date(r.created_at).toLocaleDateString("fr-FR")}</td>
+              <td>
+                <button
+                  className="admin-btn-delete"
+                  onClick={() => handleDelete(r.id)}
+                  title="Supprimer"
+                >
+                  🗑️
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 /* ── Composant principal ──────────────────────────────────── */
 export default function AdminDashboard({ token, onLogout }) {
-  const [activeTab, setActiveTab] = useState("forum"); // "forum" | "newsletter"
+  const [activeTab, setActiveTab] = useState("forum");
 
   // ── Forum state ──
   const [threads, setThreads]           = useState([]);
@@ -261,10 +370,22 @@ export default function AdminDashboard({ token, onLogout }) {
         >
           ✉️ Newsletter
         </button>
+        <button
+          className={`admin-tab ${activeTab === "militants" ? "active" : ""}`}
+          onClick={() => setActiveTab("militants")}
+        >
+          ✊ Militants
+        </button>
+        <button
+          className={`admin-tab ${activeTab === "recommendations" ? "active" : ""}`}
+          onClick={() => setActiveTab("recommendations")}
+        >
+          🤝 Convaincre
+        </button>
       </div>
 
       {/* Contenu */}
-      {activeTab === "forum" ? (
+      {activeTab === "forum" && (
         <div className="admin-layout">
 
           {/* Liste des sujets */}
@@ -329,11 +450,13 @@ export default function AdminDashboard({ token, onLogout }) {
               </>
             )}
           </div>
-
         </div>
-      ) : (
-        <NewsletterTab token={token} />
       )}
+
+      {activeTab === "newsletter" && <NewsletterTab token={token} />}
+      {activeTab === "militants" && <MilitantsTab token={token} />}
+      {activeTab === "recommendations" && <RecommendationsTab token={token} />}
+
     </div>
   );
 }

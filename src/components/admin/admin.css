@@ -512,3 +512,40 @@
   margin-top: 8px;
   text-align: center;
 }
+
+.admin-table-wrapper {
+  padding: 24px;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 2px solid rgba(31,63,91,0.2);
+  color: var(--color-navy);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.admin-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(31,63,91,0.08);
+  vertical-align: top;
+  color: var(--color-navy);
+}
+
+.admin-table tr:hover td {
+  background: rgba(31,63,91,0.02);
+}
+
+.admin-table small {
+  font-size: 0.7rem;
+  color: var(--color-slate);
+}

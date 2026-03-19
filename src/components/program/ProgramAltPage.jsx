@@ -22,11 +22,6 @@ export default function ProgramAltPage() {
               Notre engagement : être accessibles, présents et efficaces, avec
               pragmatisme et transparence.
             </p>
-            <div className="program-alt-cta">
-              <a className="program-alt-btn ghost" href="#moyens">
-                Nos moyens
-              </a>
-            </div>
           </div>
         </section>
 
@@ -34,15 +29,15 @@ export default function ProgramAltPage() {
           <aside className="program-alt-side">
             <p className="program-alt-side-title">Navigation</p>
             <nav className="program-alt-nav">
-              <a href="#sante">Sécurité santé</a>
-              <a href="#patrimoine">Sécurité patrimoniale & financière</a>
-              <a href="#securite">Sécurité physique & personnelle</a>
-              <a href="#familles">Familles, éducation & jeunesse</a>
-              <a href="#consulaire">Démarches consulaires</a>
-              <a href="#entrepreneurs">Entrepreneurs, emploi & EFE</a>
-              <a href="#quotidien">Vie quotidienne</a>
-              <a href="#methode">Une méthode différente</a>
-              <a href="#moyens">Moyens mis en œuvre</a>
+              <a href="#health">Sécurité santé</a>
+              <a href="#heritage-security">Sécurité patrimoniale & financière</a>
+              <a href="#physical-security">Sécurité physique & personnelle</a>
+              <a href="#family-education">Familles, éducation & jeunesse</a>
+              <a href="#consular-procedures">Démarches consulaires</a>
+              <a href="#entrepreneur">Entrepreneurs, emploi & EFE</a>
+              <a href="#daily-life">Vie quotidienne</a>
+              <a href="#program-alt-page">Une méthode différente</a>
+              <a href="#program-alt-page">Moyens mis en œuvre</a>
             </nav>
             <p className="program-alt-side-hint">
               Astuce : clique pour aller directement à une thématique.

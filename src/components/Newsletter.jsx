@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const API = "https://ufm-backend-production.up.railway.app";
+import { API } from "../api/config";
 
 export default function Newsletter({ content }) {
   const title       = content?.title       || "Rester informé";

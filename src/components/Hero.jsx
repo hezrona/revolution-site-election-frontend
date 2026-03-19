@@ -9,7 +9,7 @@ export default function Hero({ content, loading }) {
   const subtitle  =
     content?.subtitle || "Candidats aux élections Consulaires Madagascar 2026";
   const eyebrow   = content?.eyebrow   || "";
-  const sloganLine1 = content?.sloganLine1 || "PLUUS JAMAIS";
+  const sloganLine1 = content?.sloganLine1 || "PLUS JAMAIS";
   const sloganLine2 = content?.sloganLine2 || "SEUL";
   const sloganSub   = content?.sloganSub   || "AVEC L'UFM";
 

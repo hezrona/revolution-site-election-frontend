@@ -1,5 +1,4 @@
-const API = "https://ufm-backend-production.up.railway.app";
-
+import { API } from "./config";
 export async function getThreads() {
   const res = await fetch(`${API}/api/threads`);
   return res.json();

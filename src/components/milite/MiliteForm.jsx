@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { postMilite } from "../../api/campaign";
 
 const villes = [
   "Antananarivo",
@@ -23,27 +24,16 @@ export default function MiliteForm() {
     setLoading(true);
     setError(null);
 
-    const form = event.currentTarget;
-    const data = new FormData(form);
-    const url = new URL(ACTION_URL);
+    const data = new FormData(event.currentTarget);
+    const payload = Object.fromEntries(data.entries());
 
-    // Capture le prénom pour la page de confirmation
-    const capturedFirstName = data.get("firstName");
-
-    for (const [key, value] of data.entries()) {
-      url.searchParams.append(key, value);
-    }
+    setFirstName(payload.firstName || "");
 
     try {
-      await fetch(url.toString(), {
-        method: "GET",
-        mode: "no-cors",
-      });
-      setFirstName(capturedFirstName);
+      await postMilite(payload);
       setSubmitted(true);
     } catch (err) {
-      // TODO: remplacer par un vrai message d'erreur selon la réponse backend
-      setError("Une erreur est survenue. Veuillez réessayer.");
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -101,7 +91,7 @@ export default function MiliteForm() {
             </label>
             <label>
               Téléphone
-              <input type="tel" name="phone" placeholder="06 XX XX XX XX" />
+              <input type="tel" name="phone" placeholder="034 XX XXX XX" />
             </label>
           </div>
           <label>

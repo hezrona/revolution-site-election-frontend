@@ -1,4 +1,5 @@
 ﻿import { useState } from "react";
+import { postRecommendation } from "../../api/campaign";
 
 const concerns = [
   "Santé",
@@ -24,27 +25,17 @@ export default function TakeActionForm() {
     setLoading(true);
     setError(null);
 
-    const form = event.currentTarget;
-    const data = new FormData(form);
-    const url = new URL(ACTION_URL);
+    const data = new FormData(event.currentTarget);
+    const payload = Object.fromEntries(data.entries());
 
-    // Capture les prénoms avant envoi pour la page de confirmation
-    setSenderFirstName(data.get("senderFirstName") || "");
-    setContactFirstName(data.get("contactFirstName") || "");
-
-    for (const [key, value] of data.entries()) {
-      url.searchParams.append(key, value);
-    }
+    setSenderFirstName(payload.senderFirstName || "");
+    setContactFirstName(payload.contactFirstName || "");
 
     try {
-      await fetch(url.toString(), {
-        method: "GET",
-        mode: "no-cors",
-      });
+      await postRecommendation(payload);
       setSubmitted(true);
     } catch (err) {
-      // TODO: adapter le message selon la réponse réelle du backend
-      setError("Une erreur est survenue. Veuillez réessayer.");
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -118,7 +109,7 @@ export default function TakeActionForm() {
             </label>
             <label>
               Téléphone
-              <input type="tel" name="contactPhone" placeholder="06 XX XX XX XX" />
+              <input type="tel" name="contactPhone" placeholder="034 XX XXX XX" />
             </label>
             <label>
               Ville de résidence

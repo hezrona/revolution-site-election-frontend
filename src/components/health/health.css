@@ -1,214 +1,110 @@
 /* ══════════════════════════════════════════
-   HEALTH PAGE
+   HEALTH PAGE  —  style calqué sur Entrepreneur
    ══════════════════════════════════════════ */
 
 .health-page {
   background: var(--color-cream);
 }
 
-/* ── HERO ── */
+/* ── HERO (photo de fond, même structure que .entrepreneur-hero) ── */
 .health-hero {
   position: relative;
-  padding: 80px 0 72px;
-  background: linear-gradient(150deg, #0d1f2d 0%, #1f3f5b 45%, #162e44 100%);
+  padding: 90px 0 120px;
+  background:
+    linear-gradient(140deg, rgba(10, 30, 50, 0.88), rgba(20, 50, 72, 0.82)),
+    url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1400&q=80");
+  background-size: cover;
+  background-position: center top;
   color: var(--color-white);
-  overflow: hidden;
-}
-
-/* Grille décorative en fond */
-.health-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(244, 193, 68, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244, 193, 68, 0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
-  z-index: 0;
-}
-
-/* Ligne accent en bas */
-.health-hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-mustard), var(--color-pink), var(--color-mustard));
 }
 
 .health-hero-inner {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 760px;
-  animation: fadeUp 0.9s ease both;
+  display: grid;
+  gap: 16px;
+  max-width: 720px;
 }
 
-/* Badge eyebrow santé */
-.health-hero .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(244, 193, 68, 0.15);
-  border: 1px solid rgba(244, 193, 68, 0.4);
+.health-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 700;
   color: var(--color-mustard);
-  padding: 6px 16px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  margin-bottom: 4px;
-}
-
-.health-hero .eyebrow::before {
-  content: "🏥";
-  font-size: 0.9rem;
 }
 
 .health-hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4vw, 3.6rem);
-  margin: 14px 0 16px;
+  font-size: clamp(2.5rem, 4.5vw, 3.6rem);
+  margin: 0;
   line-height: 1.15;
-  background: linear-gradient(135deg, #ffffff 30%, var(--color-mustard));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .health-hero p {
-  margin: 0 auto;
-  font-size: 1.05rem;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.78);
-  max-width: 580px;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
 }
 
-/* ── CONTENU ── */
-.health-content {
-  padding: 56px 0 96px;
+/* ── INTRO (texte + carte, même structure que .entrepreneur-intro) ── */
+.health-intro {
+  padding: 70px 0 30px;
 }
 
-.health-card {
-  background: #fff8ea;
-  border-radius: var(--radius-lg);
-  padding: 40px clamp(24px, 4vw, 52px);
-  box-shadow:
-    0 2px 0 rgba(244, 193, 68, 0.6),
-    0 24px 60px rgba(20, 32, 40, 0.1);
-  line-height: 1.8;
-  color: var(--color-slate);
+.health-intro-inner {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 28px;
-  border-top: 3px solid var(--color-mustard);
-}
-
-/* Paragraphe d'intro mis en valeur */
-.health-card > p:first-child {
-  margin: 0;
-  font-size: 1.05rem;
-  padding: 18px 22px;
-  background: rgba(31, 63, 91, 0.05);
-  border-left: 4px solid var(--color-navy);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-}
-
-.health-card p {
-  margin: 0;
-  font-size: 1.05rem;
-}
-
-/* ── SECTIONS ── */
-.health-section {
-  display: grid;
-  gap: 14px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(31, 63, 91, 0.12);
-}
-
-.health-section h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
-  color: var(--color-navy);
-  margin: 0;
-  display: flex;
   align-items: center;
-  gap: 10px;
 }
 
-/* Tiret décoratif devant les h2 */
-.health-section h2::before {
-  content: "";
-  display: inline-block;
-  width: 28px;
-  height: 3px;
-  background: var(--color-mustard);
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-
-/* Deuxième paragraphe dans les sections avec fond léger */
-.health-section p + p {
-  padding: 14px 18px;
-  background: rgba(244, 193, 68, 0.08);
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--color-mustard);
-}
-
-/* ── SIGNATURE ── */
-.health-signature {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 20px 24px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(120deg, rgba(31, 63, 91, 0.07), rgba(244, 193, 68, 0.1));
-  border: 1px solid rgba(31, 63, 91, 0.12);
-}
-
-.health-signature::before {
-  content: "✦";
-  font-size: 1.4rem;
-  color: var(--color-mustard);
-  flex-shrink: 0;
-}
-
-.health-signature .signature-label {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--color-pink);
-  font-weight: 700;
-  display: block;
-}
-
-.health-signature .signature-value {
+.health-intro h2 {
   font-family: var(--font-display);
-  font-size: 1.25rem;
   color: var(--color-navy);
-  display: block;
-  line-height: 1.3;
+  margin-top: 0;
+}
+
+.health-intro p {
+  color: #3b4455;
+  line-height: 1.75;
+  margin: 0 0 14px;
+}
+
+.health-intro p:last-child {
+  margin-bottom: 0;
+}
+
+/* Carte objectifs (identique à .entrepreneur-card) */
+.health-card {
+  background: #f9e7b8;
+  color: var(--color-navy);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.health-card h3 {
+  margin-top: 0;
+  font-family: var(--font-display);
+}
+
+.health-card ul {
+  padding-left: 18px;
+  line-height: 1.7;
+  margin: 14px 0 0;
+}
+
+.health-card ul li {
+  margin-bottom: 6px;
 }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
   .health-hero {
-    padding: 62px 0 54px;
+    padding: 70px 0 96px;
   }
 
   .health-hero h1 {
-    font-size: clamp(1.9rem, 7vw, 2.6rem);
-  }
-
-  .health-card {
-    padding: 28px 20px;
-    gap: 22px;
-  }
-
-  .health-signature {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    font-size: clamp(2rem, 7vw, 2.8rem);
   }
 }
