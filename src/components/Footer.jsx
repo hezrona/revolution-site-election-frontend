@@ -46,7 +46,7 @@ export default function Footer({ content }) {
       ? content.links
       : [
           { label: "Qui suis-je ?", href: "#team" },
-          { label: "Programme", href: "#program" },
+          { label: "Programme", href: "#program-alt-page" },
         ];
   const footerBottom = content?.bottom || "Copyright 2026";
 

@@ -245,7 +245,7 @@ export default function DonateSteps() {
 
   return (
     <section className="donate-steps">
-      <div className="container donate-card">
+      <div className="donate-card">
 
         {/* Stepper */}
         <div className="stepper">
