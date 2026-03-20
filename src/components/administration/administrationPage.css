@@ -123,10 +123,10 @@
   font-family: inherit;
 }
 
-.admin-tab:hover,
-.admin-tab.active {
+.admin-tabs .admin-tab:hover,
+.admin-tabs .admin-tab.active {
   background: var(--color-navy);
-  color: var(--color-white);
+  color: var(--color-white) !important;
   border-color: var(--color-navy);
 }
 
