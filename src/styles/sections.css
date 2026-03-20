@@ -705,3 +705,20 @@
   margin-top: 18px;
   display: block;
 }
+
+@media (max-width: 480px) {
+  .newsletter-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .newsletter-form input {
+    width: 100%;
+    max-width: 100%;
+    flex: none;
+  }
+  
+  .newsletter-form .btn {
+    width: 100%;
+  }
+}
