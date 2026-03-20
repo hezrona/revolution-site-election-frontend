@@ -9,27 +9,58 @@ const AMOUNTS = [
 ];
 
 const PAYMENT_METHODS = [
-  { id: "card",        label: "Carte bancaire",  icon: "💳" },
-  { id: "orange",      label: "Orange Money",    icon: "🟠" },
-  { id: "cheque",      label: "Chèque",          icon: "📄" },
+  { id: "orange", label: "Orange Money",     icon: "🟠" },
+  { id: "carte",  label: "Virement",         icon: "💳" },
+  { id: "cheque", label: "Chèque",           icon: "✉️" },
 ];
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
+// ─── À personnaliser ──────────────────────────────────────────────────────────
+const ORANGE_NUMBER  = "034 XX XXX XX";
+const IBAN           = "FR76 XXXX XXXX XXXX XXXX XXXX XXX";
+const BIC            = "XXXXXXXX";
+const CHEQUE_ADDRESS = [
+  "UFM – Service Dons",
+  "123 Avenue de l'Indépendance",
+  "Antananarivo 101, Madagascar",
+];
+
+// ─── Helper ───────────────────────────────────────────────────────────────────
 function formatAriary(value) {
   if (!value) return "--";
   return new Intl.NumberFormat("fr-MG").format(value) + " Ar";
 }
 
-// ─── Sous-composants étape 1 ──────────────────────────────────────────────────
+// ─── Bouton copier ────────────────────────────────────────────────────────────
+function CopyButton({ value }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(value).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+  return (
+    <button
+      type="button"
+      className={`donate-copy-btn${copied ? " is-copied" : ""}`}
+      onClick={handleCopy}
+    >
+      {copied ? "✓ Copié" : "Copier"}
+    </button>
+  );
+}
+
+// ─── Étape 1 : montant ────────────────────────────────────────────────────────
 function AmountSelector({ selectedAmount, customAmount, onSelectAmount, onCustomChange }) {
   return (
     <div className="step-content">
-      <div className="step-tag">1. Montant du don</div>
-
+      <div className="step-tag">
+        Choisissez le montant de votre don
+      </div>
       <div className="amount-grid">
         {AMOUNTS.map((amount) => (
           <button
-            className={`amount-card ${selectedAmount === amount.value ? "selected" : ""}`}
+            className={`amount-card${selectedAmount === amount.value ? " selected" : ""}`}
             type="button"
             key={amount.value}
             onClick={() => onSelectAmount(amount.value)}
@@ -39,7 +70,6 @@ function AmountSelector({ selectedAmount, customAmount, onSelectAmount, onCustom
           </button>
         ))}
       </div>
-
       <label className="amount-input">
         <span>Autre montant</span>
         <div className="amount-input-field">
@@ -57,23 +87,23 @@ function AmountSelector({ selectedAmount, customAmount, onSelectAmount, onCustom
   );
 }
 
-// ─── Sous-composant étape 2 : choix méthode ───────────────────────────────────
+// ─── Étape 2 : méthode ────────────────────────────────────────────────────────
 function PaymentMethodSelector({ finalAmount, selectedMethod, onSelectMethod }) {
   return (
     <div className="step-content">
-      <div className="step-tag">2. Mode de paiement</div>
-
+      <div className="step-tag">
+        Choisissez votre mode de paiement
+      </div>
       <div className="donate-info highlight">
         <p>Montant de votre don</p>
         <h3>{formatAriary(finalAmount)}</h3>
       </div>
-
       <div className="payment-method-grid">
         {PAYMENT_METHODS.map((method) => (
           <button
             key={method.id}
             type="button"
-            className={`payment-method-card ${selectedMethod === method.id ? "selected" : ""}`}
+            className={`payment-method-card${selectedMethod === method.id ? " selected" : ""}`}
             onClick={() => onSelectMethod(method.id)}
           >
             <span className="method-icon">{method.icon}</span>
@@ -85,168 +115,118 @@ function PaymentMethodSelector({ finalAmount, selectedMethod, onSelectMethod }) 
   );
 }
 
-// ─── Champs communs identité ──────────────────────────────────────────────────
-function IdentityFields({ donor, onChange }) {
-  return (
-    <>
-      <div className="payment-grid">
-        <label>
-          Prénom
-          <input
-            type="text"
-            placeholder="Votre prénom"
-            value={donor.firstName}
-            onChange={(e) => onChange("firstName", e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Nom
-          <input
-            type="text"
-            placeholder="Votre nom"
-            value={donor.lastName}
-            onChange={(e) => onChange("lastName", e.target.value)}
-            required
-          />
-        </label>
-      </div>
-      <label>
-        Email
-        <input
-          type="email"
-          placeholder="vous@email.fr"
-          value={donor.email}
-          onChange={(e) => onChange("email", e.target.value)}
-          required
-        />
-      </label>
-    </>
-  );
-}
-
-// ─── Formulaires par méthode ──────────────────────────────────────────────────
-function CardForm({ donor, onDonorChange }) {
-  return (
-    <>
-      <IdentityFields donor={donor} onChange={onDonorChange} />
-      <label>
-        Nom sur la carte
-        <input type="text" placeholder="Nom complet" required />
-      </label>
-      <label>
-        Numéro de carte
-        <input type="text" placeholder="0000 0000 0000 0000" maxLength={19} required />
-      </label>
-      <div className="payment-grid">
-        <label>
-          Expiration
-          <input type="text" placeholder="MM/AA" maxLength={5} required />
-        </label>
-        <label>
-          CVC
-          <input type="text" placeholder="123" maxLength={3} required />
-        </label>
-      </div>
-      <p className="payment-note">🔒 Paiement sécurisé</p>
-    </>
-  );
-}
-
-function OrangeMoneyForm({ donor, onDonorChange }) {
-  return (
-    <>
-      <IdentityFields donor={donor} onChange={onDonorChange} />
-      <label>
-        Numéro Orange Money
-        <input type="tel" placeholder="03X XX XXX XX" required />
-      </label>
-      <p className="payment-note">
-        Un code de confirmation vous sera envoyé par SMS.
-      </p>
-    </>
-  );
-}
-
-function ChequeForm({ donor, onDonorChange }) {
-  return (
-    <>
-      <IdentityFields donor={donor} onChange={onDonorChange} />
-      <div className="donate-info">
-        <p>Veuillez libeller votre chèque à l'ordre de <strong>UFM</strong> et l'envoyer à :</p>
-        <address style={{ marginTop: "10px", fontStyle: "normal", lineHeight: 1.8 }}>
-          UFM – Service Dons<br />
-          123 Avenue de l'Indépendance<br />
-          Antananarivo 101, Madagascar
-        </address>
-      </div>
-    </>
-  );
-}
-
-// ─── Étape 3 : paiement ───────────────────────────────────────────────────────
-function PaymentForm({ paymentMethod, finalAmount, donor, onDonorChange, onBack, onSubmit }) {
-  const methodLabel = PAYMENT_METHODS.find((m) => m.id === paymentMethod)?.label;
+// ─── Étape 3 : instructions ───────────────────────────────────────────────────
+function PaymentInstructions({ paymentMethod, finalAmount, onBack, onConfirm }) {
+  const method = PAYMENT_METHODS.find((m) => m.id === paymentMethod);
 
   return (
     <div className="step-content">
-      <div className="step-tag">3. Paiement — {methodLabel}</div>
+      <div className="step-tag">
+        {method?.icon} {method?.label} — {formatAriary(finalAmount)}
+      </div>
 
-      <form
-        className="payment-form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          onSubmit();
-        }}
-      >
-        {paymentMethod === "card"   && <CardForm       donor={donor} onDonorChange={onDonorChange} />}
-        {paymentMethod === "orange" && <OrangeMoneyForm donor={donor} onDonorChange={onDonorChange} />}
-        {paymentMethod === "cheque" && <ChequeForm      donor={donor} onDonorChange={onDonorChange} />}
+      {/* Orange Money */}
+      {paymentMethod === "orange" && (
+        <>
+          <div className="donate-value-block">
+            <div>
+              <p className="donate-value-label">Numéro Orange Money</p>
+              <p className="donate-value-text">{ORANGE_NUMBER}</p>
+            </div>
+            <CopyButton value={ORANGE_NUMBER} />
+          </div>
+          <ol className="donate-steps-list">
+            <li>Ouvrez Orange Money ou composez le <strong>#144#</strong>.</li>
+            <li>Sélectionnez <strong>« Transfert d'argent »</strong> et entrez le numéro ci-dessus.</li>
+            <li>Saisissez <strong>{formatAriary(finalAmount)}</strong> et indiquez <strong>« DON UFM »</strong> en motif.</li>
+            <li>Confirmez avec votre code PIN et conservez le SMS.</li>
+          </ol>
+        </>
+      )}
 
-        <div className="step-actions">
-          <button className="btn btn-outline" type="button" onClick={onBack}>
-            ← Retour
-          </button>
-          <button className="btn btn-solid" type="submit">
-            {paymentMethod === "cheque" ? "Confirmer l'envoi" : `Payer ${formatAriary(finalAmount)}`}
-          </button>
-        </div>
-      </form>
+      {/* Virement */}
+      {paymentMethod === "carte" && (
+        <>
+          <div className="donate-value-block">
+            <div>
+              <p className="donate-value-label">IBAN</p>
+              <p className="donate-value-text">{IBAN}</p>
+            </div>
+            <CopyButton value={IBAN} />
+          </div>
+          <div className="donate-value-block">
+            <div>
+              <p className="donate-value-label">BIC</p>
+              <p className="donate-value-text">{BIC}</p>
+            </div>
+            <CopyButton value={BIC} />
+          </div>
+          <ol className="donate-steps-list">
+            <li>Connectez-vous à votre banque en ligne ou rendez-vous en agence.</li>
+            <li>Créez un bénéficiaire avec l'IBAN ci-dessus.</li>
+            <li>Effectuez un virement de <strong>{formatAriary(finalAmount)}</strong> avec le libellé <strong>« DON UFM »</strong>.</li>
+            <li>Conservez votre justificatif de virement.</li>
+          </ol>
+        </>
+      )}
+
+      {/* Chèque */}
+      {paymentMethod === "cheque" && (
+        <>
+          <div className="donate-address-block">
+            <p className="donate-value-label">Adresse d'envoi</p>
+            {CHEQUE_ADDRESS.map((line, i) => (
+              <p key={i} className="donate-address-line">{line}</p>
+            ))}
+          </div>
+          <ol className="donate-steps-list">
+            <li>Rédigez un chèque de <strong>{formatAriary(finalAmount)}</strong> à l'ordre de <strong>« UFM »</strong>.</li>
+            <li>Inscrivez vos nom et coordonnées au dos.</li>
+            <li>Envoyez l'enveloppe à l'adresse ci-dessus.</li>
+            <li>Comptez 5 à 10 jours ouvrés pour la réception.</li>
+          </ol>
+        </>
+      )}
+
+      <div className="step-actions">
+        <button className="btn btn-outline" type="button" onClick={onBack}>
+          ← Retour
+        </button>
+        <button className="btn btn-accent" type="button" onClick={onConfirm}>
+          J'ai envoyé mon don ✓
+        </button>
+      </div>
     </div>
   );
 }
 
 // ─── Confirmation ─────────────────────────────────────────────────────────────
-function ConfirmationStep({ finalAmount, paymentMethod, donor }) {
-  const methodLabel = PAYMENT_METHODS.find((m) => m.id === paymentMethod)?.label;
+function ConfirmationStep({ finalAmount, paymentMethod }) {
+  const method = PAYMENT_METHODS.find((m) => m.id === paymentMethod);
   return (
     <div className="step-content" style={{ textAlign: "center" }}>
-      <div className="step-tag" style={{ margin: "0 auto" }}>✅ Don enregistré</div>
+      <div style={{ fontSize: "3rem" }}>🎉</div>
+      <div className="step-tag">Merci pour votre soutien !</div>
       <div className="donate-info highlight">
-        <p>Merci {donor.firstName} pour votre générosité !</p>
+        <p>Don confirmé</p>
         <h3>{formatAriary(finalAmount)}</h3>
-        <p>via {methodLabel}</p>
-        <p style={{ marginTop: "8px", fontSize: "0.9rem" }}>
-          Un email de confirmation a été envoyé à <strong>{donor.email}</strong>.
-        </p>
+        <p>via {method?.icon} {method?.label}</p>
       </div>
+      <p style={{ color: "var(--color-navy)", fontSize: "0.93rem", lineHeight: 1.6, margin: 0 }}>
+        Notre équipe vérifiera la réception de votre don et vous contactera si nécessaire.
+        Merci de soutenir l'UFM et les Français de Madagascar.
+      </p>
+      <a href="#top" className="donate-btn-home">← Retour à l'accueil</a>
     </div>
   );
 }
 
 // ─── Composant principal ──────────────────────────────────────────────────────
 export default function DonateSteps() {
-  const [currentStep, setCurrentStep] = useState(1);
-
-  // Étape 1
+  const [currentStep, setCurrentStep]     = useState(1);
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [customAmount, setCustomAmount]     = useState("");
-
-  // Étape 2
-  const [paymentMethod, setPaymentMethod] = useState(null);
-
-  // Étape 3 – données donateur (prêt pour le backend)
-  const [donor, setDonor] = useState({ firstName: "", lastName: "", email: "" });
+  const [paymentMethod, setPaymentMethod]   = useState(null);
 
   const finalAmount = useMemo(() => {
     const numeric = Number(customAmount);
@@ -256,35 +236,9 @@ export default function DonateSteps() {
   const isStep1Complete = Boolean(finalAmount && finalAmount > 0);
   const isStep2Complete = Boolean(paymentMethod);
 
-  function handleDonorChange(field, value) {
-    setDonor((prev) => ({ ...prev, [field]: value }));
-  }
-
   function handleSelectAmount(value) {
     setSelectedAmount(value);
     setCustomAmount("");
-  }
-
-  /**
-   * handleSubmit — point d'intégration backend.
-   * Remplacer le console.log par un appel fetch/axios vers l'API.
-   *
-   * Payload attendu :
-   * {
-   *   amount: number,
-   *   paymentMethod: "card" | "orange" | "cheque",
-   *   donor: { firstName, lastName, email }
-   * }
-   */
-  function handleSubmit() {
-    const payload = {
-      amount: finalAmount,
-      paymentMethod,
-      donor,
-    };
-    // TODO: await api.post("/donations", payload)
-    console.info("[DonateSteps] payload prêt pour le backend :", payload);
-    setCurrentStep(4);
   }
 
   const STEPS = [1, 2, 3];
@@ -293,15 +247,11 @@ export default function DonateSteps() {
     <section className="donate-steps">
       <div className="container donate-card">
 
-        {/* ── Stepper ── */}
+        {/* Stepper */}
         <div className="stepper">
           {STEPS.map((step, i) => (
             <span key={step} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <span
-                className={`step ${
-                  currentStep === step ? "active" : currentStep > step ? "done" : ""
-                }`}
-              >
+              <span className={`step${currentStep === step ? " active" : currentStep > step ? " done" : ""}`}>
                 {currentStep > step ? "✓" : step}
               </span>
               {i < STEPS.length - 1 && <span className="step-line" />}
@@ -309,7 +259,7 @@ export default function DonateSteps() {
           ))}
         </div>
 
-        {/* ── Étape 1 : montant ── */}
+        {/* Étape 1 */}
         {currentStep === 1 && (
           <>
             <AmountSelector
@@ -331,7 +281,7 @@ export default function DonateSteps() {
           </>
         )}
 
-        {/* ── Étape 2 : méthode ── */}
+        {/* Étape 2 */}
         {currentStep === 2 && (
           <>
             <PaymentMethodSelector
@@ -355,26 +305,24 @@ export default function DonateSteps() {
           </>
         )}
 
-        {/* ── Étape 3 : formulaire paiement ── */}
+        {/* Étape 3 */}
         {currentStep === 3 && (
-          <PaymentForm
+          <PaymentInstructions
             paymentMethod={paymentMethod}
             finalAmount={finalAmount}
-            donor={donor}
-            onDonorChange={handleDonorChange}
             onBack={() => setCurrentStep(2)}
-            onSubmit={handleSubmit}
+            onConfirm={() => setCurrentStep(4)}
           />
         )}
 
-        {/* ── Étape 4 : confirmation ── */}
+        {/* Étape 4 */}
         {currentStep === 4 && (
           <ConfirmationStep
             finalAmount={finalAmount}
             paymentMethod={paymentMethod}
-            donor={donor}
           />
         )}
+
       </div>
     </section>
   );

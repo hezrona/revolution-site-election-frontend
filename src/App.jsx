@@ -34,10 +34,6 @@ import DailyLife from "./components/dailyLife/DailyLife.jsx";
 import AboutArticle from "./components/about/AboutArticle.jsx";
 import AdminPage from "./components/admin/AdminPage.jsx";
 
-
-
-
-
 export default function App() {
   const [activeView, setActiveView] = useState(window.location.hash);
   const { data, loading, error } = useHomeContent();
@@ -46,8 +42,8 @@ export default function App() {
   useEffect(() => {
     const onHashChange = () => {
       setActiveView(window.location.hash);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     };
-
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);

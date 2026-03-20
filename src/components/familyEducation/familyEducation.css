@@ -1,281 +1,110 @@
 /* ══════════════════════════════════════════
-   FAMILY EDUCATION PAGE
+   FAMILY EDUCATION PAGE  —  style calqué sur HealthPage
    ══════════════════════════════════════════ */
 
-.family-education-page {
-  background: var(--color-cream);
-}
-
-/* ── HERO ── */
-.family-education-hero {
-  position: relative;
-  padding: 80px 0 72px;
-  background: linear-gradient(150deg, #0d1f2d 0%, #1f3f5b 45%, #162e44 100%);
-  color: var(--color-white);
-  overflow: hidden;
-}
-
-/* Grille décorative */
-.family-education-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(244, 193, 68, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244, 193, 68, 0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
-  z-index: 0;
-}
-
-/* Ligne accent bas */
-.family-education-hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-pink), var(--color-mustard), var(--color-pink));
-}
-
-.family-education-hero-inner {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 760px;
-  animation: fadeUp 0.9s ease both;
-}
-
-/* Badge eyebrow */
-.family-education-hero .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(244, 193, 68, 0.15);
-  border: 1px solid rgba(244, 193, 68, 0.4);
-  color: var(--color-mustard);
-  padding: 6px 16px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  margin-bottom: 4px;
-}
-
-.family-education-hero .eyebrow::before {
-  content: "👨‍👩‍👧";
-  font-size: 0.9rem;
-}
-
-.family-education-hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4vw, 3.6rem);
-  margin: 14px 0 16px;
-  line-height: 1.15;
-  background: linear-gradient(135deg, #ffffff 30%, var(--color-mustard));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.family-education-hero p {
-  margin: 0 auto;
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.78);
-  max-width: 580px;
-}
-
-/* ── CONTENU ── */
-.family-education-content {
-  padding: 56px 0 96px;
-}
-
-.family-education-card {
-  background: #fff8ea;
-  border-radius: var(--radius-lg);
-  padding: 40px clamp(24px, 4vw, 52px);
-  box-shadow:
-    0 2px 0 rgba(244, 193, 68, 0.6),
-    0 24px 60px rgba(20, 32, 40, 0.1);
-  line-height: 1.8;
-  color: var(--color-slate);
-  display: grid;
-  gap: 28px;
-  border-top: 3px solid var(--color-mustard);
-}
-
-/* Paragraphe d'intro */
-.family-education-card > p {
-  margin: 0;
-  font-size: 1.05rem;
-  padding: 18px 22px;
-  background: rgba(31, 63, 91, 0.05);
-  border-left: 4px solid var(--color-navy);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-}
-
-/* ── SECTIONS NUMÉROTÉES ── */
-.family-education-section {
-  display: grid;
-  gap: 14px;
-  padding: 20px;
-  border-radius: var(--radius-md);
-  background: var(--color-white);
-  box-shadow: 0 2px 12px rgba(20, 32, 40, 0.07);
-  border: 1px solid rgba(31, 63, 91, 0.08);
-  border-top: 1px solid rgba(31, 63, 91, 0.12);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.family-education-section:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(20, 32, 40, 0.12);
-}
-
-.family-education-section-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.family-education-number {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px 4px 14px 4px; /* cohérent avec le site */
-  background: linear-gradient(135deg, var(--color-pink), var(--color-pink-dark));
-  color: var(--color-white);
-  display: grid;
-  place-items: center;
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 700;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(225, 70, 122, 0.35);
-}
-
-.family-education-section h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
-  color: var(--color-navy);
-  margin: 0;
-  line-height: 1.3;
-}
-
-/* ── LISTE ── */
-.family-education-list {
-  padding-left: 0;
-  margin: 0;
-  display: grid;
-  gap: 6px;
-  font-size: 0.98rem;
-  line-height: 1.6;
-  list-style: none;
-}
-
-.family-education-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(31, 63, 91, 0.07);
-}
-
-.family-education-list li:last-child {
-  border-bottom: none;
-}
-
-.family-education-list li::before {
-  content: "→";
-  color: var(--color-pink);
-  font-weight: 700;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-/* ── CONCLUSION ── */
-.family-education-conclusion {
-  border-left: 4px solid var(--color-mustard);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  padding: 16px 20px;
-  font-size: 1.02rem;
-  background: rgba(244, 193, 68, 0.1);
-  font-weight: 600;
-  color: var(--color-navy);
-  font-style: italic;
-}
-
-.family-education-conclusion p {
-  margin: 0;
-}
-
-/* ── SIGNATURE ── */
-.family-education-signature {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 20px 24px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(120deg, rgba(31, 63, 91, 0.07), rgba(244, 193, 68, 0.1));
-  border: 1px solid rgba(31, 63, 91, 0.12);
-}
-
-.family-education-signature::before {
-  content: "✦";
-  font-size: 1.4rem;
-  color: var(--color-mustard);
-  flex-shrink: 0;
-}
-
-.family-education-signature .signature-label {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--color-pink);
-  font-weight: 700;
-  display: block;
-}
-
-.family-education-signature .signature-value {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--color-navy);
-  display: block;
-  line-height: 1.3;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 640px) {
+   .family-education-page {
+    background: var(--color-cream);
+  }
+  
+  /* ── HERO (photo de fond, même structure que .health-hero) ── */
   .family-education-hero {
-    padding: 62px 0 54px;
+    position: relative;
+    padding: 90px 0 120px;
+    background:
+      linear-gradient(140deg, rgba(10, 30, 50, 0.88), rgba(20, 50, 72, 0.82)),
+      url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80");
+    background-size: cover;
+    background-position: center;
+    color: var(--color-white);
   }
-
+  
+  .family-education-hero-inner {
+    display: grid;
+    gap: 16px;
+    max-width: 720px;
+  }
+  
+  .family-education-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-mustard);
+  }
+  
   .family-education-hero h1 {
-    font-size: clamp(1.9rem, 7vw, 2.6rem);
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4.5vw, 3.6rem);
+    margin: 0;
+    line-height: 1.15;
   }
-
+  
+  .family-education-hero p {
+    line-height: 1.75;
+    max-width: 560px;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+  
+  /* ── INTRO (texte + carte, même structure que .health-intro) ── */
+  .family-education-intro {
+    padding: 70px 0 30px;
+  }
+  
+  .family-education-intro-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    align-items: center;
+  }
+  
+  .family-education-intro h2 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+    margin-top: 0;
+  }
+  
+  .family-education-intro p {
+    color: #3b4455;
+    line-height: 1.75;
+    margin: 0 0 14px;
+  }
+  
+  .family-education-intro p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Carte axes d'action (identique à .health-card) */
   .family-education-card {
-    padding: 28px 20px;
-    gap: 22px;
+    background: #f9e7b8;
+    color: var(--color-navy);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-soft);
   }
-
-  .family-education-section {
-    padding: 16px;
+  
+  .family-education-card h3 {
+    margin-top: 0;
+    font-family: var(--font-display);
   }
-
-  .family-education-section-header {
-    align-items: flex-start;
+  
+  .family-education-card ul {
+    padding-left: 18px;
+    line-height: 1.7;
+    margin: 14px 0 0;
   }
-
-  .family-education-number {
-    width: 42px;
-    height: 42px;
-    font-size: 1.1rem;
-    border-radius: 10px 3px 10px 3px;
+  
+  .family-education-card ul li {
+    margin-bottom: 6px;
   }
-
-  .family-education-signature {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .family-education-hero {
+      padding: 70px 0 96px;
+    }
+  
+    .family-education-hero h1 {
+      font-size: clamp(2rem, 7vw, 2.8rem);
+    }
   }
-}
