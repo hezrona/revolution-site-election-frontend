@@ -122,7 +122,7 @@ export default function ProgramAltPage() {
                   <li>Chaîne d’info communautaire fiable (WhatsApp)</li>
                   <li>Sensibilisation aux bonnes pratiques</li>
                   <li>Coopération (autorités/consulat – Voisins Vigilants)</li>
-                  <li>ppui aux victimes (information, orientation)</li>
+                  <li>Appui aux victimes (information, orientation)</li>
                 </ul>
               </details>
             </article>
