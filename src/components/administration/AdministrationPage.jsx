@@ -137,7 +137,7 @@ export default function AdministrationPage() {
           <p>
             Retrouvez toutes les démarches administratives pour les Français établis à Madagascar :
             inscription consulaire, documents d'identité, état civil, aides sociales et plus encore.<br />
-            Tous ces documents sont issus de l'embassade de France à Madagascar.
+            Tous ces documents sont issus de l'ambassade de France à Madagascar.
           </p>
         </div>
       </section>
