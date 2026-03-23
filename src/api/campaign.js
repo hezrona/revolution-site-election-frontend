@@ -1,4 +1,4 @@
-const API = "https://ufm-backend-production.up.railway.app";
+import { API } from "./config";
 
 export async function postRecommendation(data) {
   const res = await fetch(`${API}/api/campaign/recommend`, {

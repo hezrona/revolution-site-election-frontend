@@ -1,8 +1,6 @@
-const STRAPI_URL = import.meta.env.VITE_STRAPI_URL;
-const STRAPI_TOKEN = import.meta.env.VITE_STRAPI_TOKEN;
+import { STRAPI_URL, STRAPI_TOKEN } from "./config"; 
 
 if (!STRAPI_URL) {
-  // eslint-disable-next-line no-console
   console.warn("VITE_STRAPI_URL is not set. Strapi fetches will fail.");
 }
 
