@@ -108,8 +108,8 @@ function DonorForm({ donor, onChange }) {
       ))}
 
       <p style={{ fontSize: "0.78rem", color: "rgba(31,63,91,0.6)", margin: 0 }}>
-        Vos coordonnées nous permettent de vous envoyer les instructions
-        de paiement et de confirmer la réception de votre don.
+        Merci d'indiquer vos nom, prénom et adresse email afin que nous puissions
+        vous contacter et vous envoyer nos coordonnées bancaires ou postales.
       </p>
     </div>
   );
@@ -202,7 +202,7 @@ function PaymentInstructions({ paymentMethod, finalAmount, donor, onBack, onConf
           ← Retour
         </button>
         <button className="btn btn-accent" type="button" onClick={onConfirm} disabled={submitting}>
-          {submitting ? "Envoi…" : "J'ai envoyé mon don ✓"}
+          {submitting ? "Envoi…" : "Confirmer mon don →"}
         </button>
       </div>
     </div>
