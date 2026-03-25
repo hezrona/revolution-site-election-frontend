@@ -8,7 +8,7 @@ function DonateHero() {
       <div className="container donate-hero-inner">
         <a className="donate-back" href="#top">← Retour</a>
         <h1>Je donne</h1>
-        <p className="donate-hero-sub">Orange Money • Virement bancaire • Chèque</p>
+        <p className="donate-hero-sub">Mvola • Virement bancaire • Chèque</p>
       </div>
     </section>
   );

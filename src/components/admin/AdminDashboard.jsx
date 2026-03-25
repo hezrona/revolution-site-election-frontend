@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getThreads, getThread } from "../../api/forum.js";
 import { deleteThread, deletePost, logout } from "../../api/auth.js";
 import { getMilitants, deleteMilitant, getRecommendations, deleteRecommendation } from "../../api/campaign.js";
+import { getDons, updateDonStatus, deleteDon } from "../../api/dons.js";
 import "./admin.css";
 
 /* ── API helpers newsletter ───────────────────────────────── */
@@ -305,6 +306,123 @@ function RecommendationsTab({ token }) {
   );
 }
 
+/* ── Sous-composant : onglet Dons ─────────────────────────── */
+const STATUS_LABELS = {
+  pending:   { label: "En attente",  className: "don-status don-status--pending"   },
+  contacted: { label: "Contacté",    className: "don-status don-status--contacted" },
+  received:  { label: "Reçu",        className: "don-status don-status--received"  },
+};
+
+function DonsTab({ token }) {
+  const [dons, setDons]       = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getDons(token)
+      .then((data) => setDons(Array.isArray(data) ? data : []))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const handleStatusChange = async (id, status) => {
+    await updateDonStatus(id, status, token);
+    setDons((prev) => prev.map((d) => d.id === id ? { ...d, status } : d));
+  };
+
+  const handleDelete = async (id, name) => {
+    if (!confirm(`Supprimer le don de ${name} ?`)) return;
+    await deleteDon(id, token);
+    setDons((prev) => prev.filter((d) => d.id !== id));
+  };
+
+  const totalPending  = dons.filter((d) => d.status === "pending").length;
+  const totalReceived = dons.filter((d) => d.status === "received").length;
+
+  if (loading) return <p className="admin-loading">Chargement…</p>;
+  if (dons.length === 0) return <p className="admin-empty">Aucun don enregistré.</p>;
+
+  return (
+    <div className="admin-table-wrapper">
+      {/* Compteurs rapides */}
+      <div className="don-stats">
+        <div className="don-stat-card">
+          <span className="don-stat-num">{dons.length}</span>
+          <span className="don-stat-label">Total</span>
+        </div>
+        <div className="don-stat-card">
+          <span className="don-stat-num don-stat-num--pending">{totalPending}</span>
+          <span className="don-stat-label">En attente</span>
+        </div>
+        <div className="don-stat-card">
+          <span className="don-stat-num don-stat-num--received">{totalReceived}</span>
+          <span className="don-stat-label">Reçus</span>
+        </div>
+      </div>
+
+      <h2 className="admin-table-title">Dons ({dons.length})</h2>
+      <table className="admin-table">
+        <thead>
+          <tr>
+            <th>Donneur</th>
+            <th>Email</th>
+            <th>Montant</th>
+            <th>Mode</th>
+            <th>Statut</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {dons.map((d) => (
+            <tr key={d.id}>
+              <td>{d.first_name} {d.last_name}</td>
+              <td>
+                {/* Lien mailto pré-rempli pour envoyer l'IBAN/adresse facilement */}
+                <a
+                  href={`mailto:${d.email}?subject=Votre don UFM — Instructions de paiement&body=Bonjour ${d.first_name},%0A%0AMerci pour votre don de ${new Intl.NumberFormat("fr-MG").format(d.amount)} Ar.%0A%0AVoici les informations pour effectuer votre ${d.payment_method === "carte" ? "virement" : "envoi de chèque"} :%0A%0A[COMPLÉTER ICI]%0A%0ACordialement,%0AL'équipe UFM`}
+                  className="don-email-link"
+                  title="Envoyer les coordonnées de paiement"
+                >
+                  {d.email}
+                </a>
+              </td>
+              <td style={{ fontWeight: 700 }}>
+                {new Intl.NumberFormat("fr-MG").format(d.amount)} Ar
+              </td>
+              <td>
+                {d.payment_method === "Mvola"  && "🟠 Mvola"}
+                {d.payment_method === "carte"  && "💳 Virement"}
+                {d.payment_method === "cheque" && "✉️ Chèque"}
+              </td>
+              <td>
+                {/* Sélecteur de statut inline */}
+                <select
+                  className={`don-status-select don-status-select--${d.status}`}
+                  value={d.status}
+                  onChange={(e) => handleStatusChange(d.id, e.target.value)}
+                >
+                  <option value="pending">En attente</option>
+                  <option value="contacted">Contacté</option>
+                  <option value="received">Reçu</option>
+                </select>
+              </td>
+              <td>{new Date(d.created_at).toLocaleDateString("fr-FR")}</td>
+              <td>
+                <button
+                  className="admin-btn-delete"
+                  onClick={() => handleDelete(d.id, `${d.first_name} ${d.last_name}`)}
+                  title="Supprimer"
+                >
+                  🗑️
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 /* ── Composant principal ──────────────────────────────────── */
 export default function AdminDashboard({ token, onLogout }) {
   const [activeTab, setActiveTab] = useState("forum");
@@ -382,6 +500,12 @@ export default function AdminDashboard({ token, onLogout }) {
         >
           🤝 Convaincre
         </button>
+        <button
+          className={`admin-tab ${activeTab === "dons" ? "active" : ""}`}
+          onClick={() => setActiveTab("dons")}
+        >
+          💛 Dons
+        </button>
       </div>
 
       {/* Contenu */}
@@ -453,9 +577,10 @@ export default function AdminDashboard({ token, onLogout }) {
         </div>
       )}
 
-      {activeTab === "newsletter" && <NewsletterTab token={token} />}
-      {activeTab === "militants" && <MilitantsTab token={token} />}
+      {activeTab === "newsletter"    && <NewsletterTab    token={token} />}
+      {activeTab === "militants"     && <MilitantsTab     token={token} />}
       {activeTab === "recommendations" && <RecommendationsTab token={token} />}
+      {activeTab === "dons"          && <DonsTab          token={token} />}
 
     </div>
   );
