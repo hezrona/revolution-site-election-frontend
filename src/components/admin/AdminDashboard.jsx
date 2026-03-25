@@ -460,6 +460,18 @@ export default function AdminDashboard({ token, onLogout }) {
 
   const handleLogout = async () => { await logout(); onLogout(); };
 
+  async function safeFetch(fn) {
+  const result = await fn();
+  if (
+    result?.error === "Token manquant." ||
+    result?.error === "Token invalide ou expiré."
+  ) {
+    alert("Votre session a expiré. Veuillez vous reconnecter.");
+    onLogout();
+  }
+  return result;
+}
+
   return (
     <div className="admin-page">
 

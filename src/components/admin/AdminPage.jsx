@@ -28,10 +28,10 @@ export default function AdminPage() {
         sessionStorage.setItem("admin_token", newToken);
         setToken(newToken);
       } else {
-        // Refresh token expiré → déconnexion
+        alert("Votre session a expiré. Veuillez vous reconnecter.");
         handleLogout();
       }
-    }, 14 * 60 * 1000); // 14 minutes
+    }, 14 * 60 * 1000);
 
     return () => clearInterval(interval);
   }, [token]);
