@@ -1,4 +1,5 @@
 ﻿import "./programPresentation.css";
+import { Link } from "react-router-dom";
 import { getStrapiMediaUrl } from "../../api/strapi";
 
 export default function ProgramPresentation({ content }) {
@@ -13,10 +14,6 @@ export default function ProgramPresentation({ content }) {
     "Panneau une ville heureuse";
   const imageUrl = imagePath ? getStrapiMediaUrl(imagePath) : "";
 
-  const handleClick = () => {
-    window.location.hash = "#program-alt-page";
-  };
-
   return (
     <section className="program-presentation">
       <div className="container program-presentation-inner">
@@ -28,13 +25,9 @@ export default function ProgramPresentation({ content }) {
         <div className="program-presentation-content">
           <p className="program-presentation-eyebrow">{eyebrow}</p>
           <h2>{title}</h2>
-          <button
-            className="btn program-presentation-btn"
-            type="button"
-            onClick={handleClick}
-          >
+          <Link to="/program" className="btn program-presentation-btn">
             {buttonLabel}
-          </button>
+          </Link>
         </div>
       </div>
     </section>

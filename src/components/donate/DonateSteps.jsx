@@ -1,5 +1,7 @@
 ﻿import { useMemo, useState } from "react";
 import { postDon } from "../../api/dons";
+import { Link } from "react-router-dom";
+
 
 // ─── Constantes métier ────────────────────────────────────────────────────────
 const AMOUNTS = [
@@ -227,7 +229,7 @@ function ConfirmationStep({ finalAmount, paymentMethod, donor }) {
           : `Nous vous enverrons les instructions à ${donor.email} très prochainement.`}
         {" "}Merci de soutenir l'UFM et les Français de Madagascar.
       </p>
-      <a href="#top" className="donate-btn-home">← Retour à l'accueil</a>
+      <Link to="/" className="donate-btn-home">← Retour à l'accueil</Link>
     </div>
   );
 }

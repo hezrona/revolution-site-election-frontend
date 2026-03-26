@@ -1,122 +1,48 @@
-﻿import { candidate } from "../../data/candidate";
-
+﻿import { Link } from "react-router-dom";
 import { getStrapiMediaUrl } from "../../api/strapi";
 import "./listAction.css";
-import consulImage from "../../assets/image/consul.png";
-import familleEtEducationImage from "../../assets/image/famille_et_education.png";
 import { FaHeartbeat, FaBriefcase, FaHome, FaPassport, FaShieldAlt, FaLock, FaGraduationCap } from "react-icons/fa";
 
-
 const fallbackActions = [
-  {
-    title: "Santé",
-    description: "",
-    icon: <FaHeartbeat />,
-    link: "#health",
-  },
-  {
-    title: "Entreprise et entrepreneurs",
-    description: "",
-    icon: <FaBriefcase />,
-    link: "#entrepreneur",
-  },
-  {
-    title: "Vie Quotidienne",
-    description: "",
-    icon: <FaHome />,
-    link: "#daily-life",
-  },
-  {
-    title: "Démarches Consulaires",
-    description: "",
-    icon: <FaPassport />,
-    link: "#consular-procedures",
-  },
-  {
-    title: "Sécurité physique",
-    description: "",
-    icon: <FaShieldAlt />,
-    link: "#physical-security"
-  },
-  {
-    title: "Sécurité patrimoniale",
-    description: "",
-    icon: <FaLock />,
-    link: "#heritage-security",
-  },
-  {
-    title: "Famille & Education",
-    description: "",
-    icon: <FaGraduationCap />,
-    link: "#family-education",
-  }/*,
-  {
-    title: `Je rejoins ${candidate.firstName}`,
-    description: ``,
-    icon: "✈️",
-  },*/
+  { title: "Santé",                       description: "", icon: <FaHeartbeat />,    link: "/health" },
+  { title: "Entreprise et entrepreneurs", description: "", icon: <FaBriefcase />,    link: "/entrepreneur" },
+  { title: "Vie Quotidienne",             description: "", icon: <FaHome />,         link: "/daily-life" },
+  { title: "Démarches Consulaires",       description: "", icon: <FaPassport />,     link: "/consular-procedures" },
+  { title: "Sécurité physique",           description: "", icon: <FaShieldAlt />,    link: "/physical-security" },
+  { title: "Sécurité patrimoniale",       description: "", icon: <FaLock />,         link: "/heritage-security" },
+  { title: "Famille & Education",         description: "", icon: <FaGraduationCap />,link: "/family-education" },
 ];
 
 export default function ListAction({ content }) {
   const title = content?.title || "Nos pôles de compétence à votre service";
-  const subtitle = content?.subtitle || ``;
-  const actions = content?.items && content.items.length ? content.items : fallbackActions;
+  const subtitle = content?.subtitle || "";
+  const actions = content?.items?.length ? content.items : fallbackActions;
 
   const normalizeTitle = (value) =>
-    (value || "")
-      .toString()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase();
+    (value || "").toString().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-  const getActionHref = (action) => {
-    const normalizedTitle = normalizeTitle(action?.title);
+  const getActionLink = (action) => {
+    const t = normalizeTitle(action?.title);
 
-    return normalizedTitle.includes("programme")
-      ? "#program-page"
-      : normalizedTitle.includes("entrepreneur")
-      ? "#entrepreneur"
-      : normalizedTitle.includes("soutien") ||
-        normalizedTitle.includes("soutenir") ||
-        normalizedTitle.includes("agir")
-      ? "#take-action"
-      : normalizedTitle.includes("temoign") || normalizedTitle.includes("valeur")
-      ? "#testify"
-      : normalizedTitle.includes("don")
-      ? "#donate"
-      : normalizedTitle.includes("petition")
-      ? "#sign-petition"
-      : normalizedTitle.includes("condition") || normalizedTitle.includes("terms")
-      ? "#terms"
-      : normalizedTitle.includes("tract") || normalizedTitle.includes("imprimer")
-      ? "#print-tract"
-      : normalizedTitle.includes("patrimoine") ||
-        normalizedTitle.includes("patrimonial")
-      ? "#heritage-security"
-      : normalizedTitle.includes("video") || normalizedTitle.includes("partager")
-      ? "#share-video"
-      : normalizedTitle.includes("equipe") || normalizedTitle.includes("team")
-      ? "#team"
-      : action?.link || "#";
+    if (t.includes("programme"))                                    return "/program";
+    if (t.includes("entrepreneur"))                                 return "/entrepreneur";
+    if (t.includes("soutien") || t.includes("soutenir") || t.includes("agir")) return "/take-action";
+    if (t.includes("temoign") || t.includes("valeur"))             return "/testify";
+    if (t.includes("don"))                                          return "/donate";
+    if (t.includes("petition"))                                     return "/sign-petition";
+    if (t.includes("condition") || t.includes("terms"))            return "/terms";
+    if (t.includes("tract") || t.includes("imprimer"))             return "/print-tract";
+    if (t.includes("patrimoine") || t.includes("patrimonial"))     return "/heritage-security";
+    if (t.includes("video") || t.includes("partager"))             return "/share-video";
+    if (t.includes("equipe") || t.includes("team"))                return "/team";
+    if (t.includes("sante") || t.includes("santé"))                return "/health";
+    if (t.includes("quotidien"))                                    return "/daily-life";
+    if (t.includes("consulaire"))                                   return "/consular-procedures";
+    if (t.includes("physique"))                                     return "/physical-security";
+    if (t.includes("famille"))                                      return "/family-education";
+
+    return action?.link || "/";
   };
-
-  const resolveIconSrc = (icon) => {
-    if (!icon) return "";
-
-    if (typeof icon === "string") {
-      const trimmed = icon.trim();
-      const isImagePath =
-        /^https?:\/\//i.test(trimmed) ||
-        /^\/?uploads\//i.test(trimmed) ||
-        /\.(png|jpe?g|gif|webp|svg)$/i.test(trimmed);
-      return isImagePath ? getStrapiMediaUrl(trimmed) : "";
-    }
-
-    const iconUrl = icon?.data?.attributes?.url || icon?.url || "";
-    return getStrapiMediaUrl(iconUrl);
-  };
-
-  const renderIcon = (icon) => icon;
 
   return (
     <section className="list-action" id="actions">
@@ -126,18 +52,18 @@ export default function ListAction({ content }) {
           <p>{subtitle}</p>
           <div className="list-action-grid">
             {actions.map((action) => (
-              <a
-                href={getActionHref(action)}
+              <Link
+                to={getActionLink(action)}
                 className="list-action-card"
                 key={action.title}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <div className="list-action-icon" aria-hidden="true">
-                  {renderIcon(action.icon)}
+                  {action.icon}
                 </div>
                 <h3>{action.title}</h3>
                 <p>{action.description}</p>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

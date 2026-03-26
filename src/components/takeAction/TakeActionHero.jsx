@@ -1,8 +1,10 @@
-﻿export default function TakeActionHero() {
+﻿import { Link } from "react-router-dom";
+
+export default function TakeActionHero() {
   return (
     <section className="take-action-hero">
       <div className="container take-action-hero-inner">
-        <a className="take-action-back" href="#top">← Retour</a>
+        <Link className="take-action-back" to="/">← Retour</Link>
         <div className="take-action-hero-box">
           <h1>Chaque conversation compte !</h1>
           <p>Recommandez-nous un proche, un ami ou un collègue : nous prendrons le relais.</p>

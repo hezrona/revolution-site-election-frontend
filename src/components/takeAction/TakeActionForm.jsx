@@ -1,5 +1,7 @@
 ﻿import { useState } from "react";
 import { postRecommendation } from "../../api/campaign";
+import { Link } from "react-router-dom";
+
 
 const concerns = [
   "Santé",
@@ -68,8 +70,8 @@ export default function TakeActionForm() {
             <li>Vous pouvez recommander d'autres contacts à tout moment</li>
           </ul>
           
-          <a
-            href="#top"
+          <Link
+            to="/"
             style={{
               background: "var(--color-mustard)",
               color: "var(--color-navy)",
@@ -86,7 +88,7 @@ export default function TakeActionForm() {
             }}
           >
             ← Retour à l'accueil
-          </a>
+          </Link>
         </div>
       </section>
     );

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { postMilite } from "../../api/campaign";
+import { Link } from "react-router-dom";
 
 const villes = [
   "Antananarivo",
@@ -56,13 +57,13 @@ export default function MiliteForm() {
             <li> Rejoignez notre groupe WhatsApp de votre ville</li>
             <li> Consultez le calendrier des actions à venir</li>
           </ul>
-          <a
-                    className="milite-btn"
-          href="#top"
-          style={{ display: "block", textDecoration: "none", textAlign: "center" }}
-        >
-          ← Retour à l'accueil
-        </a>
+          <Link
+            to="/"
+            className="milite-btn"
+            style={{ display: "block", textDecoration: "none", textAlign: "center" }}
+          >
+            ← Retour à l'accueil
+          </Link>
         </div>
       </section>
     );

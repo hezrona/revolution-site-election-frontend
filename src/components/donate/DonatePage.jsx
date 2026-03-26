@@ -1,4 +1,4 @@
-﻿import { useEffect } from "react";
+﻿import { Link } from "react-router-dom";
 import "./donate.css";
 import DonateSteps from "./DonateSteps.jsx";
 
@@ -6,7 +6,7 @@ function DonateHero() {
   return (
     <section className="donate-hero">
       <div className="container donate-hero-inner">
-        <a className="donate-back" href="#top">← Retour</a>
+        <Link className="donate-back" to="/">← Retour</Link>
         <h1>Je donne</h1>
         <p className="donate-hero-sub">Mvola • Virement bancaire • Chèque</p>
       </div>
@@ -15,10 +15,6 @@ function DonateHero() {
 }
 
 export default function DonatePage() {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
-
   return (
     <main className="donate-page">
       <DonateHero />

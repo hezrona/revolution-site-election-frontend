@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { candidate } from "../data/candidate";
 import { FaHandHoldingHeart, FaUsers, FaComments } from "react-icons/fa";
 
@@ -16,17 +17,16 @@ export default function Footer({ content }) {
             description: "Soutenir financièrement la campagne",
             buttonLabel: "En savoir plus ?",
             buttonClass: "btn-accent",
-            href: "#donate",
+            href: "/donate",
           },
           {
             icon: <FaUsers />,
             iconClass: "engage-icon-pink",
             title: "Je milite",
-            description:
-              "Rejoignez nos équipes sur le terrain pour faire campagne",
+            description: "Rejoignez nos équipes sur le terrain pour faire campagne",
             buttonLabel: "En savoir plus ?",
             buttonClass: "btn-solid",
-            href: "#milite",
+            href: "/milite",
           },
           {
             icon: <FaComments />,
@@ -35,7 +35,7 @@ export default function Footer({ content }) {
             description: "Recommandez un autre Français de Madagascar",
             buttonLabel: "En savoir plus ?",
             buttonClass: "btn-solid",
-            href: "#take-action",
+            href: "/take-action",
           },
         ];
 
@@ -45,8 +45,8 @@ export default function Footer({ content }) {
     content?.links?.length
       ? content.links
       : [
-          { label: "Qui suis-je ?", href: "#team" },
-          { label: "Programme", href: "#program-alt-page" },
+          { label: "Qui suis-je ?", href: "/team" },
+          { label: "Programme", href: "/program" },
         ];
   const footerBottom = content?.bottom || "Copyright 2026";
 
@@ -61,19 +61,17 @@ export default function Footer({ content }) {
           <div className="footer-engage-grid">
             {engageCards.map((card, index) => (
               <div className="engage-card" key={card.title || index}>
-                <div
-                  className={`engage-icon ${card.iconClass || ""}`.trim()}
-                >
+                <div className={`engage-icon ${card.iconClass || ""}`.trim()}>
                   {card.icon}
                 </div>
                 <h3>{card.title}</h3>
                 <p>{card.description}</p>
-                <a
-                  href={card.href || "#"}
+                <Link
+                  to={card.href || "/"}
                   className={`btn ${card.buttonClass || "btn-solid"}`}
                 >
                   {card.buttonLabel}
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -87,12 +85,12 @@ export default function Footer({ content }) {
         </div>
         <div className="footer-links">
           {footerLinks.map((link) => (
-            <a
+            <Link
               key={`${link.label}-${link.href}`}
-              href={link.href}
+              to={link.href}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

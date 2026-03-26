@@ -1,5 +1,7 @@
 import "./programAltPage.css";
 import programVideo from "../../assets/video/program_hero.mp4";
+import { Link } from "react-router-dom";
+
 
 export default function ProgramAltPage() {
   return (
@@ -29,15 +31,15 @@ export default function ProgramAltPage() {
           <aside className="program-alt-side">
             <p className="program-alt-side-title">Navigation</p>
             <nav className="program-alt-nav">
-              <a href="#health">Sécurité santé</a>
-              <a href="#heritage-security">Sécurité patrimoniale & financière</a>
-              <a href="#physical-security">Sécurité physique & personnelle</a>
-              <a href="#family-education">Familles, éducation & jeunesse</a>
-              <a href="#consular-procedures">Démarches consulaires</a>
-              <a href="#entrepreneur">Entrepreneurs, emploi & EFE</a>
-              <a href="#daily-life">Vie quotidienne</a>
-              <a href="#program-alt-page">Une méthode différente</a>
-              <a href="#program-alt-page">Moyens mis en œuvre</a>
+              <Link to="/health">Sécurité santé</Link>
+              <Link to="/heritage-security">Sécurité patrimoniale & financière</Link>
+              <Link to="/physical-security">Sécurité physique & personnelle</Link>
+              <Link to="/family-education">Familles, éducation & jeunesse</Link>
+              <Link to="/consular-procedures">Démarches consulaires</Link>
+              <Link to="/entrepreneur">Entrepreneurs, emploi & EFE</Link>
+              <Link to="/daily-life">Vie quotidienne</Link>
+              <Link to="/program">Une méthode différente</Link>
+              <Link to="/program">Moyens mis en œuvre</Link>
             </nav>
             <p className="program-alt-side-hint">
               Astuce : clique pour aller directement à une thématique.
