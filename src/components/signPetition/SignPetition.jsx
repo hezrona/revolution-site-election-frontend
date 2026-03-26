@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./signPetition.css";
 
 export default function SignPetition() {
@@ -57,8 +58,8 @@ export default function SignPetition() {
 
         <div className="progress-section">
           <div className="progress-bar">
-            <div 
-              className="progress-fill" 
+            <div
+              className="progress-fill"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
@@ -160,7 +161,7 @@ export default function SignPetition() {
               checked={formData.newsletter}
               onChange={handleInputChange}
             />
-            <span>Je souhaite recevoir les actualités de la campagne de Sarah Knafo par email</span>
+            <span>Je souhaite recevoir les actualités de la campagne par email</span>
           </label>
 
           <button type="submit" className="submit-btn">
@@ -173,7 +174,7 @@ export default function SignPetition() {
         </form>
 
         <div className="back-link">
-          <a href="#actions">← Retour aux actions</a>
+          <Link to="/">← Retour à l'accueil</Link>
         </div>
       </div>
     </section>

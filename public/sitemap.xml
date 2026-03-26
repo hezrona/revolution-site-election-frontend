@@ -44,6 +44,12 @@
   </url>
 
   <url>
+    <loc>https://ufdm.vercel.app/sign-petition</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
     <loc>https://ufdm.vercel.app/entrepreneur</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>

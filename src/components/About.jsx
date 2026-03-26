@@ -1,4 +1,5 @@
-﻿import { getStrapiMediaUrl } from "../api/strapi";
+﻿import { Link } from "react-router-dom";
+import { getStrapiMediaUrl } from "../api/strapi";
 import representationImg from "../assets/image/representation.png";
 
 export default function About({ content }) {
@@ -24,9 +25,9 @@ export default function About({ content }) {
         </div>
         <div className="about-text">
           <h2>{title}</h2>
-          <a href="#about-article" className="btn btn-accent">
+          <Link to="/about-article" className="btn btn-accent">
             {buttonLabel}
-          </a>
+          </Link>
         </div>
       </div>
     </section>
