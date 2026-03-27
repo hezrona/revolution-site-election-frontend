@@ -1,124 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://ufdm.vercel.app/</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/program</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/team</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/milite</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/donate</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/take-action</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/health</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/sign-petition</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/entrepreneur</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/daily-life</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/physical-security</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/heritage-security</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/family-education</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/consular-procedures</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/our-value</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/forum</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/about-article</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/partner-article</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/administration</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://ufdm.vercel.app/terms</loc>
+    <lastmod>2026-03-27</lastmod>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
-
 </urlset>
+```
+
+---
+
+## 3. `public/robots.txt` — à créer
+```
+User-agent: *
+Allow: /
+Disallow: /administration
+
+Sitemap: https://ufdm.vercel.app/sitemap.xml
