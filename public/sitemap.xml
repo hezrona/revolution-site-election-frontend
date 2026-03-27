@@ -121,14 +121,3 @@
     <changefreq>yearly</changefreq>
   </url>
 </urlset>
-```
-
----
-
-## 3. `public/robots.txt` — à créer
-```
-User-agent: *
-Allow: /
-Disallow: /administration
-
-Sitemap: https://ufdm.vercel.app/sitemap.xml
