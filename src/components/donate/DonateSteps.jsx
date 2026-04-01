@@ -167,7 +167,7 @@ function PaymentInstructions({ paymentMethod, finalAmount, donor, onBack, onConf
             <CopyButton value={YAS_NUMBER} />
           </div>
           <ol className="donate-steps-list">
-            <li>Ouvrez Yas&moi ou composez le <strong>#144#</strong>.</li>
+            <li>Ouvrez Yas&moi ou composez le <strong>#111*1*2#</strong>.</li>
             <li>Sélectionnez <strong>« Transfert d'argent »</strong> et entrez le numéro ci-dessus.</li>
             <li>Saisissez <strong>{formatAriary(finalAmount)}</strong> et indiquez <strong>« DON UFM »</strong> en motif.</li>
             <li>Confirmez avec votre code PIN et conservez le SMS.</li>
