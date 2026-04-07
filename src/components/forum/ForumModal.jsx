@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { trackEvent } from "../../utils/analytics";
 
 const CATEGORIES = ["Général", "Administration", "Santé", "Vie pratique", "Scolarité", "Emploi & Business", "Urgences"];
 
@@ -46,6 +47,7 @@ export default function ForumModal({ isOpen, onClose, onSubmit }) {
         body: body.trim(),
       },
     });
+    trackEvent("forum_post_create", { category: cat });
     handleClose();
   };
 

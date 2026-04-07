@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//tmp/**)",
+      "Bash(npm run:*)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(cmd /c \"taskkill /F /IM node.exe\")",
+      "Bash(cmd:*)",
+      "Bash(rm:*)",
+      "Bash(powershell:*)",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(echo \"Preview PID: $!\")",
+      "Bash(node:*)",
+      "Bash(pkill -f \"vite preview\")",
+      "Bash(taskkill /PID 17968 /F)"
+    ]
+  }
+}

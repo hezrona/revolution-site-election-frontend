@@ -1,5 +1,6 @@
 ﻿import { candidate } from "../data/candidate";
 import heroVideo from "../assets/video/main_site.mp4";
+import heroPoster from "../assets/image/christian_tibayrenc.png";
 import { getStrapiMediaUrl } from "../api/strapi";
 
 export default function Hero({ content, loading }) {
@@ -26,6 +27,7 @@ export default function Hero({ content, loading }) {
         loop
         playsInline
         preload={loading ? "none" : "auto"}
+        poster={heroPoster}
         aria-hidden="true"
       >
         <source src={videoSrc} type="video/mp4" />

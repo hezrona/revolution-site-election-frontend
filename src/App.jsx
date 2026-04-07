@@ -1,5 +1,7 @@
 ﻿import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import CookieConsent from "./components/cookieConsent/CookieConsent.jsx";
+import NotFound from "./components/NotFound.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import Hero from "./components/Hero.jsx";
@@ -47,6 +49,13 @@ function HomePage() {
         <title>Mada Campaign – Plateforme citoyenne pour Madagascar</title>
         <meta name="description" content="Mada Campaign est une plateforme citoyenne dédiée aux Malgaches. Rejoignez-nous pour agir, pétitionner et construire un meilleur avenir pour Madagascar." />
         <link rel="canonical" href="https://ufdm.vercel.app/" />
+        <meta property="og:title" content="Mada Campaign – Plateforme citoyenne pour Madagascar" />
+        <meta property="og:description" content="Mada Campaign est une plateforme citoyenne dédiée aux Malgaches. Rejoignez-nous pour agir, pétitionner et construire un meilleur avenir pour Madagascar." />
+        <meta property="og:url" content="https://ufdm.vercel.app/" />
+        <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Mada Campaign – Plateforme citoyenne pour Madagascar" />
+        <meta name="twitter:description" content="Mada Campaign est une plateforme citoyenne dédiée aux Malgaches. Rejoignez-nous pour agir, pétitionner et construire un meilleur avenir pour Madagascar." />
       </Helmet>
       <main>
         <Hero content={content.hero} loading={loading} />
@@ -76,6 +85,13 @@ function AppLayout() {
               <title>Programme – Mada Campaign</title>
               <meta name="description" content="Découvrez le programme de Mada Campaign pour le développement et le bien-être des citoyens malgaches." />
               <link rel="canonical" href="https://ufdm.vercel.app/program" />
+              <meta property="og:title" content="Programme – Mada Campaign" />
+              <meta property="og:description" content="Découvrez le programme de Mada Campaign pour le développement et le bien-être des citoyens malgaches." />
+              <meta property="og:url" content="https://ufdm.vercel.app/program" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Programme – Mada Campaign" />
+              <meta name="twitter:description" content="Découvrez le programme de Mada Campaign pour le développement et le bien-être des citoyens malgaches." />
             </Helmet>
             <ProgramAltPage />
           </>
@@ -86,6 +102,13 @@ function AppLayout() {
               <title>Entrepreneuriat – Mada Campaign</title>
               <meta name="description" content="Soutenez l'entrepreneuriat à Madagascar avec Mada Campaign. Ressources et actions pour les entrepreneurs malgaches." />
               <link rel="canonical" href="https://ufdm.vercel.app/entrepreneur" />
+              <meta property="og:title" content="Entrepreneuriat – Mada Campaign" />
+              <meta property="og:description" content="Soutenez l'entrepreneuriat à Madagascar avec Mada Campaign. Ressources et actions pour les entrepreneurs malgaches." />
+              <meta property="og:url" content="https://ufdm.vercel.app/entrepreneur" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Entrepreneuriat – Mada Campaign" />
+              <meta name="twitter:description" content="Soutenez l'entrepreneuriat à Madagascar avec Mada Campaign. Ressources et actions pour les entrepreneurs malgaches." />
             </Helmet>
             <EntrepreneurPage />
           </>
@@ -96,6 +119,13 @@ function AppLayout() {
               <title>Santé – Mada Campaign</title>
               <meta name="description" content="Informations et actions sur la santé des citoyens malgaches avec Mada Campaign." />
               <link rel="canonical" href="https://ufdm.vercel.app/health" />
+              <meta property="og:title" content="Santé – Mada Campaign" />
+              <meta property="og:description" content="Informations et actions sur la santé des citoyens malgaches avec Mada Campaign." />
+              <meta property="og:url" content="https://ufdm.vercel.app/health" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Santé – Mada Campaign" />
+              <meta name="twitter:description" content="Informations et actions sur la santé des citoyens malgaches avec Mada Campaign." />
             </Helmet>
             <HealthPage />
           </>
@@ -106,6 +136,13 @@ function AppLayout() {
               <title>Agir – Mada Campaign</title>
               <meta name="description" content="Passez à l'action avec Mada Campaign. Rejoignez la communauté citoyenne et participez au changement à Madagascar." />
               <link rel="canonical" href="https://ufdm.vercel.app/take-action" />
+              <meta property="og:title" content="Agir – Mada Campaign" />
+              <meta property="og:description" content="Passez à l'action avec Mada Campaign. Rejoignez la communauté citoyenne et participez au changement à Madagascar." />
+              <meta property="og:url" content="https://ufdm.vercel.app/take-action" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Agir – Mada Campaign" />
+              <meta name="twitter:description" content="Passez à l'action avec Mada Campaign. Rejoignez la communauté citoyenne et participez au changement à Madagascar." />
             </Helmet>
             <TakeActionPage />
           </>
@@ -116,6 +153,13 @@ function AppLayout() {
               <title>Sécurité Physique – Mada Campaign</title>
               <meta name="description" content="Informations et actions pour la sécurité physique des citoyens malgaches avec Mada Campaign." />
               <link rel="canonical" href="https://ufdm.vercel.app/physical-security" />
+              <meta property="og:title" content="Sécurité Physique – Mada Campaign" />
+              <meta property="og:description" content="Informations et actions pour la sécurité physique des citoyens malgaches avec Mada Campaign." />
+              <meta property="og:url" content="https://ufdm.vercel.app/physical-security" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Sécurité Physique – Mada Campaign" />
+              <meta name="twitter:description" content="Informations et actions pour la sécurité physique des citoyens malgaches avec Mada Campaign." />
             </Helmet>
             <PhysicalSecurity />
           </>
@@ -126,6 +170,13 @@ function AppLayout() {
               <title>Procédures Consulaires – Mada Campaign</title>
               <meta name="description" content="Guide des procédures consulaires pour les Malgaches avec Mada Campaign." />
               <link rel="canonical" href="https://ufdm.vercel.app/consular-procedures" />
+              <meta property="og:title" content="Procédures Consulaires – Mada Campaign" />
+              <meta property="og:description" content="Guide des procédures consulaires pour les Malgaches avec Mada Campaign." />
+              <meta property="og:url" content="https://ufdm.vercel.app/consular-procedures" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Procédures Consulaires – Mada Campaign" />
+              <meta name="twitter:description" content="Guide des procédures consulaires pour les Malgaches avec Mada Campaign." />
             </Helmet>
             <ConsularProcedures />
           </>
@@ -136,6 +187,13 @@ function AppLayout() {
               <title>Vie Quotidienne – Mada Campaign</title>
               <meta name="description" content="Améliorez votre vie quotidienne avec les initiatives et ressources de Mada Campaign pour les Malgaches." />
               <link rel="canonical" href="https://ufdm.vercel.app/daily-life" />
+              <meta property="og:title" content="Vie Quotidienne – Mada Campaign" />
+              <meta property="og:description" content="Améliorez votre vie quotidienne avec les initiatives et ressources de Mada Campaign pour les Malgaches." />
+              <meta property="og:url" content="https://ufdm.vercel.app/daily-life" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Vie Quotidienne – Mada Campaign" />
+              <meta name="twitter:description" content="Améliorez votre vie quotidienne avec les initiatives et ressources de Mada Campaign pour les Malgaches." />
             </Helmet>
             <DailyLife />
           </>
@@ -148,6 +206,13 @@ function AppLayout() {
               <title>Faire un Don – Mada Campaign</title>
               <meta name="description" content="Soutenez Mada Campaign avec un don et contribuez au développement de Madagascar." />
               <link rel="canonical" href="https://ufdm.vercel.app/donate" />
+              <meta property="og:title" content="Faire un Don – Mada Campaign" />
+              <meta property="og:description" content="Soutenez Mada Campaign avec un don et contribuez au développement de Madagascar." />
+              <meta property="og:url" content="https://ufdm.vercel.app/donate" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Faire un Don – Mada Campaign" />
+              <meta name="twitter:description" content="Soutenez Mada Campaign avec un don et contribuez au développement de Madagascar." />
             </Helmet>
             <DonatePage />
           </>
@@ -158,6 +223,13 @@ function AppLayout() {
               <title>Signer la Pétition – Mada Campaign</title>
               <meta name="description" content="Signez la pétition de Mada Campaign et faites entendre votre voix pour un Madagascar meilleur." />
               <link rel="canonical" href="https://ufdm.vercel.app/sign-petition" />
+              <meta property="og:title" content="Signer la Pétition – Mada Campaign" />
+              <meta property="og:description" content="Signez la pétition de Mada Campaign et faites entendre votre voix pour un Madagascar meilleur." />
+              <meta property="og:url" content="https://ufdm.vercel.app/sign-petition" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Signer la Pétition – Mada Campaign" />
+              <meta name="twitter:description" content="Signez la pétition de Mada Campaign et faites entendre votre voix pour un Madagascar meilleur." />
             </Helmet>
             <SignPetition />
           </>
@@ -168,6 +240,13 @@ function AppLayout() {
               <title>Conditions d'utilisation – Mada Campaign</title>
               <meta name="description" content="Consultez les conditions d'utilisation de Mada Campaign." />
               <link rel="canonical" href="https://ufdm.vercel.app/terms" />
+              <meta property="og:title" content="Conditions d'utilisation – Mada Campaign" />
+              <meta property="og:description" content="Consultez les conditions d'utilisation de Mada Campaign." />
+              <meta property="og:url" content="https://ufdm.vercel.app/terms" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Conditions d'utilisation – Mada Campaign" />
+              <meta name="twitter:description" content="Consultez les conditions d'utilisation de Mada Campaign." />
             </Helmet>
             <TermsPage />
           </>
@@ -180,6 +259,13 @@ function AppLayout() {
               <title>Notre Équipe – Mada Campaign</title>
               <meta name="description" content="Rencontrez l'équipe engagée derrière Mada Campaign, dédiée à l'amélioration de la vie des Malgaches." />
               <link rel="canonical" href="https://ufdm.vercel.app/team" />
+              <meta property="og:title" content="Notre Équipe – Mada Campaign" />
+              <meta property="og:description" content="Rencontrez l'équipe engagée derrière Mada Campaign, dédiée à l'amélioration de la vie des Malgaches." />
+              <meta property="og:url" content="https://ufdm.vercel.app/team" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Notre Équipe – Mada Campaign" />
+              <meta name="twitter:description" content="Rencontrez l'équipe engagée derrière Mada Campaign, dédiée à l'amélioration de la vie des Malgaches." />
             </Helmet>
             <TeamPage />
           </>
@@ -190,6 +276,13 @@ function AppLayout() {
               <title>Nos Valeurs – Mada Campaign</title>
               <meta name="description" content="Découvrez les valeurs fondatrices de Mada Campaign pour un Madagascar meilleur." />
               <link rel="canonical" href="https://ufdm.vercel.app/our-value" />
+              <meta property="og:title" content="Nos Valeurs – Mada Campaign" />
+              <meta property="og:description" content="Découvrez les valeurs fondatrices de Mada Campaign pour un Madagascar meilleur." />
+              <meta property="og:url" content="https://ufdm.vercel.app/our-value" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Nos Valeurs – Mada Campaign" />
+              <meta name="twitter:description" content="Découvrez les valeurs fondatrices de Mada Campaign pour un Madagascar meilleur." />
             </Helmet>
             <OurValue />
           </>
@@ -200,6 +293,13 @@ function AppLayout() {
               <title>Sécurité du Patrimoine – Mada Campaign</title>
               <meta name="description" content="Protégez votre patrimoine avec Mada Campaign. Ressources et conseils pour les citoyens malgaches." />
               <link rel="canonical" href="https://ufdm.vercel.app/heritage-security" />
+              <meta property="og:title" content="Sécurité du Patrimoine – Mada Campaign" />
+              <meta property="og:description" content="Protégez votre patrimoine avec Mada Campaign. Ressources et conseils pour les citoyens malgaches." />
+              <meta property="og:url" content="https://ufdm.vercel.app/heritage-security" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Sécurité du Patrimoine – Mada Campaign" />
+              <meta name="twitter:description" content="Protégez votre patrimoine avec Mada Campaign. Ressources et conseils pour les citoyens malgaches." />
             </Helmet>
             <HeritageSecurity />
           </>
@@ -210,6 +310,13 @@ function AppLayout() {
               <title>Éducation Familiale – Mada Campaign</title>
               <meta name="description" content="Ressources et actions pour l'éducation familiale à Madagascar avec Mada Campaign." />
               <link rel="canonical" href="https://ufdm.vercel.app/family-education" />
+              <meta property="og:title" content="Éducation Familiale – Mada Campaign" />
+              <meta property="og:description" content="Ressources et actions pour l'éducation familiale à Madagascar avec Mada Campaign." />
+              <meta property="og:url" content="https://ufdm.vercel.app/family-education" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Éducation Familiale – Mada Campaign" />
+              <meta name="twitter:description" content="Ressources et actions pour l'éducation familiale à Madagascar avec Mada Campaign." />
             </Helmet>
             <FamilyEducation />
           </>
@@ -220,6 +327,13 @@ function AppLayout() {
               <title>Articles Partenaires – Mada Campaign</title>
               <meta name="description" content="Découvrez les articles et contributions de nos partenaires sur Mada Campaign." />
               <link rel="canonical" href="https://ufdm.vercel.app/partner-article" />
+              <meta property="og:title" content="Articles Partenaires – Mada Campaign" />
+              <meta property="og:description" content="Découvrez les articles et contributions de nos partenaires sur Mada Campaign." />
+              <meta property="og:url" content="https://ufdm.vercel.app/partner-article" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Articles Partenaires – Mada Campaign" />
+              <meta name="twitter:description" content="Découvrez les articles et contributions de nos partenaires sur Mada Campaign." />
             </Helmet>
             <PartenaireArticle />
           </>
@@ -231,6 +345,13 @@ function AppLayout() {
               <title>Forum – Mada Campaign</title>
               <meta name="description" content="Rejoignez le forum de Mada Campaign et échangez avec la communauté citoyenne malgache." />
               <link rel="canonical" href="https://ufdm.vercel.app/forum" />
+              <meta property="og:title" content="Forum – Mada Campaign" />
+              <meta property="og:description" content="Rejoignez le forum de Mada Campaign et échangez avec la communauté citoyenne malgache." />
+              <meta property="og:url" content="https://ufdm.vercel.app/forum" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Forum – Mada Campaign" />
+              <meta name="twitter:description" content="Rejoignez le forum de Mada Campaign et échangez avec la communauté citoyenne malgache." />
             </Helmet>
             <ForumPage />
           </>
@@ -241,6 +362,13 @@ function AppLayout() {
               <title>Militer – Mada Campaign</title>
               <meta name="description" content="Rejoignez les militants de Mada Campaign et agissez sur le terrain pour Madagascar." />
               <link rel="canonical" href="https://ufdm.vercel.app/milite" />
+              <meta property="og:title" content="Militer – Mada Campaign" />
+              <meta property="og:description" content="Rejoignez les militants de Mada Campaign et agissez sur le terrain pour Madagascar." />
+              <meta property="og:url" content="https://ufdm.vercel.app/milite" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Militer – Mada Campaign" />
+              <meta name="twitter:description" content="Rejoignez les militants de Mada Campaign et agissez sur le terrain pour Madagascar." />
             </Helmet>
             <MilitePage />
           </>
@@ -251,12 +379,21 @@ function AppLayout() {
               <title>À Propos – Mada Campaign</title>
               <meta name="description" content="En savoir plus sur Mada Campaign, sa mission et son engagement pour les citoyens malgaches." />
               <link rel="canonical" href="https://ufdm.vercel.app/about-article" />
+              <meta property="og:title" content="À Propos – Mada Campaign" />
+              <meta property="og:description" content="En savoir plus sur Mada Campaign, sa mission et son engagement pour les citoyens malgaches." />
+              <meta property="og:url" content="https://ufdm.vercel.app/about-article" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="À Propos – Mada Campaign" />
+              <meta name="twitter:description" content="En savoir plus sur Mada Campaign, sa mission et son engagement pour les citoyens malgaches." />
             </Helmet>
             <AboutArticle />
           </>
         } />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer content={content.footer} />
+      <CookieConsent />
     </div>
   );
 }

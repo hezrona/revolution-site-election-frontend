@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./signPetition.css";
+import { trackEvent } from "../../utils/analytics";
 
 export default function SignPetition() {
   const [formData, setFormData] = useState({
@@ -22,6 +23,7 @@ export default function SignPetition() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    trackEvent("sign_petition");
     setIsSubmitted(true);
   };
 
@@ -36,9 +38,7 @@ export default function SignPetition() {
           <div className="success-container">
             <div className="success-message">
               <h2>Succès !</h2>
-              <div className="cloudflare-badge">
-                <img src="/api/placeholder/120/40" alt="Cloudflare" />
-              </div>
+              <div className="cloudflare-badge" />
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { candidate } from "../../data/candidate";
+import christianPortrait from "../../assets/image/christian_tibayrenc.png";
 
 const fallbackMethodSteps = [
   "Identify the root cause and its deep drivers.",
@@ -40,7 +41,7 @@ export default function ProgramMethod({ content }) {
     <section className="program-method">
       <div className="container program-method-inner">
         <div className="program-method-media">
-          <img alt="Leader portrait" loading="lazy" />
+          <img src={content?.image || christianPortrait} alt={`Portrait de ${candidate.fullName}`} loading="lazy" />
         </div>
         <div className="program-method-content">
           <h2>{title}</h2>

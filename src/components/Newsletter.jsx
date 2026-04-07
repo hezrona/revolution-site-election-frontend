@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { API } from "../api/config";
+import { trackEvent } from "../utils/analytics";
 
 export default function Newsletter({ content }) {
   const title       = content?.title       || "Rester informé";
@@ -29,6 +30,7 @@ export default function Newsletter({ content }) {
         setStatus("success");
         setMessage(data.message || "Inscription confirmée !");
         setEmail("");
+        trackEvent("newsletter_signup");
       } else {
         setStatus("error");
         setMessage(data.error || "Une erreur est survenue.");

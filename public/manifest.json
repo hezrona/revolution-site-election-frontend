@@ -1,0 +1,17 @@
+{
+  "name": "Mada Campaign – UFM",
+  "short_name": "Mada Campaign",
+  "description": "Plateforme citoyenne de la liste UFM pour les élections consulaires Madagascar 2026.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1f3f5b",
+  "theme_color": "#1f3f5b",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

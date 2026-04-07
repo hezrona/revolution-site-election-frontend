@@ -1,4 +1,6 @@
-﻿const themes = [
+﻿import { trackEvent } from "../../utils/analytics";
+
+const themes = [
   "Housing",
   "Safety",
   "Cleanliness",
@@ -15,6 +17,11 @@ const districts = [
   "5th arrondissement",
   "6th arrondissement",
 ];
+
+function handleTestifySubmit(e) {
+  e.preventDefault();
+  trackEvent("testify_submit");
+}
 
 export default function TestifyForm() {
   return (
@@ -35,7 +42,7 @@ export default function TestifyForm() {
             <span className="card-subtitle">An observation</span>
           </label>
         </div>
-        <form className="testify-fields">
+        <form className="testify-fields" onSubmit={handleTestifySubmit}>
           <label>
             Theme *
             <select name="theme" required>
