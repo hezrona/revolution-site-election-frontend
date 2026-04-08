@@ -36,6 +36,7 @@ import ConsularProcedures from "./components/consularProcedures/ConsularProcedur
 import DailyLife from "./components/dailyLife/DailyLife.jsx";
 import AboutArticle from "./components/about/AboutArticle.jsx";
 import AdminPage from "./components/admin/AdminPage.jsx";
+import BlogPage from "./components/blog/BlogPage.jsx";
 import { useHomeContent } from "./hooks/useHomeContent.js";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 
@@ -401,6 +402,23 @@ function AppLayout() {
               <meta name="twitter:description" content="Découvrez l'Union des Français de Madagascar (UFM) et le parcours de Christian Tibayrenc, tête de liste pour les élections consulaires Madagascar 2026." />
             </Helmet>
             <AboutArticle />
+          </>
+        } />
+        <Route path="/blog" element={
+          <>
+            <Helmet>
+              <title>Blog – UFM | Union des Français de Madagascar</title>
+              <meta name="description" content="Actualités, conseils pratiques et vie de la communauté des Français de Madagascar. Le blog de l'Union des Français de Madagascar (UFM), liste de Christian Tibayrenc pour les élections consulaires 2026." />
+              <link rel="canonical" href="https://ufdm.vercel.app/blog" />
+              <meta property="og:title" content="Blog – UFM | Union des Français de Madagascar" />
+              <meta property="og:description" content="Actualités, conseils pratiques et vie de la communauté des Français de Madagascar. Le blog de l'UFM." />
+              <meta property="og:url" content="https://ufdm.vercel.app/blog" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Blog – UFM | Union des Français de Madagascar" />
+              <meta name="twitter:description" content="Actualités, conseils pratiques et vie de la communauté des Français de Madagascar. Le blog de l'UFM." />
+            </Helmet>
+            <BlogPage />
           </>
         } />
         <Route path="*" element={<NotFound />} />

@@ -3,6 +3,7 @@ import { getThreads, getThread } from "../../api/forum.js";
 import { deleteThread, deletePost, logout } from "../../api/auth.js";
 import { getMilitants, deleteMilitant, getRecommendations, deleteRecommendation } from "../../api/campaign.js";
 import { getDons, updateDonStatus, deleteDon } from "../../api/dons.js";
+import { getArticles, createArticle, updateArticle, deleteArticle } from "../../api/blog.js";
 import "./admin.css";
 
 /* ── API helpers newsletter ───────────────────────────────── */
@@ -423,6 +424,300 @@ function DonsTab({ token }) {
   );
 }
 
+/* ── Sous-composant : onglet Blog ─────────────────────────── */
+const BLOG_CATEGORIES = [
+  "Vie pratique à Madagascar",
+  "Actualités consulaires",
+  "Communauté & événements",
+  "Économie & entreprendre",
+  "Culture & découvertes",
+  "Éducation & formation",
+  "Santé & bien-être",
+  "Démarches administratives",
+];
+
+const EMPTY_FORM = {
+  title: "",
+  category: BLOG_CATEGORIES[0],
+  published_at: new Date().toISOString().slice(0, 10),
+  image_url: "",
+  summary: "",
+  content: "",
+};
+
+function BlogTab({ token }) {
+  const [articles, setArticles]   = useState([]);
+  const [loading, setLoading]     = useState(true);
+  const [view, setView]           = useState("list"); // "list" | "form"
+  const [editing, setEditing]     = useState(null);   // article en cours de modification
+  const [form, setForm]           = useState(EMPTY_FORM);
+  const [saving, setSaving]       = useState(false);
+  const [saveMsg, setSaveMsg]     = useState(null);
+
+  useEffect(() => {
+    getArticles()
+      .then((data) => setArticles(Array.isArray(data) ? data : []))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const openCreate = () => {
+    setEditing(null);
+    setForm(EMPTY_FORM);
+    setSaveMsg(null);
+    setView("form");
+  };
+
+  const openEdit = (article) => {
+    setEditing(article);
+    setForm({
+      title:        article.title        || "",
+      category:     article.category     || BLOG_CATEGORIES[0],
+      published_at: article.published_at ? article.published_at.slice(0, 10) : "",
+      image_url:    article.image_url    || "",
+      summary:      article.summary      || "",
+      content:      article.content      || "",
+    });
+    setSaveMsg(null);
+    setView("form");
+  };
+
+  const handleDelete = async (id, title) => {
+    if (!confirm(`Supprimer l'article « ${title} » ?`)) return;
+    await deleteArticle(id, token);
+    setArticles((prev) => prev.filter((a) => a.id !== id));
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!form.title.trim()) { setSaveMsg({ ok: false, text: "Le titre est requis." }); return; }
+    setSaving(true);
+    setSaveMsg(null);
+    try {
+      if (editing) {
+        const updated = await updateArticle(editing.id, form, token);
+        setArticles((prev) => prev.map((a) => a.id === editing.id ? { ...a, ...updated } : a));
+        setSaveMsg({ ok: true, text: "Article mis à jour." });
+      } else {
+        const created = await createArticle(form, token);
+        setArticles((prev) => [created, ...prev]);
+        setSaveMsg({ ok: true, text: "Article publié." });
+        setForm(EMPTY_FORM);
+        setEditing(null);
+      }
+    } catch {
+      setSaveMsg({ ok: false, text: "Erreur lors de la sauvegarde." });
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (loading) return <p className="admin-loading" style={{ padding: 24 }}>Chargement…</p>;
+
+  /* ── Vue formulaire ── */
+  if (view === "form") {
+    return (
+      <div className="blog-admin-form-wrap">
+        <div className="blog-admin-form-bar">
+          <button
+            type="button"
+            className="blog-admin-back"
+            onClick={() => setView("list")}
+          >
+            ← Retour à la liste
+          </button>
+          <span className="blog-admin-form-title">
+            {editing ? "Modifier l'article" : "Nouvel article"}
+          </span>
+        </div>
+
+        <form className="blog-admin-form" onSubmit={handleSubmit}>
+          <div className="blog-form-row">
+            <label htmlFor="ba-title">Titre *</label>
+            <input
+              id="ba-title"
+              name="title"
+              type="text"
+              value={form.title}
+              onChange={handleChange}
+              placeholder="Titre de l'article"
+              required
+            />
+          </div>
+
+          <div className="blog-form-row-2col">
+            <div className="blog-form-row">
+              <label htmlFor="ba-category">Catégorie</label>
+              <select id="ba-category" name="category" value={form.category} onChange={handleChange}>
+                {BLOG_CATEGORIES.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
+            </div>
+            <div className="blog-form-row">
+              <label htmlFor="ba-date">Date de publication</label>
+              <input
+                id="ba-date"
+                name="published_at"
+                type="date"
+                value={form.published_at}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+          <div className="blog-form-row">
+            <label htmlFor="ba-image">URL de l'image (optionnel)</label>
+            <input
+              id="ba-image"
+              name="image_url"
+              type="url"
+              value={form.image_url}
+              onChange={handleChange}
+              placeholder="https://…"
+            />
+            {form.image_url && (
+              <img
+                src={form.image_url}
+                alt="Aperçu"
+                className="blog-form-img-preview"
+                onError={(e) => { e.target.style.display = "none"; }}
+              />
+            )}
+          </div>
+
+          <div className="blog-form-row">
+            <label htmlFor="ba-summary">Résumé / Chapeau</label>
+            <textarea
+              id="ba-summary"
+              name="summary"
+              rows={3}
+              value={form.summary}
+              onChange={handleChange}
+              placeholder="Texte affiché sur la carte (160 caractères max recommandé)"
+            />
+          </div>
+
+          <div className="blog-form-row">
+            <label htmlFor="ba-content">
+              Contenu complet{" "}
+              <span className="blog-form-hint">HTML supporté</span>
+            </label>
+            <textarea
+              id="ba-content"
+              name="content"
+              rows={16}
+              value={form.content}
+              onChange={handleChange}
+              placeholder="<p>Contenu de l'article…</p>"
+              className="blog-form-content"
+            />
+          </div>
+
+          {saveMsg && (
+            <div className={`nl-result ${saveMsg.ok ? "ok" : "err"}`}>
+              {saveMsg.text}
+            </div>
+          )}
+
+          <div className="blog-form-actions">
+            <button
+              type="button"
+              className="blog-form-btn-cancel"
+              onClick={() => setView("list")}
+            >
+              Annuler
+            </button>
+            <button type="submit" className="blog-form-btn-save" disabled={saving}>
+              {saving ? "Enregistrement…" : editing ? "Mettre à jour" : "Publier l'article"}
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+
+  /* ── Vue liste ── */
+  return (
+    <div className="blog-admin-list-wrap">
+      <div className="blog-admin-list-bar">
+        <span className="blog-admin-list-count">
+          {articles.length} article{articles.length !== 1 ? "s" : ""}
+        </span>
+        <button type="button" className="blog-admin-btn-new" onClick={openCreate}>
+          + Nouvel article
+        </button>
+      </div>
+
+      {articles.length === 0 ? (
+        <p className="admin-empty" style={{ padding: 24 }}>Aucun article pour l'instant.</p>
+      ) : (
+        <div className="blog-admin-table-wrap">
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th style={{ width: 60 }}>Image</th>
+                <th>Titre</th>
+                <th>Catégorie</th>
+                <th>Date</th>
+                <th style={{ width: 100 }}></th>
+              </tr>
+            </thead>
+            <tbody>
+              {articles.map((a) => (
+                <tr key={a.id}>
+                  <td>
+                    {a.image_url ? (
+                      <img
+                        src={a.image_url}
+                        alt={a.title}
+                        className="blog-admin-thumb"
+                      />
+                    ) : (
+                      <div className="blog-admin-thumb-placeholder" />
+                    )}
+                  </td>
+                  <td style={{ fontWeight: 600 }}>{a.title}</td>
+                  <td>
+                    <span className="blog-admin-cat-badge">{a.category}</span>
+                  </td>
+                  <td style={{ whiteSpace: "nowrap" }}>
+                    {a.published_at
+                      ? new Date(a.published_at).toLocaleDateString("fr-FR")
+                      : "—"}
+                  </td>
+                  <td>
+                    <div style={{ display: "flex", gap: 6 }}>
+                      <button
+                        className="blog-admin-btn-edit"
+                        onClick={() => openEdit(a)}
+                        title="Modifier"
+                      >
+                        ✏️
+                      </button>
+                      <button
+                        className="admin-btn-delete"
+                        onClick={() => handleDelete(a.id, a.title)}
+                        title="Supprimer"
+                      >
+                        🗑️
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ── Composant principal ──────────────────────────────────── */
 export default function AdminDashboard({ token, onLogout }) {
   const [activeTab, setActiveTab] = useState("forum");
@@ -518,6 +813,12 @@ export default function AdminDashboard({ token, onLogout }) {
         >
           💛 Dons
         </button>
+        <button
+          className={`admin-tab ${activeTab === "blog" ? "active" : ""}`}
+          onClick={() => setActiveTab("blog")}
+        >
+          📝 Blog
+        </button>
       </div>
 
       {/* Contenu */}
@@ -593,6 +894,7 @@ export default function AdminDashboard({ token, onLogout }) {
       {activeTab === "militants"     && <MilitantsTab     token={token} />}
       {activeTab === "recommendations" && <RecommendationsTab token={token} />}
       {activeTab === "dons"          && <DonsTab          token={token} />}
+      {activeTab === "blog"          && <BlogTab          token={token} />}
 
     </div>
   );

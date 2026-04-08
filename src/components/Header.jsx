@@ -31,7 +31,7 @@ export default function Header({ content }) {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const allLinks = [{ label: "Équipe", href: "/team" }, ...links];
+  const allLinks = [{ label: "Équipe", href: "/team" }, ...links, { label: "Blog", href: "/blog" }];
 
   return (
     <>
@@ -58,6 +58,9 @@ export default function Header({ content }) {
                 {link.label}
               </Link>
             ))}
+            <Link to="/blog" className="nav-alt-yellow">
+              Blog
+            </Link>
           </nav>
 
           {/* Hamburger */}
