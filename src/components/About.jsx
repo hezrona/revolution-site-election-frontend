@@ -11,7 +11,7 @@ export default function About({ content }) {
   const imageAlt =
     content?.image?.data?.attributes?.alternativeText ||
     content?.image?.alt ||
-    "Portrait";
+    "Christian Tibayrenc – candidat aux élections consulaires Madagascar 2026, tête de liste Union des Français de Madagascar (UFM)";
 
   const imageUrl = imagePath ? getStrapiMediaUrl(imagePath) : representationImg;
 

@@ -19,26 +19,26 @@ const teamMembers = [
     image: christianTibayrencImage,
     description: `<section>
   <p>
-    C’est avec beaucoup d’humilité, sincérité et détermination que je me présente comme tète de liste de 
+    C’est avec beaucoup d’humilité, sincérité et détermination que je me présente comme tète de liste de
     <strong>« l’Union des Français de Madagascar »</strong>.
   </p>
 
   <p>
-    Depuis 12 ans que je connais Madagascar, j’y ai construit ma vie avec ma famille, 
+    Depuis 12 ans que je connais Madagascar, j’y ai construit ma vie avec ma famille,
     mon épouse étant Gasy, et notre fille allant a l’école Française.
   </p>
 </section>
 
 <section>
   <p>
-    Mon parcours vous le connaissez, une carrière dans la finance, des responsabilités importantes comme benevole en France, 
-    notamment comme vice-président de Mutuelle, trésorier General de Caisse de retraite des artisans commerçants, 
+    Mon parcours vous le connaissez, une carrière dans la finance, des responsabilités importantes comme benevole en France,
+    notamment comme vice-président de Mutuelle, trésorier General de Caisse de retraite des artisans commerçants,
     juge aux Prudhommes, et au Tribunal de la Sécurité Sociale, ainsi que Président d’un Club de Rugby Pro.
   </p>
 </section>
 
 <section>
-  <h2>Ce parcours, ce n’est pas un titre : c’est une méthode</h2>
+  <h3>Ce parcours, ce n’est pas un titre : c’est une méthode</h3>
 
   <p>Une méthode de rigueur, d’écoute, de décision.</p>
 
@@ -199,11 +199,11 @@ const teamMembers = [
     description:
       `<p>Né le 18 avril 1953 à Marseille<br>
       retraité<br>
-      Resident à Majunga<br>  
+      Resident à Majunga<br>
       Tel 0323899394 Idem WhatsApp<br>
       Mail christianjeanmarceldunogue@gmail.com</p>
 
-      <h2>Formation</h2>
+      <h3>Formation</h3>
 
       <p>Bac A1 en 1971<br>
       Capceg puis Capes et Agrégation<br>
@@ -213,7 +213,7 @@ const teamMembers = [
       A Madagascar depuis 12 ans marié à une malgache<br>
       1 enfant</p>
 
-      <h2>Engagement</h2>
+      <h3>Engagement</h3>
 
       <p>Secrétaire général de l'UR CFTC<br>
       Membre du bureau national de la CFTC représentant les DOM TOM<br>
@@ -386,7 +386,11 @@ export default function TeamPage() {
                 />
               </div>
               <div className="team-photo">
-                <img src={member.image} alt={member.name} />
+                <img
+                  src={member.image}
+                  alt={`${member.name} – candidat de la liste Union des Français de Madagascar (UFM), élections consulaires Madagascar 2026`}
+                  loading="lazy"
+                />
               </div>
             </div>
           </article>

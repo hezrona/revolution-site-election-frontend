@@ -12,7 +12,8 @@
       "Bash(echo \"Preview PID: $!\")",
       "Bash(node:*)",
       "Bash(pkill -f \"vite preview\")",
-      "Bash(taskkill /PID 17968 /F)"
+      "Bash(taskkill /PID 17968 /F)",
+      "Bash(grep -E \"\\\\.\\(html|json|xml|txt\\)$\")"
     ]
   }
 }

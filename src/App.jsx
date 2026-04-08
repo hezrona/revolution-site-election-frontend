@@ -1,5 +1,6 @@
-﻿import { BrowserRouter, Routes, Route } from "react-router-dom";
+﻿import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 import CookieConsent from "./components/cookieConsent/CookieConsent.jsx";
 import NotFound from "./components/NotFound.jsx";
 import Header from "./components/Header.jsx";
@@ -39,6 +40,18 @@ import { useHomeContent } from "./hooks/useHomeContent.js";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 
 
+function PageTracker() {
+  const location = useLocation();
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "pageview",
+      page_path: location.pathname + location.search,
+    });
+  }, [location]);
+  return null;
+}
+
 function HomePage() {
   const { data, loading, error } = useHomeContent();
   const content = data?.content || {};
@@ -46,16 +59,16 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Mada Campaign – Plateforme citoyenne pour Madagascar</title>
-        <meta name="description" content="Mada Campaign est une plateforme citoyenne dédiée aux Malgaches. Rejoignez-nous pour agir, pétitionner et construire un meilleur avenir pour Madagascar." />
+        <title>Christian Tibayrenc – Liste UFM | Élections Consulaires Madagascar 2026</title>
+        <meta name="description" content="Découvrez le programme de Christian Tibayrenc, tête de liste de l'Union des Français de Madagascar (UFM), candidat aux élections consulaires Madagascar du 17 mai 2026." />
         <link rel="canonical" href="https://ufdm.vercel.app/" />
-        <meta property="og:title" content="Mada Campaign – Plateforme citoyenne pour Madagascar" />
-        <meta property="og:description" content="Mada Campaign est une plateforme citoyenne dédiée aux Malgaches. Rejoignez-nous pour agir, pétitionner et construire un meilleur avenir pour Madagascar." />
+        <meta property="og:title" content="Christian Tibayrenc – Liste UFM | Élections Consulaires Madagascar 2026" />
+        <meta property="og:description" content="Découvrez le programme de Christian Tibayrenc, tête de liste de l'Union des Français de Madagascar (UFM), candidat aux élections consulaires Madagascar du 17 mai 2026." />
         <meta property="og:url" content="https://ufdm.vercel.app/" />
         <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mada Campaign – Plateforme citoyenne pour Madagascar" />
-        <meta name="twitter:description" content="Mada Campaign est une plateforme citoyenne dédiée aux Malgaches. Rejoignez-nous pour agir, pétitionner et construire un meilleur avenir pour Madagascar." />
+        <meta name="twitter:title" content="Christian Tibayrenc – Liste UFM | Élections Consulaires Madagascar 2026" />
+        <meta name="twitter:description" content="Découvrez le programme de Christian Tibayrenc, tête de liste de l'Union des Français de Madagascar (UFM), candidat aux élections consulaires Madagascar du 17 mai 2026." />
       </Helmet>
       <main>
         <Hero content={content.hero} loading={loading} />
@@ -82,16 +95,16 @@ function AppLayout() {
         <Route path="/program" element={
           <>
             <Helmet>
-              <title>Programme – Mada Campaign</title>
-              <meta name="description" content="Découvrez le programme de Mada Campaign pour le développement et le bien-être des citoyens malgaches." />
+              <title>Programme Electoral – Union des Français de Madagascar | UFM 2026</title>
+              <meta name="description" content="Le programme complet de la liste Union des Français de Madagascar (UFM), menée par Christian Tibayrenc, pour les élections consulaires Madagascar du 17 mai 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/program" />
-              <meta property="og:title" content="Programme – Mada Campaign" />
-              <meta property="og:description" content="Découvrez le programme de Mada Campaign pour le développement et le bien-être des citoyens malgaches." />
+              <meta property="og:title" content="Programme Electoral – Union des Français de Madagascar | UFM 2026" />
+              <meta property="og:description" content="Le programme complet de la liste Union des Français de Madagascar (UFM), menée par Christian Tibayrenc, pour les élections consulaires Madagascar du 17 mai 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/program" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Programme – Mada Campaign" />
-              <meta name="twitter:description" content="Découvrez le programme de Mada Campaign pour le développement et le bien-être des citoyens malgaches." />
+              <meta name="twitter:title" content="Programme Electoral – Union des Français de Madagascar | UFM 2026" />
+              <meta name="twitter:description" content="Le programme complet de la liste Union des Français de Madagascar (UFM), menée par Christian Tibayrenc, pour les élections consulaires Madagascar du 17 mai 2026." />
             </Helmet>
             <ProgramAltPage />
           </>
@@ -99,16 +112,16 @@ function AppLayout() {
         <Route path="/entrepreneur" element={
           <>
             <Helmet>
-              <title>Entrepreneuriat – Mada Campaign</title>
-              <meta name="description" content="Soutenez l'entrepreneuriat à Madagascar avec Mada Campaign. Ressources et actions pour les entrepreneurs malgaches." />
+              <title>Soutenir les Entrepreneurs Français à Madagascar – UFM | Élections Consulaires 2026</title>
+              <meta name="description" content="L'Union des Français de Madagascar (UFM) s'engage pour les entrepreneurs français à Madagascar. Découvrez les propositions de Christian Tibayrenc pour les élections consulaires 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/entrepreneur" />
-              <meta property="og:title" content="Entrepreneuriat – Mada Campaign" />
-              <meta property="og:description" content="Soutenez l'entrepreneuriat à Madagascar avec Mada Campaign. Ressources et actions pour les entrepreneurs malgaches." />
+              <meta property="og:title" content="Soutenir les Entrepreneurs Français à Madagascar – UFM | Élections Consulaires 2026" />
+              <meta property="og:description" content="L'Union des Français de Madagascar (UFM) s'engage pour les entrepreneurs français à Madagascar. Découvrez les propositions de Christian Tibayrenc pour les élections consulaires 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/entrepreneur" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Entrepreneuriat – Mada Campaign" />
-              <meta name="twitter:description" content="Soutenez l'entrepreneuriat à Madagascar avec Mada Campaign. Ressources et actions pour les entrepreneurs malgaches." />
+              <meta name="twitter:title" content="Soutenir les Entrepreneurs Français à Madagascar – UFM | Élections Consulaires 2026" />
+              <meta name="twitter:description" content="L'Union des Français de Madagascar (UFM) s'engage pour les entrepreneurs français à Madagascar. Découvrez les propositions de Christian Tibayrenc pour les élections consulaires 2026." />
             </Helmet>
             <EntrepreneurPage />
           </>
@@ -116,16 +129,16 @@ function AppLayout() {
         <Route path="/health" element={
           <>
             <Helmet>
-              <title>Santé – Mada Campaign</title>
-              <meta name="description" content="Informations et actions sur la santé des citoyens malgaches avec Mada Campaign." />
+              <title>Santé des Français de Madagascar – UFM | Élections Consulaires 2026</title>
+              <meta name="description" content="L'Union des Français de Madagascar (UFM) propose des solutions concrètes pour la santé des Français résidant à Madagascar. Programme de Christian Tibayrenc pour les élections consulaires 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/health" />
-              <meta property="og:title" content="Santé – Mada Campaign" />
-              <meta property="og:description" content="Informations et actions sur la santé des citoyens malgaches avec Mada Campaign." />
+              <meta property="og:title" content="Santé des Français de Madagascar – UFM | Élections Consulaires 2026" />
+              <meta property="og:description" content="L'Union des Français de Madagascar (UFM) propose des solutions concrètes pour la santé des Français résidant à Madagascar. Programme de Christian Tibayrenc pour les élections consulaires 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/health" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Santé – Mada Campaign" />
-              <meta name="twitter:description" content="Informations et actions sur la santé des citoyens malgaches avec Mada Campaign." />
+              <meta name="twitter:title" content="Santé des Français de Madagascar – UFM | Élections Consulaires 2026" />
+              <meta name="twitter:description" content="L'Union des Français de Madagascar (UFM) propose des solutions concrètes pour la santé des Français résidant à Madagascar. Programme de Christian Tibayrenc pour les élections consulaires 2026." />
             </Helmet>
             <HealthPage />
           </>
@@ -133,16 +146,16 @@ function AppLayout() {
         <Route path="/take-action" element={
           <>
             <Helmet>
-              <title>Agir – Mada Campaign</title>
-              <meta name="description" content="Passez à l'action avec Mada Campaign. Rejoignez la communauté citoyenne et participez au changement à Madagascar." />
+              <title>Agir pour les Français de Madagascar – UFM | Élections Consulaires 2026</title>
+              <meta name="description" content="Rejoignez l'action de l'Union des Français de Madagascar (UFM). Soutenez Christian Tibayrenc et participez à la campagne pour les élections consulaires Madagascar 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/take-action" />
-              <meta property="og:title" content="Agir – Mada Campaign" />
-              <meta property="og:description" content="Passez à l'action avec Mada Campaign. Rejoignez la communauté citoyenne et participez au changement à Madagascar." />
+              <meta property="og:title" content="Agir pour les Français de Madagascar – UFM | Élections Consulaires 2026" />
+              <meta property="og:description" content="Rejoignez l'action de l'Union des Français de Madagascar (UFM). Soutenez Christian Tibayrenc et participez à la campagne pour les élections consulaires Madagascar 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/take-action" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Agir – Mada Campaign" />
-              <meta name="twitter:description" content="Passez à l'action avec Mada Campaign. Rejoignez la communauté citoyenne et participez au changement à Madagascar." />
+              <meta name="twitter:title" content="Agir pour les Français de Madagascar – UFM | Élections Consulaires 2026" />
+              <meta name="twitter:description" content="Rejoignez l'action de l'Union des Français de Madagascar (UFM). Soutenez Christian Tibayrenc et participez à la campagne pour les élections consulaires Madagascar 2026." />
             </Helmet>
             <TakeActionPage />
           </>
@@ -150,16 +163,16 @@ function AppLayout() {
         <Route path="/physical-security" element={
           <>
             <Helmet>
-              <title>Sécurité Physique – Mada Campaign</title>
-              <meta name="description" content="Informations et actions pour la sécurité physique des citoyens malgaches avec Mada Campaign." />
+              <title>Sécurité Physique des Français à Madagascar – UFM | Élections Consulaires 2026</title>
+              <meta name="description" content="L'Union des Français de Madagascar (UFM) s'engage pour la sécurité physique des Français résidant à Madagascar. Propositions de Christian Tibayrenc pour les élections consulaires 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/physical-security" />
-              <meta property="og:title" content="Sécurité Physique – Mada Campaign" />
-              <meta property="og:description" content="Informations et actions pour la sécurité physique des citoyens malgaches avec Mada Campaign." />
+              <meta property="og:title" content="Sécurité Physique des Français à Madagascar – UFM | Élections Consulaires 2026" />
+              <meta property="og:description" content="L'Union des Français de Madagascar (UFM) s'engage pour la sécurité physique des Français résidant à Madagascar. Propositions de Christian Tibayrenc pour les élections consulaires 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/physical-security" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Sécurité Physique – Mada Campaign" />
-              <meta name="twitter:description" content="Informations et actions pour la sécurité physique des citoyens malgaches avec Mada Campaign." />
+              <meta name="twitter:title" content="Sécurité Physique des Français à Madagascar – UFM | Élections Consulaires 2026" />
+              <meta name="twitter:description" content="L'Union des Français de Madagascar (UFM) s'engage pour la sécurité physique des Français résidant à Madagascar. Propositions de Christian Tibayrenc pour les élections consulaires 2026." />
             </Helmet>
             <PhysicalSecurity />
           </>
@@ -167,16 +180,16 @@ function AppLayout() {
         <Route path="/consular-procedures" element={
           <>
             <Helmet>
-              <title>Procédures Consulaires – Mada Campaign</title>
-              <meta name="description" content="Guide des procédures consulaires pour les Malgaches avec Mada Campaign." />
+              <title>Procédures Consulaires – UFM | Union des Français de Madagascar 2026</title>
+              <meta name="description" content="L'Union des Français de Madagascar (UFM) œuvre pour améliorer les procédures consulaires. Découvrez les engagements de Christian Tibayrenc pour les élections consulaires Madagascar 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/consular-procedures" />
-              <meta property="og:title" content="Procédures Consulaires – Mada Campaign" />
-              <meta property="og:description" content="Guide des procédures consulaires pour les Malgaches avec Mada Campaign." />
+              <meta property="og:title" content="Procédures Consulaires – UFM | Union des Français de Madagascar 2026" />
+              <meta property="og:description" content="L'Union des Français de Madagascar (UFM) œuvre pour améliorer les procédures consulaires. Découvrez les engagements de Christian Tibayrenc pour les élections consulaires Madagascar 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/consular-procedures" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Procédures Consulaires – Mada Campaign" />
-              <meta name="twitter:description" content="Guide des procédures consulaires pour les Malgaches avec Mada Campaign." />
+              <meta name="twitter:title" content="Procédures Consulaires – UFM | Union des Français de Madagascar 2026" />
+              <meta name="twitter:description" content="L'Union des Français de Madagascar (UFM) œuvre pour améliorer les procédures consulaires. Découvrez les engagements de Christian Tibayrenc pour les élections consulaires Madagascar 2026." />
             </Helmet>
             <ConsularProcedures />
           </>
@@ -184,16 +197,16 @@ function AppLayout() {
         <Route path="/daily-life" element={
           <>
             <Helmet>
-              <title>Vie Quotidienne – Mada Campaign</title>
-              <meta name="description" content="Améliorez votre vie quotidienne avec les initiatives et ressources de Mada Campaign pour les Malgaches." />
+              <title>Vie Quotidienne des Français à Madagascar – UFM | Élections Consulaires 2026</title>
+              <meta name="description" content="L'Union des Français de Madagascar (UFM) s'engage pour améliorer le quotidien des Français résidant à Madagascar. Propositions concrètes de Christian Tibayrenc pour les élections consulaires 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/daily-life" />
-              <meta property="og:title" content="Vie Quotidienne – Mada Campaign" />
-              <meta property="og:description" content="Améliorez votre vie quotidienne avec les initiatives et ressources de Mada Campaign pour les Malgaches." />
+              <meta property="og:title" content="Vie Quotidienne des Français à Madagascar – UFM | Élections Consulaires 2026" />
+              <meta property="og:description" content="L'Union des Français de Madagascar (UFM) s'engage pour améliorer le quotidien des Français résidant à Madagascar. Propositions concrètes de Christian Tibayrenc pour les élections consulaires 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/daily-life" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Vie Quotidienne – Mada Campaign" />
-              <meta name="twitter:description" content="Améliorez votre vie quotidienne avec les initiatives et ressources de Mada Campaign pour les Malgaches." />
+              <meta name="twitter:title" content="Vie Quotidienne des Français à Madagascar – UFM | Élections Consulaires 2026" />
+              <meta name="twitter:description" content="L'Union des Français de Madagascar (UFM) s'engage pour améliorer le quotidien des Français résidant à Madagascar. Propositions concrètes de Christian Tibayrenc pour les élections consulaires 2026." />
             </Helmet>
             <DailyLife />
           </>
@@ -203,16 +216,16 @@ function AppLayout() {
         <Route path="/donate" element={
           <>
             <Helmet>
-              <title>Faire un Don – Mada Campaign</title>
-              <meta name="description" content="Soutenez Mada Campaign avec un don et contribuez au développement de Madagascar." />
+              <title>Soutenir la Campagne UFM – Union des Français de Madagascar 2026</title>
+              <meta name="description" content="Soutenez la campagne de l'Union des Français de Madagascar (UFM), menée par Christian Tibayrenc, pour les élections consulaires Madagascar 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/donate" />
-              <meta property="og:title" content="Faire un Don – Mada Campaign" />
-              <meta property="og:description" content="Soutenez Mada Campaign avec un don et contribuez au développement de Madagascar." />
+              <meta property="og:title" content="Soutenir la Campagne UFM – Union des Français de Madagascar 2026" />
+              <meta property="og:description" content="Soutenez la campagne de l'Union des Français de Madagascar (UFM), menée par Christian Tibayrenc, pour les élections consulaires Madagascar 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/donate" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Faire un Don – Mada Campaign" />
-              <meta name="twitter:description" content="Soutenez Mada Campaign avec un don et contribuez au développement de Madagascar." />
+              <meta name="twitter:title" content="Soutenir la Campagne UFM – Union des Français de Madagascar 2026" />
+              <meta name="twitter:description" content="Soutenez la campagne de l'Union des Français de Madagascar (UFM), menée par Christian Tibayrenc, pour les élections consulaires Madagascar 2026." />
             </Helmet>
             <DonatePage />
           </>
@@ -220,16 +233,16 @@ function AppLayout() {
         <Route path="/sign-petition" element={
           <>
             <Helmet>
-              <title>Signer la Pétition – Mada Campaign</title>
-              <meta name="description" content="Signez la pétition de Mada Campaign et faites entendre votre voix pour un Madagascar meilleur." />
+              <title>Pétition – Union des Français de Madagascar | Christian Tibayrenc 2026</title>
+              <meta name="description" content="Signez la pétition de l'Union des Français de Madagascar (UFM) et soutenez Christian Tibayrenc pour les élections consulaires Madagascar du 17 mai 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/sign-petition" />
-              <meta property="og:title" content="Signer la Pétition – Mada Campaign" />
-              <meta property="og:description" content="Signez la pétition de Mada Campaign et faites entendre votre voix pour un Madagascar meilleur." />
+              <meta property="og:title" content="Pétition – Union des Français de Madagascar | Christian Tibayrenc 2026" />
+              <meta property="og:description" content="Signez la pétition de l'Union des Français de Madagascar (UFM) et soutenez Christian Tibayrenc pour les élections consulaires Madagascar du 17 mai 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/sign-petition" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Signer la Pétition – Mada Campaign" />
-              <meta name="twitter:description" content="Signez la pétition de Mada Campaign et faites entendre votre voix pour un Madagascar meilleur." />
+              <meta name="twitter:title" content="Pétition – Union des Français de Madagascar | Christian Tibayrenc 2026" />
+              <meta name="twitter:description" content="Signez la pétition de l'Union des Français de Madagascar (UFM) et soutenez Christian Tibayrenc pour les élections consulaires Madagascar du 17 mai 2026." />
             </Helmet>
             <SignPetition />
           </>
@@ -237,16 +250,16 @@ function AppLayout() {
         <Route path="/terms" element={
           <>
             <Helmet>
-              <title>Conditions d'utilisation – Mada Campaign</title>
-              <meta name="description" content="Consultez les conditions d'utilisation de Mada Campaign." />
+              <title>Conditions d'utilisation – UFM | Union des Français de Madagascar</title>
+              <meta name="description" content="Consultez les conditions d'utilisation du site de l'Union des Français de Madagascar (UFM), liste de Christian Tibayrenc pour les élections consulaires 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/terms" />
-              <meta property="og:title" content="Conditions d'utilisation – Mada Campaign" />
-              <meta property="og:description" content="Consultez les conditions d'utilisation de Mada Campaign." />
+              <meta property="og:title" content="Conditions d'utilisation – UFM | Union des Français de Madagascar" />
+              <meta property="og:description" content="Consultez les conditions d'utilisation du site de l'Union des Français de Madagascar (UFM), liste de Christian Tibayrenc pour les élections consulaires 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/terms" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Conditions d'utilisation – Mada Campaign" />
-              <meta name="twitter:description" content="Consultez les conditions d'utilisation de Mada Campaign." />
+              <meta name="twitter:title" content="Conditions d'utilisation – UFM | Union des Français de Madagascar" />
+              <meta name="twitter:description" content="Consultez les conditions d'utilisation du site de l'Union des Français de Madagascar (UFM), liste de Christian Tibayrenc pour les élections consulaires 2026." />
             </Helmet>
             <TermsPage />
           </>
@@ -256,16 +269,16 @@ function AppLayout() {
         <Route path="/team" element={
           <>
             <Helmet>
-              <title>Notre Équipe – Mada Campaign</title>
-              <meta name="description" content="Rencontrez l'équipe engagée derrière Mada Campaign, dédiée à l'amélioration de la vie des Malgaches." />
+              <title>Notre Équipe – Christian Tibayrenc & la Liste UFM | Élections Consulaires 2026</title>
+              <meta name="description" content="Rencontrez Christian Tibayrenc et les candidats de la liste Union des Français de Madagascar (UFM) pour les élections consulaires Madagascar du 17 mai 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/team" />
-              <meta property="og:title" content="Notre Équipe – Mada Campaign" />
-              <meta property="og:description" content="Rencontrez l'équipe engagée derrière Mada Campaign, dédiée à l'amélioration de la vie des Malgaches." />
+              <meta property="og:title" content="Notre Équipe – Christian Tibayrenc & la Liste UFM | Élections Consulaires 2026" />
+              <meta property="og:description" content="Rencontrez Christian Tibayrenc et les candidats de la liste Union des Français de Madagascar (UFM) pour les élections consulaires Madagascar du 17 mai 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/team" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Notre Équipe – Mada Campaign" />
-              <meta name="twitter:description" content="Rencontrez l'équipe engagée derrière Mada Campaign, dédiée à l'amélioration de la vie des Malgaches." />
+              <meta name="twitter:title" content="Notre Équipe – Christian Tibayrenc & la Liste UFM | Élections Consulaires 2026" />
+              <meta name="twitter:description" content="Rencontrez Christian Tibayrenc et les candidats de la liste Union des Français de Madagascar (UFM) pour les élections consulaires Madagascar du 17 mai 2026." />
             </Helmet>
             <TeamPage />
           </>
@@ -273,16 +286,16 @@ function AppLayout() {
         <Route path="/our-value" element={
           <>
             <Helmet>
-              <title>Nos Valeurs – Mada Campaign</title>
-              <meta name="description" content="Découvrez les valeurs fondatrices de Mada Campaign pour un Madagascar meilleur." />
+              <title>Nos Valeurs – UFM | Union des Français de Madagascar | Élections 2026</title>
+              <meta name="description" content="Les valeurs qui guident l'Union des Français de Madagascar (UFM) et la liste menée par Christian Tibayrenc pour les élections consulaires Madagascar 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/our-value" />
-              <meta property="og:title" content="Nos Valeurs – Mada Campaign" />
-              <meta property="og:description" content="Découvrez les valeurs fondatrices de Mada Campaign pour un Madagascar meilleur." />
+              <meta property="og:title" content="Nos Valeurs – UFM | Union des Français de Madagascar | Élections 2026" />
+              <meta property="og:description" content="Les valeurs qui guident l'Union des Français de Madagascar (UFM) et la liste menée par Christian Tibayrenc pour les élections consulaires Madagascar 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/our-value" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Nos Valeurs – Mada Campaign" />
-              <meta name="twitter:description" content="Découvrez les valeurs fondatrices de Mada Campaign pour un Madagascar meilleur." />
+              <meta name="twitter:title" content="Nos Valeurs – UFM | Union des Français de Madagascar | Élections 2026" />
+              <meta name="twitter:description" content="Les valeurs qui guident l'Union des Français de Madagascar (UFM) et la liste menée par Christian Tibayrenc pour les élections consulaires Madagascar 2026." />
             </Helmet>
             <OurValue />
           </>
@@ -290,16 +303,16 @@ function AppLayout() {
         <Route path="/heritage-security" element={
           <>
             <Helmet>
-              <title>Sécurité du Patrimoine – Mada Campaign</title>
-              <meta name="description" content="Protégez votre patrimoine avec Mada Campaign. Ressources et conseils pour les citoyens malgaches." />
+              <title>Sécurité Patrimoniale des Français à Madagascar – UFM | Élections 2026</title>
+              <meta name="description" content="L'Union des Français de Madagascar (UFM) protège le patrimoine des Français résidant à Madagascar. Engagements de Christian Tibayrenc pour les élections consulaires 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/heritage-security" />
-              <meta property="og:title" content="Sécurité du Patrimoine – Mada Campaign" />
-              <meta property="og:description" content="Protégez votre patrimoine avec Mada Campaign. Ressources et conseils pour les citoyens malgaches." />
+              <meta property="og:title" content="Sécurité Patrimoniale des Français à Madagascar – UFM | Élections 2026" />
+              <meta property="og:description" content="L'Union des Français de Madagascar (UFM) protège le patrimoine des Français résidant à Madagascar. Engagements de Christian Tibayrenc pour les élections consulaires 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/heritage-security" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Sécurité du Patrimoine – Mada Campaign" />
-              <meta name="twitter:description" content="Protégez votre patrimoine avec Mada Campaign. Ressources et conseils pour les citoyens malgaches." />
+              <meta name="twitter:title" content="Sécurité Patrimoniale des Français à Madagascar – UFM | Élections 2026" />
+              <meta name="twitter:description" content="L'Union des Français de Madagascar (UFM) protège le patrimoine des Français résidant à Madagascar. Engagements de Christian Tibayrenc pour les élections consulaires 2026." />
             </Helmet>
             <HeritageSecurity />
           </>
@@ -307,16 +320,16 @@ function AppLayout() {
         <Route path="/family-education" element={
           <>
             <Helmet>
-              <title>Éducation Familiale – Mada Campaign</title>
-              <meta name="description" content="Ressources et actions pour l'éducation familiale à Madagascar avec Mada Campaign." />
+              <title>Éducation & Famille des Français à Madagascar – UFM | Élections 2026</title>
+              <meta name="description" content="L'Union des Français de Madagascar (UFM) soutient l'éducation et les familles françaises à Madagascar. Propositions de Christian Tibayrenc pour les élections consulaires 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/family-education" />
-              <meta property="og:title" content="Éducation Familiale – Mada Campaign" />
-              <meta property="og:description" content="Ressources et actions pour l'éducation familiale à Madagascar avec Mada Campaign." />
+              <meta property="og:title" content="Éducation & Famille des Français à Madagascar – UFM | Élections 2026" />
+              <meta property="og:description" content="L'Union des Français de Madagascar (UFM) soutient l'éducation et les familles françaises à Madagascar. Propositions de Christian Tibayrenc pour les élections consulaires 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/family-education" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Éducation Familiale – Mada Campaign" />
-              <meta name="twitter:description" content="Ressources et actions pour l'éducation familiale à Madagascar avec Mada Campaign." />
+              <meta name="twitter:title" content="Éducation & Famille des Français à Madagascar – UFM | Élections 2026" />
+              <meta name="twitter:description" content="L'Union des Français de Madagascar (UFM) soutient l'éducation et les familles françaises à Madagascar. Propositions de Christian Tibayrenc pour les élections consulaires 2026." />
             </Helmet>
             <FamilyEducation />
           </>
@@ -324,16 +337,16 @@ function AppLayout() {
         <Route path="/partner-article" element={
           <>
             <Helmet>
-              <title>Articles Partenaires – Mada Campaign</title>
-              <meta name="description" content="Découvrez les articles et contributions de nos partenaires sur Mada Campaign." />
+              <title>Articles Partenaires – UFM | Union des Français de Madagascar 2026</title>
+              <meta name="description" content="Articles et contributions des partenaires de l'Union des Français de Madagascar (UFM), la liste de Christian Tibayrenc pour les élections consulaires Madagascar 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/partner-article" />
-              <meta property="og:title" content="Articles Partenaires – Mada Campaign" />
-              <meta property="og:description" content="Découvrez les articles et contributions de nos partenaires sur Mada Campaign." />
+              <meta property="og:title" content="Articles Partenaires – UFM | Union des Français de Madagascar 2026" />
+              <meta property="og:description" content="Articles et contributions des partenaires de l'Union des Français de Madagascar (UFM), la liste de Christian Tibayrenc pour les élections consulaires Madagascar 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/partner-article" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Articles Partenaires – Mada Campaign" />
-              <meta name="twitter:description" content="Découvrez les articles et contributions de nos partenaires sur Mada Campaign." />
+              <meta name="twitter:title" content="Articles Partenaires – UFM | Union des Français de Madagascar 2026" />
+              <meta name="twitter:description" content="Articles et contributions des partenaires de l'Union des Français de Madagascar (UFM), la liste de Christian Tibayrenc pour les élections consulaires Madagascar 2026." />
             </Helmet>
             <PartenaireArticle />
           </>
@@ -342,16 +355,16 @@ function AppLayout() {
         <Route path="/forum" element={
           <>
             <Helmet>
-              <title>Forum – Mada Campaign</title>
-              <meta name="description" content="Rejoignez le forum de Mada Campaign et échangez avec la communauté citoyenne malgache." />
+              <title>Forum des Français de Madagascar – UFM | Élections Consulaires 2026</title>
+              <meta name="description" content="Échangez sur le forum de l'Union des Français de Madagascar (UFM). Partagez vos questions sur les élections consulaires 2026 et les enjeux de la communauté française à Madagascar." />
               <link rel="canonical" href="https://ufdm.vercel.app/forum" />
-              <meta property="og:title" content="Forum – Mada Campaign" />
-              <meta property="og:description" content="Rejoignez le forum de Mada Campaign et échangez avec la communauté citoyenne malgache." />
+              <meta property="og:title" content="Forum des Français de Madagascar – UFM | Élections Consulaires 2026" />
+              <meta property="og:description" content="Échangez sur le forum de l'Union des Français de Madagascar (UFM). Partagez vos questions sur les élections consulaires 2026 et les enjeux de la communauté française à Madagascar." />
               <meta property="og:url" content="https://ufdm.vercel.app/forum" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Forum – Mada Campaign" />
-              <meta name="twitter:description" content="Rejoignez le forum de Mada Campaign et échangez avec la communauté citoyenne malgache." />
+              <meta name="twitter:title" content="Forum des Français de Madagascar – UFM | Élections Consulaires 2026" />
+              <meta name="twitter:description" content="Échangez sur le forum de l'Union des Français de Madagascar (UFM). Partagez vos questions sur les élections consulaires 2026 et les enjeux de la communauté française à Madagascar." />
             </Helmet>
             <ForumPage />
           </>
@@ -359,16 +372,16 @@ function AppLayout() {
         <Route path="/milite" element={
           <>
             <Helmet>
-              <title>Militer – Mada Campaign</title>
-              <meta name="description" content="Rejoignez les militants de Mada Campaign et agissez sur le terrain pour Madagascar." />
+              <title>Rejoindre l'UFM – Militer | Union des Français de Madagascar 2026</title>
+              <meta name="description" content="Rejoignez les militants de l'Union des Français de Madagascar (UFM) et soutenez Christian Tibayrenc sur le terrain pour les élections consulaires Madagascar 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/milite" />
-              <meta property="og:title" content="Militer – Mada Campaign" />
-              <meta property="og:description" content="Rejoignez les militants de Mada Campaign et agissez sur le terrain pour Madagascar." />
+              <meta property="og:title" content="Rejoindre l'UFM – Militer | Union des Français de Madagascar 2026" />
+              <meta property="og:description" content="Rejoignez les militants de l'Union des Français de Madagascar (UFM) et soutenez Christian Tibayrenc sur le terrain pour les élections consulaires Madagascar 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/milite" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Militer – Mada Campaign" />
-              <meta name="twitter:description" content="Rejoignez les militants de Mada Campaign et agissez sur le terrain pour Madagascar." />
+              <meta name="twitter:title" content="Rejoindre l'UFM – Militer | Union des Français de Madagascar 2026" />
+              <meta name="twitter:description" content="Rejoignez les militants de l'Union des Français de Madagascar (UFM) et soutenez Christian Tibayrenc sur le terrain pour les élections consulaires Madagascar 2026." />
             </Helmet>
             <MilitePage />
           </>
@@ -376,16 +389,16 @@ function AppLayout() {
         <Route path="/about-article" element={
           <>
             <Helmet>
-              <title>À Propos – Mada Campaign</title>
-              <meta name="description" content="En savoir plus sur Mada Campaign, sa mission et son engagement pour les citoyens malgaches." />
+              <title>À Propos de l'UFM – Christian Tibayrenc | Union des Français de Madagascar</title>
+              <meta name="description" content="Découvrez l'Union des Français de Madagascar (UFM) et le parcours de Christian Tibayrenc, tête de liste pour les élections consulaires Madagascar 2026." />
               <link rel="canonical" href="https://ufdm.vercel.app/about-article" />
-              <meta property="og:title" content="À Propos – Mada Campaign" />
-              <meta property="og:description" content="En savoir plus sur Mada Campaign, sa mission et son engagement pour les citoyens malgaches." />
+              <meta property="og:title" content="À Propos de l'UFM – Christian Tibayrenc | Union des Français de Madagascar" />
+              <meta property="og:description" content="Découvrez l'Union des Français de Madagascar (UFM) et le parcours de Christian Tibayrenc, tête de liste pour les élections consulaires Madagascar 2026." />
               <meta property="og:url" content="https://ufdm.vercel.app/about-article" />
               <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="À Propos – Mada Campaign" />
-              <meta name="twitter:description" content="En savoir plus sur Mada Campaign, sa mission et son engagement pour les citoyens malgaches." />
+              <meta name="twitter:title" content="À Propos de l'UFM – Christian Tibayrenc | Union des Français de Madagascar" />
+              <meta name="twitter:description" content="Découvrez l'Union des Français de Madagascar (UFM) et le parcours de Christian Tibayrenc, tête de liste pour les élections consulaires Madagascar 2026." />
             </Helmet>
             <AboutArticle />
           </>
@@ -402,6 +415,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <PageTracker />
       <AppLayout />
     </BrowserRouter>
   );
