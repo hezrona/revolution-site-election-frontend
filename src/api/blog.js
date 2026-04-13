@@ -1,4 +1,4 @@
-const BASE = "https://ufm-backend-production.up.railway.app";
+const BASE = "https://ufm-backend-production-3fd7.up.railway.app";
 
 export const getArticles = () =>
   fetch(`${BASE}/api/blog/articles`).then(r => r.json());

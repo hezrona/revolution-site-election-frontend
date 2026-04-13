@@ -19,7 +19,7 @@ The full static-site workflow: `npm run build && npm run preview` (in one termin
 
 **Two backend connections:**
 1. **Strapi CMS** (`src/api/strapi.js`) — content/copy fetched via `VITE_STRAPI_URL` + `VITE_STRAPI_TOKEN`. The `useHomeContent` hook normalizes the Strapi response (which uses French field names like `GrandTitre`, `SousTitre`) into consistent English-named objects consumed by components.
-2. **Custom REST API** (`src/api/config.js`) — `VITE_API_URL` (defaults to `https://ufm-backend-production.up.railway.app`). Used for forum threads/posts (`src/api/forum.js`), auth (`src/api/auth.js`), campaigns (`src/api/campaign.js`), and donations (`src/api/dons.js`).
+2. **Custom REST API** (`src/api/config.js`) — `VITE_API_URL` (defaults to `https://ufm-backend-production-3fd7.up.railway.app`). Used for forum threads/posts (`src/api/forum.js`), auth (`src/api/auth.js`), campaigns (`src/api/campaign.js`), and donations (`src/api/dons.js`).
 
 **Environment variables** (create `.env.local`):
 ```

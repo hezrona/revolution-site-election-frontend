@@ -7,7 +7,7 @@ import { getArticles, createArticle, updateArticle, deleteArticle } from "../../
 import "./admin.css";
 
 /* ── API helpers newsletter ───────────────────────────────── */
-const BASE = "https://ufm-backend-production.up.railway.app";
+const BASE = "https://ufm-backend-production-3fd7.up.railway.app";
 
 const API = (token) => ({
   getSubscribers: () =>
