@@ -14,6 +14,37 @@ const CATEGORIES = [
   "Démarches administratives",
 ];
 
+function SkeletonGrid() {
+  return (
+    <div className="skeleton-grid">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div className="skeleton-card" key={i}>
+          <div className="skeleton-img" />
+          <div className="skeleton-body">
+            <div className="skeleton-line skeleton-line--title" />
+            <div className="skeleton-line skeleton-line--date" />
+            <div className="skeleton-line skeleton-line--text" />
+            <div className="skeleton-line skeleton-line--text2" />
+            <div className="skeleton-line skeleton-line--cta" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function EmptyState() {
+  return (
+    <div className="blog-state--empty">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0
+          2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+      </svg>
+      <p>Aucun article dans cette catégorie pour l'instant.</p>
+    </div>
+  );
+}
+
 function ArticleCard({ article, onClick }) {
   const date = article.published_at
     ? new Date(article.published_at).toLocaleDateString("fr-FR", {
@@ -124,11 +155,11 @@ function ArticleModal({ article, loading, onClose }) {
 }
 
 export default function BlogPage() {
-  const [articles, setArticles]       = useState([]);
-  const [loading, setLoading]         = useState(true);
-  const [error, setError]             = useState(null);
+  const [articles, setArticles]         = useState([]);
+  const [loading, setLoading]           = useState(true);
+  const [error, setError]               = useState(null);
   const [activeFilter, setActiveFilter] = useState("Tous");
-  const [selected, setSelected]       = useState(null);
+  const [selected, setSelected]         = useState(null);
   const [modalLoading, setModalLoading] = useState(false);
 
   useEffect(() => {
@@ -184,11 +215,9 @@ export default function BlogPage() {
       {/* Grille */}
       <section className="blog-grid-section">
         <div className="container">
-          {loading && <p className="blog-state">Chargement des articles…</p>}
-          {error   && <p className="blog-state blog-state--error">{error}</p>}
-          {!loading && !error && filtered.length === 0 && (
-            <p className="blog-state">Aucun article dans cette catégorie pour l'instant.</p>
-          )}
+          {loading && <SkeletonGrid />}
+          {error    && <p className="blog-state blog-state--error">{error}</p>}
+          {!loading && !error && filtered.length === 0 && <EmptyState />}
           {!loading && !error && filtered.length > 0 && (
             <div className="blog-grid">
               {filtered.map((article) => (
@@ -205,7 +234,11 @@ export default function BlogPage() {
 
       {/* Modale */}
       {selected && (
-        <ArticleModal article={selected} loading={modalLoading} onClose={() => setSelected(null)} />
+        <ArticleModal
+          article={selected}
+          loading={modalLoading}
+          onClose={() => setSelected(null)}
+        />
       )}
     </main>
   );
