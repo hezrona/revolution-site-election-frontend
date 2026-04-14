@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { getArticles } from "../../api/blog.js";
+import { getArticles, getArticle } from "../../api/blog.js";
 import "./blog.css";
 
 const CATEGORIES = [
@@ -48,7 +48,7 @@ function ArticleCard({ article, onClick }) {
   );
 }
 
-function ArticleModal({ article, onClose }) {
+function ArticleModal({ article, loading, onClose }) {
   const overlayRef = useRef(null);
 
   useEffect(() => {
@@ -109,10 +109,14 @@ function ArticleModal({ article, onClose }) {
           {article.summary && (
             <p className="blog-modal-summary">{article.summary}</p>
           )}
-          <div
-            className="blog-modal-body"
-            dangerouslySetInnerHTML={{ __html: article.content || "" }}
-          />
+          {loading ? (
+            <p className="blog-state">Chargement du contenu…</p>
+          ) : (
+            <div
+              className="blog-modal-body"
+              dangerouslySetInnerHTML={{ __html: article.content || "" }}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -125,6 +129,7 @@ export default function BlogPage() {
   const [error, setError]             = useState(null);
   const [activeFilter, setActiveFilter] = useState("Tous");
   const [selected, setSelected]       = useState(null);
+  const [modalLoading, setModalLoading] = useState(false);
 
   useEffect(() => {
     getArticles()
@@ -132,6 +137,15 @@ export default function BlogPage() {
       .catch(() => setError("Impossible de charger les articles."))
       .finally(() => setLoading(false));
   }, []);
+
+  const openArticle = (article) => {
+    setSelected(article);
+    setModalLoading(true);
+    getArticle(article.id)
+      .then((full) => setSelected(full))
+      .catch(() => {/* garde l'article partiel si l'appel échoue */})
+      .finally(() => setModalLoading(false));
+  };
 
   const filtered =
     activeFilter === "Tous"
@@ -181,7 +195,7 @@ export default function BlogPage() {
                 <ArticleCard
                   key={article.id}
                   article={article}
-                  onClick={setSelected}
+                  onClick={openArticle}
                 />
               ))}
             </div>
@@ -191,7 +205,7 @@ export default function BlogPage() {
 
       {/* Modale */}
       {selected && (
-        <ArticleModal article={selected} onClose={() => setSelected(null)} />
+        <ArticleModal article={selected} loading={modalLoading} onClose={() => setSelected(null)} />
       )}
     </main>
   );
