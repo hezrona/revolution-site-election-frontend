@@ -5,6 +5,7 @@ import { getMilitants, deleteMilitant, getRecommendations, deleteRecommendation 
 import { getDons, updateDonStatus, deleteDon } from "../../api/dons.js";
 import { getArticles, createArticle, updateArticle, deleteArticle } from "../../api/blog.js";
 import "./admin.css";
+import FichesTab from "./FichesTab";
 
 /* ── API helpers newsletter ───────────────────────────────── */
 const BASE = "https://ufm-backend-production-3fd7.up.railway.app";
@@ -900,6 +901,12 @@ export default function AdminDashboard({ token, onLogout }) {
         >
           📝 Blog
         </button>
+        <button
+          className={`admin-tab ${activeTab === "fiches" ? "active" : ""}`}
+          onClick={() => setActiveTab("fiches")}
+        >
+          📋 Fiches consulaires
+        </button>
       </div>
 
       {/* Contenu */}
@@ -976,6 +983,7 @@ export default function AdminDashboard({ token, onLogout }) {
       {activeTab === "recommendations" && <RecommendationsTab token={token} />}
       {activeTab === "dons"          && <DonsTab          token={token} />}
       {activeTab === "blog"          && <BlogTab          token={token} />}
+      {activeTab === "fiches"        && <FichesTab        token={token} />}
 
     </div>
   );
