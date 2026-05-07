@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import "./simulateurBourses.css";
+import "./SimulateurBourses.css";
 
 /* =========================================================================
    SIMULATEUR D'ÉLIGIBILITÉ AUX BOURSES SCOLAIRES AEFE
