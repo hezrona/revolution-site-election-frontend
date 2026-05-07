@@ -425,7 +425,8 @@ function DonsTab({ token }) {
 }
 
 /* ── Sous-composant : onglet Blog ─────────────────────────── */
-const BLOG_CATEGORIES = [
+const CATS_STORAGE_KEY = "ufm_blog_categories";
+const DEFAULT_BLOG_CATEGORIES = [
   "Vie pratique à Madagascar",
   "Actualités consulaires",
   "Communauté & événements",
@@ -436,23 +437,38 @@ const BLOG_CATEGORIES = [
   "Démarches administratives",
 ];
 
-const EMPTY_FORM = {
+function loadBlogCategories() {
+  try {
+    const stored = localStorage.getItem(CATS_STORAGE_KEY);
+    if (stored) return JSON.parse(stored);
+  } catch {}
+  return DEFAULT_BLOG_CATEGORIES;
+}
+
+function saveBlogCategories(cats) {
+  localStorage.setItem(CATS_STORAGE_KEY, JSON.stringify(cats));
+}
+
+const makeEmptyForm = (cats) => ({
   title: "",
-  category: BLOG_CATEGORIES[0],
+  category: cats[0] || "",
   published_at: new Date().toISOString().slice(0, 10),
   image_url: "",
   summary: "",
   content: "",
-};
+});
 
 function BlogTab({ token }) {
   const [articles, setArticles]   = useState([]);
   const [loading, setLoading]     = useState(true);
   const [view, setView]           = useState("list"); // "list" | "form"
   const [editing, setEditing]     = useState(null);   // article en cours de modification
-  const [form, setForm]           = useState(EMPTY_FORM);
+  const [categories, setCategories] = useState(loadBlogCategories);
+  const [form, setForm]           = useState(() => makeEmptyForm(loadBlogCategories()));
   const [saving, setSaving]       = useState(false);
   const [saveMsg, setSaveMsg]     = useState(null);
+  const [newCat, setNewCat]       = useState("");
+  const [showCatManager, setShowCatManager] = useState(false);
 
   useEffect(() => {
     getArticles()
@@ -460,9 +476,28 @@ function BlogTab({ token }) {
       .finally(() => setLoading(false));
   }, []);
 
+  const handleAddCategory = () => {
+    const cat = newCat.trim();
+    if (!cat || categories.includes(cat)) return;
+    const updated = [...categories, cat];
+    setCategories(updated);
+    saveBlogCategories(updated);
+    setNewCat("");
+  };
+
+  const handleDeleteCategory = (cat) => {
+    if (!confirm(`Supprimer la catégorie « ${cat} » ?`)) return;
+    const updated = categories.filter((c) => c !== cat);
+    setCategories(updated);
+    saveBlogCategories(updated);
+    if (form.category === cat) {
+      setForm((prev) => ({ ...prev, category: updated[0] || "" }));
+    }
+  };
+
   const openCreate = () => {
     setEditing(null);
-    setForm(EMPTY_FORM);
+    setForm(makeEmptyForm(categories));
     setSaveMsg(null);
     setView("form");
   };
@@ -471,7 +506,7 @@ function BlogTab({ token }) {
     setEditing(article);
     setForm({
       title:        article.title        || "",
-      category:     article.category     || BLOG_CATEGORIES[0],
+      category:     article.category     || categories[0] || "",
       published_at: article.published_at ? article.published_at.slice(0, 10) : "",
       image_url:    article.image_url    || "",
       summary:      article.summary      || "",
@@ -553,7 +588,7 @@ function BlogTab({ token }) {
             <div className="blog-form-row">
               <label htmlFor="ba-category">Catégorie</label>
               <select id="ba-category" name="category" value={form.category} onChange={handleChange}>
-                {BLOG_CATEGORIES.map((c) => (
+                {categories.map((c) => (
                   <option key={c} value={c}>{c}</option>
                 ))}
               </select>
@@ -603,17 +638,14 @@ function BlogTab({ token }) {
           </div>
 
           <div className="blog-form-row">
-            <label htmlFor="ba-content">
-              Contenu complet{" "}
-              <span className="blog-form-hint">HTML supporté</span>
-            </label>
+            <label htmlFor="ba-content">Contenu complet</label>
             <textarea
               id="ba-content"
               name="content"
               rows={16}
               value={form.content}
               onChange={handleChange}
-              placeholder="<p>Contenu de l'article…</p>"
+              placeholder="Rédigez votre article ici."
               className="blog-form-content"
             />
           </div>
@@ -648,10 +680,59 @@ function BlogTab({ token }) {
         <span className="blog-admin-list-count">
           {articles.length} article{articles.length !== 1 ? "s" : ""}
         </span>
-        <button type="button" className="blog-admin-btn-new" onClick={openCreate}>
-          + Nouvel article
-        </button>
+        <div style={{ display: "flex", gap: 8 }}>
+          <button
+            type="button"
+            className="blog-admin-btn-cats"
+            onClick={() => setShowCatManager((v) => !v)}
+          >
+            🏷️ Catégories
+          </button>
+          <button type="button" className="blog-admin-btn-new" onClick={openCreate}>
+            + Nouvel article
+          </button>
+        </div>
       </div>
+
+      {showCatManager && (
+        <div className="blog-cat-manager">
+          <h3 className="blog-cat-manager-title">Gérer les catégories</h3>
+          <ul className="blog-cat-list">
+            {categories.map((cat) => (
+              <li key={cat} className="blog-cat-item">
+                <span>{cat}</span>
+                <button
+                  type="button"
+                  className="blog-cat-delete"
+                  onClick={() => handleDeleteCategory(cat)}
+                  title="Supprimer cette catégorie"
+                >
+                  ✕
+                </button>
+              </li>
+            ))}
+          </ul>
+          <div className="blog-cat-add-row">
+            <input
+              type="text"
+              className="blog-cat-input"
+              value={newCat}
+              onChange={(e) => setNewCat(e.target.value)}
+              placeholder="Nouvelle catégorie…"
+              onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); handleAddCategory(); } }}
+            />
+            <button
+              type="button"
+              className="blog-cat-add-btn"
+              onClick={handleAddCategory}
+              disabled={!newCat.trim() || categories.includes(newCat.trim())}
+            >
+              Ajouter
+            </button>
+          </div>
+        </div>
+      )}
+
 
       {articles.length === 0 ? (
         <p className="admin-empty" style={{ padding: 24 }}>Aucun article pour l'instant.</p>

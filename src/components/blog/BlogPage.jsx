@@ -1,18 +1,14 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { getArticles, getArticle } from "../../api/blog.js";
 import "./blog.css";
 
-const CATEGORIES = [
-  "Tous",
-  "Vie pratique à Madagascar",
-  "Actualités consulaires",
-  "Communauté & événements",
-  "Économie & entreprendre",
-  "Culture & découvertes",
-  "Éducation & formation",
-  "Santé & bien-être",
-  "Démarches administratives",
-];
+function processContent(html) {
+  if (!html) return "";
+  // Si le contenu contient des balises HTML, on le rend tel quel
+  if (/<[a-z][\s\S]*>/i.test(html)) return html;
+  // Sinon, on convertit les retours à la ligne en <br>
+  return html.replace(/\n/g, "<br>");
+}
 
 function SkeletonGrid() {
   return (
@@ -145,7 +141,7 @@ function ArticleModal({ article, loading, onClose }) {
           ) : (
             <div
               className="blog-modal-body"
-              dangerouslySetInnerHTML={{ __html: article.content || "" }}
+              dangerouslySetInnerHTML={{ __html: processContent(article.content || "") }}
             />
           )}
         </div>
@@ -168,6 +164,12 @@ export default function BlogPage() {
       .catch(() => setError("Impossible de charger les articles."))
       .finally(() => setLoading(false));
   }, []);
+
+  // Catégories dérivées dynamiquement depuis les articles existants
+  const categories = useMemo(() => {
+    const cats = [...new Set(articles.map((a) => a.category).filter(Boolean))].sort();
+    return ["Tous", ...cats];
+  }, [articles]);
 
   const openArticle = (article) => {
     setSelected(article);
@@ -199,7 +201,7 @@ export default function BlogPage() {
       {/* Filtres sticky */}
       <div className="blog-filters-bar">
         <div className="blog-filters-inner">
-          {CATEGORIES.map((cat) => (
+          {categories.map((cat) => (
             <button
               key={cat}
               type="button"

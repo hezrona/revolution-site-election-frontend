@@ -16,6 +16,8 @@ export default function Header({ content }) {
           { label: "Administration", href: "/administration" },
           { label: "Partenaires", href: "/partner-article" },
           { label: "Forum", href: "/forum" },
+          { label: "Bourses", href: "/simulateur-bourses" },
+          { label: "Consulat", href: "/consulat" },
         ];
 
   useEffect(() => {

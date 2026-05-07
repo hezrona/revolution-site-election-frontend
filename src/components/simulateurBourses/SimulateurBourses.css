@@ -1,0 +1,740 @@
+/* ═══════════════════════════════════════════════════════════════
+   SIMULATEUR BOURSES — simulateurBourses.css
+   Intégré dans le système de design UFM / UFDM
+   Variables attendues du thème : --color-navy, --color-cream,
+   --color-white, --color-slate, --font-display
+   Palette propre au simulateur :
+     --sim-accent        #A04A3F  (rouge terracotta)
+     --sim-accent-clair  #C77468
+     --sim-succes        #2D6A4F
+     --sim-alerte        #B8860B
+     --sim-erreur        #9E2B25
+     --sim-bordure       rgba(31,63,91,0.16)
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Variables locales ──────────────────────────────────────── */
+.sim-page {
+  --sim-accent:       #A04A3F;
+  --sim-accent-clair: #C77468;
+  --sim-succes:       #2D6A4F;
+  --sim-alerte:       #B8860B;
+  --sim-erreur:       #9E2B25;
+  --sim-bordure:      rgba(31, 63, 91, 0.16);
+}
+
+/* ── Conteneur principal ────────────────────────────────────── */
+.sim-page {
+  background: var(--color-cream, #F5F1E8);
+  color: var(--color-navy, #1A2E3E);
+  min-height: 60vh;
+}
+
+.sim-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* ── En-tête ────────────────────────────────────────────────── */
+.sim-header {
+  border-bottom: 1px solid var(--sim-bordure);
+  padding-bottom: 32px;
+  margin-bottom: 40px;
+}
+
+.sim-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.sim-header-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sim-accent);
+}
+
+.sim-restart-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-slate, #4A5A6B);
+  transition: opacity 0.15s;
+  padding: 0;
+}
+
+.sim-restart-btn:hover { opacity: 0.65; }
+
+.sim-header-titre {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 0 12px;
+}
+
+.sim-header-titre em {
+  font-style: italic;
+  color: var(--sim-accent);
+}
+
+.sim-header-sous {
+  font-size: 0.95rem;
+  color: var(--color-slate, #4A5A6B);
+  max-width: 600px;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Stepper ────────────────────────────────────────────────── */
+.sim-stepper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4px;
+  margin-bottom: 36px;
+}
+
+.sim-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.sim-step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--sim-bordure);
+  background: transparent;
+  color: var(--color-slate, #4A5A6B);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.sim-step-num--actif {
+  background: var(--sim-accent);
+  border-color: transparent;
+  color: #fff;
+}
+
+.sim-step-num--fait {
+  background: var(--sim-succes);
+  border-color: transparent;
+  color: #fff;
+}
+
+.sim-step-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-slate, #4A5A6B);
+  text-align: center;
+  display: none;
+}
+
+.sim-step-label--actif { color: var(--color-navy, #1A2E3E); font-weight: 600; }
+
+@media (min-width: 480px) { .sim-step-label { display: block; } }
+
+/* ── Main ───────────────────────────────────────────────────── */
+.sim-main { margin-bottom: 8px; }
+
+/* ── Navigation étapes ──────────────────────────────────────── */
+.sim-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--sim-bordure);
+  padding-top: 24px;
+  margin-top: 32px;
+}
+
+.sim-nav-prev {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.84rem;
+  color: var(--color-slate, #4A5A6B);
+  padding: 10px 0;
+  transition: opacity 0.15s;
+}
+
+.sim-nav-prev:hover { opacity: 0.65; }
+
+.sim-nav-count {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-slate, #4A5A6B);
+}
+
+.sim-nav-next {
+  background: var(--color-navy, #1A2E3E);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 11px 24px;
+  transition: background 0.18s, transform 0.12s;
+}
+
+.sim-nav-next:hover { background: #162e41; transform: translateY(-1px); }
+
+.sim-nav-next--disabled {
+  background: rgba(31, 63, 91, 0.15) !important;
+  color: var(--color-slate, #4A5A6B) !important;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ── Section formulaire ─────────────────────────────────────── */
+.sim-section { }
+
+.sim-section-titre {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-size: 1.55rem;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.sim-section-intro {
+  font-size: 0.84rem;
+  color: var(--color-slate, #4A5A6B);
+  line-height: 1.65;
+  margin: 0 0 20px;
+}
+
+.sim-section-body {
+  background: var(--color-white, #fff);
+  border: 1px solid var(--sim-bordure);
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Champ ──────────────────────────────────────────────────── */
+.sim-champ { display: flex; flex-direction: column; gap: 6px; }
+
+.sim-champ-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-navy, #1A2E3E);
+}
+
+.sim-champ-aide {
+  font-size: 0.75rem;
+  color: var(--color-slate, #4A5A6B);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Inputs & Select ────────────────────────────────────────── */
+.sim-input,
+.sim-select {
+  width: 100%;
+  padding: 10px 13px;
+  font-family: inherit;
+  font-size: 0.84rem;
+  color: var(--color-navy, #1A2E3E);
+  background: var(--color-cream, #F5F1E8);
+  border: 1.5px solid var(--sim-bordure);
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+  box-sizing: border-box;
+}
+
+.sim-input:focus,
+.sim-select:focus {
+  border-color: var(--color-navy, #1A2E3E);
+  background: var(--color-white, #fff);
+  box-shadow: 0 0 0 3px rgba(31, 63, 91, 0.08);
+}
+
+.sim-input--court { max-width: 180px; }
+
+.sim-montant-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sim-montant-row .sim-input { flex: 1; }
+
+.sim-montant-devise {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-slate, #4A5A6B);
+  min-width: 36px;
+}
+
+/* ── Boutons binaires ───────────────────────────────────────── */
+.sim-btns-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sim-btns-row--col {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (min-width: 540px) {
+  .sim-btns-row--col { flex-direction: row; }
+}
+
+.sim-btn {
+  padding: 9px 20px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1.5px solid var(--sim-bordure);
+  background: var(--color-white, #fff);
+  color: var(--color-navy, #1A2E3E);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  border-radius: 0;
+}
+
+.sim-btn:hover {
+  border-color: var(--color-navy, #1A2E3E);
+  background: rgba(31, 63, 91, 0.04);
+}
+
+.sim-btn--actif {
+  background: var(--color-navy, #1A2E3E);
+  border-color: var(--color-navy, #1A2E3E);
+  color: #fff;
+}
+
+.sim-btn--full { width: 100%; text-align: center; }
+
+/* ── Sous-titre interne section ─────────────────────────────── */
+.sim-sous-titre {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sim-accent);
+  margin: 0 0 4px;
+}
+
+/* ── Accueil ────────────────────────────────────────────────── */
+.sim-card--accueil {
+  background: var(--color-white, #fff);
+  border: 1px solid var(--sim-bordure);
+  padding: 28px 32px;
+  margin-bottom: 16px;
+}
+
+.sim-card-titre {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.sim-card-text {
+  font-size: 0.86rem;
+  color: var(--color-slate, #4A5A6B);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.sim-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sim-checklist li {
+  display: flex;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--color-slate, #4A5A6B);
+  line-height: 1.5;
+}
+
+.sim-check-puce {
+  color: var(--sim-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sim-alerte-campagne {
+  background: #FBF7ED;
+  border: 1px solid var(--sim-bordure);
+  padding: 14px 18px;
+  font-size: 0.82rem;
+  color: var(--color-slate, #4A5A6B);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.sim-btn-demarrer {
+  background: var(--color-navy, #1A2E3E);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding: 15px 36px;
+  transition: background 0.18s, transform 0.12s;
+}
+
+.sim-btn-demarrer:hover { background: #162e41; transform: translateY(-1px); }
+
+/* ── Infos établissement ────────────────────────────────────── */
+.sim-etab-info {
+  background: #FBF7ED;
+  border: 1px solid var(--sim-bordure);
+  padding: 12px 16px;
+  font-size: 0.8rem;
+  color: var(--color-slate, #4A5A6B);
+  line-height: 1.55;
+}
+
+/* ── Résultats : carte ──────────────────────────────────────── */
+.sim-carte-resultat {
+  display: flex;
+  gap: 20px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+}
+
+.sim-carte-resultat--succes {
+  background: #F0F7F2;
+  border-left: 4px solid var(--sim-succes);
+}
+
+.sim-carte-resultat--alerte {
+  background: #FBF7ED;
+  border-left: 4px solid var(--sim-alerte);
+}
+
+.sim-carte-resultat--erreur {
+  background: #FBF0EE;
+  border-left: 4px solid var(--sim-erreur);
+}
+
+.sim-carte-resultat-icone {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.sim-carte-resultat--succes .sim-carte-resultat-icone { background: var(--sim-succes); }
+.sim-carte-resultat--alerte .sim-carte-resultat-icone { background: var(--sim-alerte); }
+.sim-carte-resultat--erreur .sim-carte-resultat-icone { background: var(--sim-erreur); }
+
+.sim-carte-resultat-content { flex: 1; }
+
+.sim-carte-resultat-titre {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 6px;
+}
+
+.sim-carte-resultat-titre--succes { color: var(--sim-succes); }
+.sim-carte-resultat-titre--alerte { color: var(--sim-alerte); }
+.sim-carte-resultat-titre--erreur { color: var(--sim-erreur); }
+
+.sim-carte-resultat-sous {
+  font-size: 0.84rem;
+  color: var(--color-slate, #4A5A6B);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ── Montant estimé ─────────────────────────────────────────── */
+.sim-montant-estim {
+  background: var(--color-cream, #F5F1E8);
+  border: 1px solid var(--sim-bordure);
+  padding: 20px 24px;
+  margin-top: 20px;
+}
+
+.sim-montant-estim-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-slate, #4A5A6B);
+  margin-bottom: 6px;
+}
+
+.sim-montant-estim-valeur {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--sim-succes);
+  line-height: 1;
+}
+
+.sim-montant-estim-detail {
+  font-size: 0.75rem;
+  color: var(--color-slate, #4A5A6B);
+  margin-top: 4px;
+}
+
+/* ── Liste de blocages éligibilité ──────────────────────────── */
+.sim-filtres-liste {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sim-filtres-liste li {
+  display: flex;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--color-slate, #4A5A6B);
+  line-height: 1.5;
+}
+
+.sim-filtre-croix {
+  color: var(--sim-erreur);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── Détail du calcul ───────────────────────────────────────── */
+.sim-detail { margin-top: 32px; }
+
+.sim-detail-titre {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0 0 16px;
+}
+
+.sim-etape-calc {
+  background: var(--color-white, #fff);
+  border: 1px solid var(--sim-bordure);
+  padding: 18px 20px;
+  margin-bottom: 10px;
+  animation: simFadeIn 0.2s ease;
+}
+
+.sim-etape-calc-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.sim-etape-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.sim-etape-num--neutre { background: var(--color-navy, #1A2E3E); }
+.sim-etape-num--ok     { background: var(--sim-succes); }
+.sim-etape-num--alerte { background: var(--sim-alerte); }
+
+.sim-etape-calc-titre {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.sim-etape-calc-body {
+  padding-left: 40px;
+  font-size: 0.84rem;
+  color: var(--color-slate, #4A5A6B);
+  line-height: 1.65;
+}
+
+.sim-detail-texte {
+  font-size: 0.84rem;
+  color: var(--color-slate, #4A5A6B);
+  line-height: 1.65;
+  margin: 0 0 8px;
+}
+
+.sim-detail-texte--erreur { color: var(--sim-erreur); }
+
+.sim-detail-liste {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── Formule ────────────────────────────────────────────────── */
+.sim-formule {
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: var(--color-cream, #F5F1E8);
+  font-family: ui-monospace, 'Cascadia Mono', 'SF Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: var(--color-navy, #1A2E3E);
+}
+
+/* ── Procédure ──────────────────────────────────────────────── */
+.sim-procedure {
+  background: var(--color-navy, #1A2E3E);
+  color: #fff;
+  padding: 32px;
+  margin-top: 32px;
+}
+
+.sim-procedure-titre {
+  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 24px;
+}
+
+.sim-procedure-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.sim-procedure-sous-titre {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sim-accent-clair);
+  margin: 0 0 12px;
+}
+
+.sim-procedure-liste {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+}
+
+.sim-procedure-docs {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 24px;
+  margin-bottom: 24px;
+}
+
+.sim-procedure-docs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 24px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+}
+
+.sim-procedure-conseil {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 20px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+}
+
+.sim-link { color: var(--sim-accent-clair); text-decoration: underline; }
+.sim-link:hover { opacity: 0.8; }
+
+/* ── Avertissement final ────────────────────────────────────── */
+.sim-avertissement {
+  background: #FBF7ED;
+  border: 1px solid var(--sim-bordure);
+  padding: 16px 20px;
+  font-size: 0.78rem;
+  color: var(--color-slate, #4A5A6B);
+  line-height: 1.65;
+  margin-top: 24px;
+}
+
+/* ── Pied de page ───────────────────────────────────────────── */
+.sim-footer {
+  border-top: 1px solid var(--sim-bordure);
+  padding-top: 24px;
+  margin-top: 48px;
+  font-size: 0.75rem;
+  color: var(--color-slate, #4A5A6B);
+  line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sim-footer p { margin: 0; }
+
+/* ── Animation ──────────────────────────────────────────────── */
+@keyframes simFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Print ──────────────────────────────────────────────────── */
+@media print {
+  .sim-nav, .sim-restart-btn { display: none !important; }
+  .sim-page { background: white !important; }
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .sim-inner             { padding: 28px 16px 48px; }
+  .sim-section-body      { padding: 20px 18px; }
+  .sim-card--accueil     { padding: 20px 18px; }
+  .sim-procedure         { padding: 22px 18px; }
+  .sim-procedure-grid    { grid-template-columns: 1fr; }
+  .sim-procedure-docs-grid { grid-template-columns: 1fr; }
+  .sim-carte-resultat    { padding: 20px 18px; flex-direction: column; }
+  .sim-etape-calc-body   { padding-left: 12px; }
+}

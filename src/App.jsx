@@ -37,6 +37,8 @@ import DailyLife from "./components/dailyLife/DailyLife.jsx";
 import AboutArticle from "./components/about/AboutArticle.jsx";
 import AdminPage from "./components/admin/AdminPage.jsx";
 import BlogPage from "./components/blog/BlogPage.jsx";
+import SimulateurBourses from "./components/simulateurBourses/SimulateurBourses.jsx";
+import ConsulProcedures from "./components/consulat/ConsulProcedures.jsx";
 import { useHomeContent } from "./hooks/useHomeContent.js";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 
@@ -335,6 +337,21 @@ function AppLayout() {
             <FamilyEducation />
           </>
         } />
+        <Route path="/simulateur-bourses" element={
+          <>
+            <Helmet>
+              <title>Simulateur de Bourses Scolaires AEFE – UFM | Madagascar</title>
+              <meta name="description" content="Estimez votre éligibilité aux bourses scolaires AEFE pour la scolarisation de votre enfant dans un établissement homologué à Madagascar." />
+              <link rel="canonical" href="https://ufdm.vercel.app/simulateur-bourses" />
+              <meta property="og:title" content="Simulateur de Bourses Scolaires AEFE – UFM | Madagascar" />
+              <meta property="og:description" content="Estimez votre éligibilité aux bourses scolaires AEFE pour la scolarisation de votre enfant dans un établissement homologué à Madagascar." />
+              <meta property="og:url" content="https://ufdm.vercel.app/simulateur-bourses" />
+              <meta property="og:image" content="https://ufdm.vercel.app/og-image.png" />
+            </Helmet>
+            <SimulateurBourses />
+          </>
+        } />
+        <Route path="/consulat" element={<ConsulProcedures />} />
         <Route path="/partner-article" element={
           <>
             <Helmet>

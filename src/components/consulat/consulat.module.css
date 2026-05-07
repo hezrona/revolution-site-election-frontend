@@ -1,0 +1,206 @@
+/* =============================================================================
+   src/components/consulat/consulat.module.css
+   Styles isolés (CSS Modules) pour la page Consulat.
+   ============================================================================= */
+
+.page {
+  --bleu-france:        #000091;
+  --bleu-clair:         #e3e3fd;
+  --gris-fond:          #f6f6f6;
+  --gris-bordure:       #dddddd;
+  --gris-texte:         #3a3a3a;
+  --jaune-avertissement:#fff5e6;
+  --jaune-bordure:      #ffb84d;
+
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+  color: var(--gris-texte);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.55;
+}
+
+/* ----- En-tête ----- */
+.titre {
+  border-bottom: 3px solid var(--bleu-france);
+  padding-bottom: 16px;
+  margin-bottom: 28px;
+}
+.titre h1 {
+  margin: 0 0 6px;
+  color: var(--bleu-france);
+  font-size: 1.9rem;
+  letter-spacing: -0.01em;
+}
+.sousTitre {
+  margin: 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* ----- Intro ----- */
+.intro {
+  background: #fff;
+  border: 1px solid var(--gris-bordure);
+  border-left: 4px solid var(--bleu-france);
+  border-radius: 0;
+  padding: 18px 22px;
+  margin-bottom: 24px;
+}
+.intro p { margin: 0; font-size: 1.05rem; }
+
+/* ----- Chat ----- */
+.chat {
+  background: #fff;
+  border: 1px solid var(--gris-bordure);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.messages {
+  height: 420px;
+  overflow-y: auto;
+  padding: 20px;
+  background: #fafafa;
+}
+
+/* ----- Bulles de message ----- */
+.message {
+  display: flex;
+  margin-bottom: 14px;
+  animation: apparition 0.3s ease;
+}
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.user { justify-content: flex-end; }
+.bot  { justify-content: flex-start; }
+
+.bulle {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 0.97rem;
+  white-space: pre-wrap;  /* préserve sauts de ligne et listes du LLM */
+  word-wrap: break-word;
+}
+
+.user .bulle {
+  background: var(--bleu-france);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.bot .bulle {
+  background: #fff;
+  color: var(--gris-texte);
+  border: 1px solid var(--gris-bordure);
+  border-bottom-left-radius: 4px;
+}
+
+.attente .bulle {
+  color: #888;
+  font-style: italic;
+}
+.attente .bulle::after {
+  content: "▍";
+  animation: clignote 1s infinite;
+}
+@keyframes clignote { 50% { opacity: 0.3; } }
+
+.erreur .bulle {
+  background: #fff4f4;
+  border-color: #f5b3b3;
+  color: #8a0000;
+}
+
+/* ----- Zone de saisie ----- */
+.saisie {
+  border-top: 1px solid var(--gris-bordure);
+  padding: 14px;
+  background: #fff;
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+.saisie textarea {
+  flex: 1;
+  border: 1px solid var(--gris-bordure);
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 0.97rem;
+  resize: none;
+  min-height: 44px;
+  max-height: 120px;
+  outline: none;
+  color: var(--gris-texte);
+}
+.saisie textarea:focus {
+  border-color: var(--bleu-france);
+  box-shadow: 0 0 0 2px var(--bleu-clair);
+}
+.saisie textarea:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.envoyer {
+  background: var(--bleu-france);
+  color: #fff;
+  border: 0;
+  padding: 0 22px;
+  height: 44px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  min-width: 90px;
+}
+.envoyer:hover:not(:disabled) { background: #1212a3; }
+.envoyer:disabled { background: #999; cursor: not-allowed; }
+
+.compteur {
+  text-align: right;
+  font-size: 0.8rem;
+  color: #888;
+  padding: 4px 14px 8px;
+  background: #fff;
+}
+
+/* ----- Avertissement légal ----- */
+.avertissement {
+  margin-top: 28px;
+  background: var(--jaune-avertissement);
+  border: 1px solid var(--jaune-bordure);
+  border-left: 4px solid var(--jaune-bordure);
+  border-radius: 0;
+  padding: 18px 22px;
+  font-size: 0.92rem;
+}
+.avertissement h2 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  color: #8a4a00;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.avertissement h2::before {
+  content: "⚠";
+  font-size: 1.3rem;
+}
+.avertissement p { margin: 0 0 10px; }
+.avertissement p:last-child { margin-bottom: 0; }
+
+/* ----- Responsive mobile ----- */
+@media (max-width: 600px) {
+  .titre h1    { font-size: 1.5rem; }
+  .messages    { height: 360px; }
+  .bulle       { max-width: 88%; }
+}

@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /admin
-Disallow: /administration
-Disallow: /testify
-Disallow: /print-tract
-Disallow: /share-video
-
-Sitemap: https://ufdm.vercel.app/sitemap.xml
