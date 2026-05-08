@@ -9,6 +9,8 @@ import FichesTab from "./FichesTab";
 
 /* ── API helpers newsletter ───────────────────────────────── */
 const BASE = "https://ufm-backend-production-3fd7.up.railway.app";
+const IPPA_STORAGE_KEY = "ufm_simulateur_ippa";
+const IPPA_DEFAUT = 42;
 
 const API = (token) => ({
   getSubscribers: () =>
@@ -800,6 +802,95 @@ function BlogTab({ token }) {
   );
 }
 
+/* ── Sous-composant : onglet Simulateur ───────────────────── */
+function SimulateurTab() {
+  const [ippa, setIppa] = useState(() => {
+    try {
+      const v = localStorage.getItem(IPPA_STORAGE_KEY);
+      return v ? parseFloat(v) : IPPA_DEFAUT;
+    } catch { return IPPA_DEFAUT; }
+  });
+  const [inputVal, setInputVal] = useState(String(ippa));
+  const [saved, setSaved] = useState(false);
+
+  const handleSave = () => {
+    const val = parseFloat(inputVal);
+    if (isNaN(val) || val <= 0 || val > 200) {
+      alert("Valeur IPPA invalide (doit être entre 1 et 200).");
+      return;
+    }
+    localStorage.setItem(IPPA_STORAGE_KEY, String(val));
+    setIppa(val);
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2500);
+  };
+
+  const handleReset = () => {
+    localStorage.removeItem(IPPA_STORAGE_KEY);
+    setIppa(IPPA_DEFAUT);
+    setInputVal(String(IPPA_DEFAUT));
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2500);
+  };
+
+  return (
+    <div style={{ padding: 32, maxWidth: 520 }}>
+      <h2 style={{ marginBottom: 8 }}>Paramètres du simulateur de bourses</h2>
+      <p style={{ color: "#666", fontSize: "0.88rem", marginBottom: 24 }}>
+        Ces paramètres ajustent le calcul affiché aux familles. La modification
+        est prise en compte au prochain chargement du simulateur dans ce navigateur.
+      </p>
+      <div style={{ background: "#fff", border: "1px solid #ddd", padding: 24 }}>
+        <label style={{ display: "block", fontWeight: 600, marginBottom: 6 }}>
+          Indice IPPA pour Madagascar
+        </label>
+        <p style={{ fontSize: "0.8rem", color: "#666", marginBottom: 12 }}>
+          Valeur par défaut : {IPPA_DEFAUT}. Actuellement utilisée : <strong>{ippa}</strong>.
+        </p>
+        <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+          <input
+            type="number"
+            min="1"
+            max="200"
+            step="0.5"
+            value={inputVal}
+            onChange={(e) => { setInputVal(e.target.value); setSaved(false); }}
+            style={{ width: 100, padding: "8px 12px", fontSize: "1rem", border: "1.5px solid #ccc" }}
+          />
+          <button
+            onClick={handleSave}
+            style={{
+              background: "#1A2E3E", color: "#fff", border: "none",
+              padding: "9px 20px", cursor: "pointer", fontWeight: 600,
+              fontFamily: "inherit",
+            }}
+          >
+            Enregistrer
+          </button>
+          <button
+            onClick={handleReset}
+            style={{
+              background: "none", color: "#666", border: "1px solid #ccc",
+              padding: "9px 16px", cursor: "pointer", fontFamily: "inherit",
+            }}
+          >
+            Réinitialiser ({IPPA_DEFAUT})
+          </button>
+        </div>
+        {saved && (
+          <p style={{ color: "#2D6A4F", marginTop: 10, fontSize: "0.85rem" }}>
+            ✓ Valeur enregistrée. Le simulateur utilisera désormais IPPA = {ippa}.
+          </p>
+        )}
+      </div>
+      <p style={{ fontSize: "0.75rem", color: "#999", marginTop: 16 }}>
+        ⚠ Cette valeur est stockée localement dans ce navigateur (localStorage).
+        Si vous changez de navigateur ou d'ordinateur, vous devrez la re-saisir.
+      </p>
+    </div>
+  );
+}
+
 /* ── Composant principal ──────────────────────────────────── */
 export default function AdminDashboard({ token, onLogout }) {
   const [activeTab, setActiveTab] = useState("forum");
@@ -907,6 +998,12 @@ export default function AdminDashboard({ token, onLogout }) {
         >
           📋 Fiches consulaires
         </button>
+        <button
+          className={`admin-tab ${activeTab === "simulateur" ? "active" : ""}`}
+          onClick={() => setActiveTab("simulateur")}
+        >
+          🎓 Simulateur
+        </button>
       </div>
 
       {/* Contenu */}
@@ -984,6 +1081,7 @@ export default function AdminDashboard({ token, onLogout }) {
       {activeTab === "dons"          && <DonsTab          token={token} />}
       {activeTab === "blog"          && <BlogTab          token={token} />}
       {activeTab === "fiches"        && <FichesTab        token={token} />}
+      {activeTab === "simulateur"    && <SimulateurTab />}
 
     </div>
   );

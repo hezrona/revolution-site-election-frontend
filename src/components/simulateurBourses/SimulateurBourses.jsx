@@ -7,11 +7,19 @@ import "./SimulateurBourses.css";
    Converti depuis la maquette HTML standalone
    ========================================================================= */
 
+const IPPA_STORAGE_KEY = "ufm_simulateur_ippa";
+const IPPA_DEFAUT = 42;
+
 const CONFIG_DEFAUT = {
   Q_MIN_100: 3000,
   Q_MAX: 23000,
   CPS_POINTS: 9,
-  IPPA: 75,
+  IPPA: (() => {
+    try {
+      const v = localStorage.getItem("ufm_simulateur_ippa");
+      return v ? parseFloat(v) : 42;
+    } catch { return 42; }
+  })(),
   SEUIL_PATRIMOINE_IMMO: 200000,
   SEUIL_PATRIMOINE_MOBILIER: 50000,
   ABATTEMENT_RP: 0.20,
@@ -779,6 +787,19 @@ export default function SimulateurBourses() {
             Ce simulateur est <strong>indicatif</strong>. Seul l'AEFE, sur avis du Conseil Consulaire des Bourses (CCB)
             de Tananarive et de la Commission Nationale des Bourses (CNB), décide définitivement de l'attribution.
             Les bourses ne constituent pas un droit et sont attribuées dans la limite des crédits annuels alloués.
+          </p>
+          <p>
+            En particulier, les bourses se calculent avec l'indice IPPA (Indice de parité de
+            pouvoir d'achat), estimé par le ministère mais non communiqué officiellement.
+            Nous l'avons estimé à <strong>{config.IPPA}</strong> pour Madagascar.{" "}
+            <a
+              href="https://calcul-bourse.org/articles/ippa-par-ville/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sim-link"
+            >
+              Pour plus d'information sur l'IPPA →
+            </a>
           </p>
           <p>© Union des Français de Madagascar — Outil bénévole d'information aux familles.</p>
         </footer>
