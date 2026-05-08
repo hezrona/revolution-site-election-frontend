@@ -702,11 +702,11 @@
 
 /* ── Pied de page ───────────────────────────────────────────── */
 .sim-footer {
-  border-top: 1px solid var(--sim-bordure);
-  padding-top: 24px;
+  background-color: var(--color-pink, #e1467a);
+  color: white;
+  padding: 32px 40px;
   margin-top: 48px;
   font-size: 0.75rem;
-  color: var(--color-slate, #4A5A6B);
   line-height: 1.65;
   display: flex;
   flex-direction: column;
@@ -714,6 +714,7 @@
 }
 
 .sim-footer p { margin: 0; }
+.sim-footer strong { color: white; }
 
 /* ── Animation ──────────────────────────────────────────────── */
 @keyframes simFadeIn {

@@ -1,8 +1,10 @@
-﻿import { useState, useEffect } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Header({ content }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOuvert, setServicesOuvert] = useState(false);
+  const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
   const logoFirst = content?.logo?.firstName || "Union des Français";
@@ -24,6 +26,16 @@ export default function Header({ content }) {
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    function fermerSiExterieur(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setServicesOuvert(false);
+      }
+    }
+    document.addEventListener("mousedown", fermerSiExterieur);
+    return () => document.removeEventListener("mousedown", fermerSiExterieur);
   }, []);
 
   useEffect(() => {
@@ -64,18 +76,32 @@ export default function Header({ content }) {
                 {link.label}
               </Link>
             ))}
-            <div className="nav-dropdown">
-              <button className="nav-dropdown-trigger" type="button">
-                Services ▾
+            <div className="nav-dropdown" ref={dropdownRef}>
+              <button
+                className="nav-dropdown-trigger"
+                type="button"
+                onClick={() => setServicesOuvert((v) => !v)}
+              >
+                Simulation & Questions {servicesOuvert ? "▴" : "▾"}
               </button>
-              <div className="nav-dropdown-menu">
-                <Link to="/consulat" className="nav-dropdown-item">
-                  📋 Questions consulaires
-                </Link>
-                <Link to="/simulateur-bourses" className="nav-dropdown-item">
-                  🎓 Simulateur de bourses
-                </Link>
-              </div>
+              {servicesOuvert && (
+                <div className="nav-dropdown-menu">
+                  <Link
+                    to="/consulat"
+                    className="nav-dropdown-item"
+                    onClick={() => setServicesOuvert(false)}
+                  >
+                    📋 Questions consulaires
+                  </Link>
+                  <Link
+                    to="/simulateur-bourses"
+                    className="nav-dropdown-item"
+                    onClick={() => setServicesOuvert(false)}
+                  >
+                    🎓 Simulateur de bourses
+                  </Link>
+                </div>
+              )}
             </div>
             <Link to="/blog" className="nav-alt-yellow">
               Blog

@@ -81,22 +81,44 @@ export default function FichesTab({ token }) {
     }
   };
 
-  const handleImport = async e => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    e.target.value = "";
+  const handleImportDocx = async (e) => {
+    const fichiers = Array.from(e.target.files);
+    if (fichiers.length === 0) return;
+
     setImporting(true);
-    try {
-      const created = await createFicheFromDocx(file, null, token);
-      if (created?.id) {
-        setFiches(prev => [created, ...prev]);
-      } else {
-        alert(created?.error || "Erreur lors de l'importation.");
+    setSaveMsg(null);
+
+    const resultats = { succes: 0, erreurs: [] };
+
+    for (const fichier of fichiers) {
+      try {
+        const formData = new FormData();
+        formData.append("file", fichier);
+        const created = await createFicheFromDocx(formData, token);
+        if (created?.id) {
+          setFiches((prev) => [created, ...prev]);
+          resultats.succes += 1;
+        } else {
+          resultats.erreurs.push(fichier.name);
+        }
+      } catch {
+        resultats.erreurs.push(fichier.name);
       }
-    } catch {
-      alert("Impossible d'importer le fichier.");
-    } finally {
-      setImporting(false);
+    }
+
+    setImporting(false);
+    e.target.value = "";
+
+    if (resultats.erreurs.length === 0) {
+      setSaveMsg({
+        ok: true,
+        text: `${resultats.succes} fiche(s) importée(s) avec succès.`
+      });
+    } else {
+      setSaveMsg({
+        ok: false,
+        text: `${resultats.succes} succès — Échec pour : ${resultats.erreurs.join(", ")}`
+      });
     }
   };
 
@@ -190,9 +212,10 @@ export default function FichesTab({ token }) {
           <input
             type="file"
             accept=".docx"
+            multiple
             ref={fileInputRef}
             style={{ display: "none" }}
-            onChange={handleImport}
+            onChange={handleImportDocx}
           />
           <button
             type="button"
@@ -200,7 +223,7 @@ export default function FichesTab({ token }) {
             onClick={() => fileInputRef.current?.click()}
             disabled={importing}
           >
-            {importing ? "Importation…" : "📎 Importer un .docx"}
+            {importing ? "Importation en cours…" : "📎 Importer des .docx"}
           </button>
           <button
             type="button"
