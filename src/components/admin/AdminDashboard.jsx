@@ -6,6 +6,7 @@ import { getDons, updateDonStatus, deleteDon } from "../../api/dons.js";
 import { getArticles, createArticle, updateArticle, deleteArticle } from "../../api/blog.js";
 import "./admin.css";
 import FichesTab from "./FichesTab";
+import ConfigIATab from "./ConfigIATab";
 
 /* ── API helpers newsletter ───────────────────────────────── */
 const BASE = "https://ufm-backend-production-3fd7.up.railway.app";
@@ -1004,6 +1005,12 @@ export default function AdminDashboard({ token, onLogout }) {
         >
           🎓 Simulateur
         </button>
+        <button
+          className={`admin-tab ${activeTab === "configIA" ? "active" : ""}`}
+          onClick={() => setActiveTab("configIA")}
+        >
+          🤖 Configuration IA
+        </button>
       </div>
 
       {/* Contenu */}
@@ -1082,6 +1089,7 @@ export default function AdminDashboard({ token, onLogout }) {
       {activeTab === "blog"          && <BlogTab          token={token} />}
       {activeTab === "fiches"        && <FichesTab        token={token} />}
       {activeTab === "simulateur"    && <SimulateurTab />}
+      {activeTab === "configIA"      && <ConfigIATab token={token} />}
 
     </div>
   );
