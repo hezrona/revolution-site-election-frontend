@@ -16,8 +16,6 @@ export default function Header({ content }) {
           { label: "Administration", href: "/administration" },
           { label: "Partenaires", href: "/partner-article" },
           { label: "Forum", href: "/forum" },
-          { label: "Bourses", href: "/simulateur-bourses" },
-          { label: "Consulat", href: "/consulat" },
         ];
 
   useEffect(() => {
@@ -33,7 +31,13 @@ export default function Header({ content }) {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const allLinks = [{ label: "Équipe", href: "/team" }, ...links, { label: "Blog", href: "/blog" }];
+  const allLinks = [
+    { label: "Équipe", href: "/team" },
+    ...links,
+    { label: "📋 Questions consulaires", href: "/consulat" },
+    { label: "🎓 Simulateur de bourses", href: "/simulateur-bourses" },
+    { label: "Blog", href: "/blog" },
+  ];
 
   return (
     <>
@@ -60,6 +64,19 @@ export default function Header({ content }) {
                 {link.label}
               </Link>
             ))}
+            <div className="nav-dropdown">
+              <button className="nav-dropdown-trigger" type="button">
+                Services ▾
+              </button>
+              <div className="nav-dropdown-menu">
+                <Link to="/consulat" className="nav-dropdown-item">
+                  📋 Questions consulaires
+                </Link>
+                <Link to="/simulateur-bourses" className="nav-dropdown-item">
+                  🎓 Simulateur de bourses
+                </Link>
+              </div>
+            </div>
             <Link to="/blog" className="nav-alt-yellow">
               Blog
             </Link>
