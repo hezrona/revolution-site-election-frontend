@@ -17,16 +17,16 @@ export const createFiche = (data, token) =>
     body: JSON.stringify(data),
   }).then(r => r.json());
 
-export const createFicheFromDocx = (file, nom, token) => {
-  const fd = new FormData();
-  fd.append("file", file);
-  if (nom) fd.append("nom", nom);
-  return fetch(`${BASE}/api/fiches/import`, {
+export async function createFicheFromDocx(formData, token) {
+  const r = await fetch(`${BASE}/api/fiches/import`, {
     method: "POST",
-    headers: { Authorization: `Bearer ${token}` },
-    body: fd,
-  }).then(r => r.json());
-};
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  });
+  return r.json();
+}
 
 export const updateFiche = (id, data, token) =>
   fetch(`${BASE}/api/fiches/${id}`, {
