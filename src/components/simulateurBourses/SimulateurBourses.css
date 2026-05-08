@@ -386,15 +386,18 @@
 }
 
 .sim-alerte-campagne {
-  background: #FBF7ED;
-  border: 1px solid var(--sim-bordure);
+  background: #e1467a;        /* rose du header */
+  border: none;               /* supprimer la bordure grise */
   padding: 14px 18px;
   font-size: 0.82rem;
-  color: var(--color-slate, #4A5A6B);
+  color: #ffffff;             /* texte blanc */
   line-height: 1.6;
   margin-bottom: 24px;
 }
 
+.sim-alerte-campagne strong {
+  color: #ffffff;
+}
 .sim-btn-demarrer {
   background: var(--color-navy, #1A2E3E);
   color: #fff;
