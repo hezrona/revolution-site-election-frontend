@@ -51,7 +51,16 @@ export default function Chat() {
       const reponse = await fetch(API_URL, {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify({ question: q })
+        body:    JSON.stringify({
+          question: q,
+          historique: messages
+            .filter(m => !m.erreur && m.texte !== MESSAGE_INITIAL.texte)
+            .slice(-12)
+            .map(m => ({
+              role:  m.role === "user" ? "user" : "model",
+              texte: m.texte
+            }))
+        })
       });
 
       const data = await reponse.json().catch(() => ({}));

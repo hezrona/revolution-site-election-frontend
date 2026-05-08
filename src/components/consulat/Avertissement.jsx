@@ -1,6 +1,5 @@
 // =============================================================================
 // src/components/consulat/Avertissement.jsx
-// Avertissement légal — version courte conforme aux exigences du patron.
 // =============================================================================
 
 import styles from "./consulat.module.css";
